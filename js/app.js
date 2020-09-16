@@ -210,7 +210,8 @@ function rlffOnLoad(e) {
   menuBar.style.display = "block";
   menuLeft.style.display = "flex";
   dropArea.style.display = "none";
-  logLabel.innerHTML = 'Log: <b>' + e.fileName + '</b>';
+  logLabel.innerHTML = "Log: <b>" + e.fileName + "</b>";
+  document.title = dashb.msldb.logs[0].context + " | Moodle Log Analytics";
 
   renderDefaultDashboard();
 }
