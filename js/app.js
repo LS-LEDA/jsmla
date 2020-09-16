@@ -87,6 +87,7 @@ function YMDToDate(ymd)
   return new Date(ymd.substr(0, 4), (10>month)?"0"+month:month, ymd.substr(6, 2));
 }
 
+/* CREA OBJETO DASHBOARD */
 /** @type {Dashboard} */
 var dashb = new Dashboard({
     global: {
@@ -275,6 +276,7 @@ function renderDefaultDashboard()
       </div>',
             mode: WIDGET_TEXT
         },
+        /*Crea primer widget*/
         {
             height: 200,
             size: 0.5,
