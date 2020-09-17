@@ -205,13 +205,14 @@ function rlffOnLoad(e) {
   let subHeader = document.getElementById("subheader");
   let menuBar = document.getElementById("menu-bar");
   let menuLeft = document.getElementById("menu-left");
+  let subjectName = dashb.msldb.logs[0].context.split("_")[1]
 
   subHeader.style.display = "flex";
   menuBar.style.display = "block";
   menuLeft.style.display = "flex";
   dropArea.style.display = "none";
   logLabel.innerHTML = "Log: <b>" + e.fileName + "</b>";
-  document.title = dashb.msldb.logs[0].context + " | Moodle Log Analytics";
+  document.title = subjectName + " | Moodle Log Analytics";
 
   renderDefaultDashboard();
 }
