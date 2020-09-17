@@ -145,9 +145,12 @@ function createLoadingContent() {
   return '<p id="loading-content">Loading content...</p><div class="loader"></div>';
 }
 
-function showTimeoutError() {
-  return '<div class="timeout-error">There was an error reading the file. Please try again.</div>';
+function showFileReaderError() {
+  return '<div class="timeout-error">There was an error reading the file. Please refresh the page and try again.</div>';
+}
 
+function showTimeoutError() {
+  return '<div class="timeout-error">Reading the file took too long. Please refresh the page and try again.</div>';
 }
 
 /**
