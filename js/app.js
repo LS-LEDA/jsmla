@@ -147,6 +147,7 @@ function createLoadingContent() {
 
 function showTimeoutError() {
   return '<div class="timeout-error">There was an error reading the file. Please try again.</div>';
+
 }
 
 /**
@@ -214,12 +215,14 @@ function rlffOnLoad(e, error) {
     let subHeader = document.getElementById("subheader");
     let menuBar = document.getElementById("menu-bar");
     let menuLeft = document.getElementById("menu-left");
+    let subjectName = dashb.msldb.logs[0].context.split("_")[1]
 
     subHeader.style.display = "flex";
     menuBar.style.display = "block";
     menuLeft.style.display = "flex";
     dropArea.style.display = "none";
     logLabel.innerHTML = "Log: <b>" + e.fileName + "</b>";
+    document.title = subjectName + " | Moodle Log Analytics";
 
     renderDefaultDashboard();
   }
@@ -1362,7 +1365,6 @@ function dateFilter() {
 
 function editWidget(id) {
   let widget = dashb.getWidgetById(id);
-
   dashb.modal.headerContent = widget.title;
 
   dashb.modal.content =
