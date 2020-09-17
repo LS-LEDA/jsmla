@@ -99,9 +99,9 @@ var dashb = new Dashboard({
         .widget .title {color:green;}\
         .widget .content {}\
         .widget .rows {font-size:30px;color:green;text-align:center}\
-        .widget.section {background:#636363 !important;color:white !important}\
+        .widget.section {background:#C9C9C9 !important; color:white !important; margin-top:30px}\
         .widget.section h2 {margin:2px}\
-        .widget.section p {margin:2px}\
+        .widget.section p {margin:2px; margin-left:35px}\
         .widget table {background:white}\
         .widget table > thead {background:gray;color:white}\
       ",
@@ -295,7 +295,7 @@ function renderDefaultDashboard() {
     /* Poder cargar la información de dos campos distintos y filtros distintos */
     {
       html:
-        '<div class="widget" style="flex-basis: 100%;">\
+        '<div class="widget" id="title" style="flex-basis: 100%;">\
       <h1>Dashboard</h1>\
       </div>',
       mode: WIDGET_TEXT,
@@ -303,9 +303,10 @@ function renderDefaultDashboard() {
     {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\
-      <h2>1 Resum d\'interaccions en el curs</h2>\
+      <h2>1. Resum d\'interaccions en el curs:</h2>\
       <p>Informació relativa al número d\'interaccions</p>\
       </div>',
+
       mode: WIDGET_TEXT,
     },
     {
@@ -551,7 +552,7 @@ function renderDefaultDashboard() {
     {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\
-      <h2>2 Estudiants</h2>\
+      <h2>2. Estudiants:</h2>\
       <p>Informació relativa a les interaccions dels estudiants</p>\
       </div>',
       mode: WIDGET_TEXT,
@@ -750,7 +751,7 @@ function renderDefaultDashboard() {
     {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\
-      <h2>3 Recursos</h2>\
+      <h2>3. Recursos:</h2>\
       <p>Informació relativa a interaccions amb recursos</p>\
       </div>',
       mode: WIDGET_TEXT,

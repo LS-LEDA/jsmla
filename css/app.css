@@ -30,6 +30,15 @@ body {
 
 h1 {
   margin:0px;
+  /*margin-left: 35px;*/
+  font-size:4em;
+
+}
+
+
+#title.widget {
+  display: flex;
+  justify-content: center;
 }
 
 .loader {
@@ -53,6 +62,7 @@ h1 {
   width: 0;
 }
 
+/* BOTON */
 .btn {
   background: #f15d22;
   border: none;
@@ -377,6 +387,7 @@ ul li.separator {
 
 #widgets h2 {
   cursor:pointer;
+  margin-left:1%;
 }
 
 #pagination {
@@ -392,11 +403,13 @@ ul li.separator {
 table {
   width: 100%;
   font-size:small;
+  overflow: auto;
 }
 
 table, td {
   border-collapse: collapse;
   border: 1px solid #000;
+
 }
 
 thead {
