@@ -137,13 +137,16 @@ var codeditor;
  * @param {event} e - The event value.
  */
 function changeInputFile(e) {
-  //displayFileContents('<p id="loading-content">Loading content...</p><div class="loader"></div>');
-  displayFileContents(createLoadingContent);
+  displayFileContents(createLoadingContent());
   dashb.msldb.readLogFromFile(e, rlffOnLoad, rlffOnProgress);
 }
 
 function createLoadingContent() {
   return '<p id="loading-content">Loading content...</p><div class="loader"></div>';
+}
+
+function showTimeoutError() {
+  return '<div class="timeout-error">There was an error reading the file. Please try again.</div>';
 }
 
 /**
@@ -202,20 +205,24 @@ function reRenderDashboard() {
  * @callback rlffOnLoad
  * @param {event} e - The event value.
  */
-function rlffOnLoad(e) {
-  let logLabel = document.getElementById("file-log-label");
-  let dropArea = document.getElementById("drop-area");
-  let subHeader = document.getElementById("subheader");
-  let menuBar = document.getElementById("menu-bar");
-  let menuLeft = document.getElementById("menu-left");
+function rlffOnLoad(e, error) {
+  if (error !== null) {
+    displayFileContents(showTimeoutError());
+  } else {
+    let logLabel = document.getElementById("file-log-label");
+    let dropArea = document.getElementById("drop-area");
+    let subHeader = document.getElementById("subheader");
+    let menuBar = document.getElementById("menu-bar");
+    let menuLeft = document.getElementById("menu-left");
 
-  subHeader.style.display = "flex";
-  menuBar.style.display = "block";
-  menuLeft.style.display = "flex";
-  dropArea.style.display = "none";
-  logLabel.innerHTML = "Log: <b>" + e.fileName + "</b>";
+    subHeader.style.display = "flex";
+    menuBar.style.display = "block";
+    menuLeft.style.display = "flex";
+    dropArea.style.display = "none";
+    logLabel.innerHTML = "Log: <b>" + e.fileName + "</b>";
 
-  renderDefaultDashboard();
+    renderDefaultDashboard();
+  }
 }
 
 /**

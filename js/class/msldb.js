@@ -144,15 +144,23 @@ class MoodleStandardLogsDataBase {
      */
     let self = this;
     reader.onload = function (e) {
-      JSON.parse(e.target.result)[0].forEach((item) => {
-        // no transformation, logs will contain arrays of data
-        logs[logs.length] = item;
-      });
-
-      self.init();
-
-      e.fileName = file.name;
-      callbackLoad(e);
+      try {
+        JSON.parse(e.target.result)[0].forEach((item) => {
+          // no transformation, logs will contain arrays of data
+          logs[logs.length] = item;
+        });
+        self.init();
+        e.fileName = file.name;
+        callbackLoad(e, null);
+      } catch (e) {
+        callbackLoad(
+          e,
+          new Error({
+            errno: ERROR_EXCEPTION_JSON,
+            msg: "Cannot parse JSON.",
+          })
+        );
+      }
     };
 
     /**
