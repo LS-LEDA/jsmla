@@ -101,7 +101,7 @@ var dashb = new Dashboard({
         .widget .rows {font-size:30px;color:green;text-align:center}\
         .widget.section {background:#C9C9C9 !important; color:white !important; margin-top:30px}\
         .widget.section h2 {margin:2px}\
-        .widget.section p {margin:2px; margin-left:3%}\
+        .widget.section p {margin:2px; margin-left:35px}\
         .widget table {background:white}\
         .widget table > thead {background:gray;color:white}\
       ",
