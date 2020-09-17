@@ -30,8 +30,16 @@ body {
 
 h1 {
   margin:0px;
+  /*margin-left: 35px;*/
+  font-size:4em;
+
 }
 
+
+#title.widget {
+  display: flex;
+  justify-content: center;
+}
 
 .loader {
   border: 16px solid #f3f3f3;
@@ -379,6 +387,7 @@ ul li.separator {
 
 #widgets h2 {
   cursor:pointer;
+  margin-left:1%;
 }
 
 #pagination {
