@@ -6,6 +6,7 @@ Released under the MIT License
 
 const ERROR_EXCEPTION_BREAK = 0;
 const ERROR_EXCEPTION_FILE  = 1;
+const ERROR_EXCEPTION_JSON = 2;
 
 /** Class representing an error. */
 class Error
