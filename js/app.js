@@ -210,25 +210,25 @@ function reRenderDashboard() {
  * @param {event} e - The event value.
  */
 function rlffOnLoad(e, error) {
-  if (error !== null && error.errNo === 2) {
-    displayFileContents(showFileReaderError());
-  } else {
-    let logLabel = document.getElementById("file-log-label");
-    let dropArea = document.getElementById("drop-area");
-    let subHeader = document.getElementById("subheader");
-    let menuBar = document.getElementById("menu-bar");
-    let menuLeft = document.getElementById("menu-left");
-    let subjectName = dashb.msldb.logs[0].context.split("_")[1];
+  // if (error !== null && error.errno === 2) {
+  //   displayFileContents(showFileReaderError());
+  // } else {
+  let logLabel = document.getElementById("file-log-label");
+  let dropArea = document.getElementById("drop-area");
+  let subHeader = document.getElementById("subheader");
+  let menuBar = document.getElementById("menu-bar");
+  let menuLeft = document.getElementById("menu-left");
+  let subjectName = dashb.msldb.logs[0].context.split("_")[1];
 
-    subHeader.style.display = "flex";
-    menuBar.style.display = "block";
-    menuLeft.style.display = "flex";
-    dropArea.style.display = "none";
-    logLabel.innerHTML = "Log: <b>" + e.fileName + "</b>";
-    document.title = subjectName + " | Moodle Log Analytics";
+  subHeader.style.display = "flex";
+  menuBar.style.display = "block";
+  menuLeft.style.display = "flex";
+  dropArea.style.display = "none";
+  logLabel.innerHTML = "Log: <b>" + e.fileName + "</b>";
+  document.title = subjectName + " | Moodle Log Analytics";
 
-    renderDefaultDashboard();
-  }
+  renderDefaultDashboard();
+  // }
 }
 
 const timeoutPromise = function (ms, promise) {
