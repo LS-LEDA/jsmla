@@ -210,15 +210,15 @@ function reRenderDashboard() {
  * @param {event} e - The event value.
  */
 function rlffOnLoad(e, error) {
-  if (error !== null) {
-    displayFileContents(showTimeoutError());
+  if (error !== null && error.errNo === 2) {
+    displayFileContents(showFileReaderError());
   } else {
     let logLabel = document.getElementById("file-log-label");
     let dropArea = document.getElementById("drop-area");
     let subHeader = document.getElementById("subheader");
     let menuBar = document.getElementById("menu-bar");
     let menuLeft = document.getElementById("menu-left");
-    let subjectName = dashb.msldb.logs[0].context.split("_")[1]
+    let subjectName = dashb.msldb.logs[0].context.split("_")[1];
 
     subHeader.style.display = "flex";
     menuBar.style.display = "block";
@@ -231,16 +231,39 @@ function rlffOnLoad(e, error) {
   }
 }
 
+const timeoutPromise = function (ms, promise) {
+  // Create a promise that rejects in <ms> milliseconds
+  let timeout = new Promise((resolve, reject) => {
+    let id = setTimeout(() => {
+      clearTimeout(id);
+      reject("Timed out in " + ms + "ms.");
+    }, ms);
+  });
+
+  // Returns a race between our timeout and the passed in promise
+  return Promise.race([promise, timeout]);
+};
+
 /**
  * Callback for readLogFromFile progress management.
  * @callback rlffOnEventProgress
  * @param {event} e - The event value.
  */
 function rlffOnProgress(e) {
-  let total = Math.floor(Math.round(e.total / 1024 / 1024));
-  let progress = Math.floor(Math.round(e.loaded / 1024 / 1024));
-  let lcP = document.getElementById("loading-content");
-  lcP.innerHTML = "Loading content (" + progress + " of " + total + ")...";
+  let dataLoadingPromise = function () {
+    return new Promise((resolve, reject) => {
+      let total = Math.floor(Math.round(e.total / 1024 / 1024));
+      let progress = Math.floor(Math.round(e.loaded / 1024 / 1024));
+      let lcP = document.getElementById("loading-content");
+      lcP.innerHTML = "Loading content (" + progress + " of " + total + ")...";
+    });
+  };
+
+  let loading = timeoutPromise(15000, dataLoadingPromise());
+
+  loading.catch(() => {
+    displayFileContents(showTimeoutError());
+  });
 }
 
 function createWidgets(widgets) {
