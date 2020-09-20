@@ -38,7 +38,6 @@ h1 {
 .loader {
   border: 16px solid #f3f3f3;
   border-top: var(--main-bg-color);
-  /*border-top: 16px solid #0057A3;*/
   border-radius: 50%;
   width: 30px;
   height: 30px;
