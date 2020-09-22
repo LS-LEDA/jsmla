@@ -95,7 +95,7 @@ var dashb = new Dashboard({
   global: {
     css:
       "\
-        .widget {resize:both;overflow:auto;margin:10px;padding:10px;background:white;border: 1px #d7dfe3 solid;border-radius:4px;-webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);}\
+        .widget {resize:both;overflow:hidden;margin:10px;padding:10px;background:white;border: 1px #d7dfe3 solid;border-radius:4px;-webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);}\
         .widget .title {color:green;}\
         .widget .content {}\
         .widget .rows {font-size:30px;color:green;text-align:center}\
