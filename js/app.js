@@ -109,7 +109,7 @@ var dashb = new Dashboard({
   widget: {
     html:
       '\
-        <div onresize="console.log(\'t\');" class="widget" id="%ID%" style="width:%WIDTH%px;height:%HEIGHT%px">\n\
+        <div onresize="console.log(\'t\');" class="widget" id="%ID%" style="width:%WIDTH%px;height:%HEIGHT%px;">\n\
             <h2 id="title_%ID%" onclick="%CALLBACK%(\'%ID%\');" style="white-space:nowrap;overflow:hidden">%TITLE%</h2>\n\
             <div id="content_%ID%" class="content" style="width:100%;overflow:auto">\n\
               <div id="rows_%ID%" class="rows"></div>\n\
@@ -310,6 +310,7 @@ function renderDefaultDashboard() {
       mode: WIDGET_TEXT,
     },
     {
+      width: 260,
       height: 200,
       size: 0.5,
       css: ".widget .rowsOnly {font-weight:bold}",
@@ -497,7 +498,7 @@ function renderDefaultDashboard() {
     },
     {
       width: "1000",
-      height: "500",
+      height: "700",
       title: "Interaccions dies i franja horària",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
