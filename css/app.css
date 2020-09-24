@@ -22,6 +22,9 @@
 
 * {
   font-family: 'Courier New', Courier, monospace;
+  --main-bg-color: #0057A3;
+  --button: #a72911;
+  --button-hover: #e33e19;
 }
 
 body {
@@ -30,11 +33,20 @@ body {
 
 h1 {
   margin:0px;
+  /*margin-left: 35px;*/
+  font-size:4em;
+
+}
+
+
+#title.widget {
+  display: flex;
+  justify-content: center;
 }
 
 .loader {
   border: 16px solid #f3f3f3;
-  border-top: 16px solid #3498db;
+  border-top: var(--main-bg-color);
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -53,8 +65,9 @@ h1 {
   width: 0;
 }
 
+/* BOTON */
 .btn {
-  background: #f15d22;
+  background: var(--button);
   border: none;
   border-radius: 5px;
   color: #fff;
@@ -72,11 +85,11 @@ h1 {
 }
 
 .btn:hover {
-  background-color: #f15d22;
+  background-color: var(--button-hover);
 }
 
 .btn.small {
-  color:#f15d22;
+  color:var(--button-hover);
   background: white;
   margin-top:0px !important;
   padding-bottom:0px !important;
@@ -86,12 +99,12 @@ h1 {
 
 .btn.small:hover {
   color:white !important;
-  background-color: #f15d22;
+  background-color: var(--button-hover);
 }
 
 header {
   display:flex;
-  background: #1e88e5;
+  background: var(--main-bg-color);
   box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -334,7 +347,7 @@ ul li.separator {
   top:50px;
   width:200px;
   height:100vh;
-  background:#1e88e5;
+  background:var(--main-bg-color);
   position: fixed;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
 }
@@ -355,7 +368,7 @@ ul li.separator {
 
 #menu-left  ul li:hover {
   background-color: white;
-  color:#1e88e5;
+  color:var(--main-bg-color);
   cursor:pointer;
 }
 
@@ -377,6 +390,7 @@ ul li.separator {
 
 #widgets h2 {
   cursor:pointer;
+  margin-left:1%;
 }
 
 #pagination {
@@ -392,11 +406,13 @@ ul li.separator {
 table {
   width: 100%;
   font-size:small;
+  overflow: auto;
 }
 
 table, td {
   border-collapse: collapse;
   border: 1px solid #000;
+
 }
 
 thead {

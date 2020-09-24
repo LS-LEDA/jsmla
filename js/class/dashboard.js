@@ -172,6 +172,8 @@ class Dashboard
      * @param {object} e - The default event file value.
      * @param {function} callbackLoad - The default callback load value.
      */
+
+    /* Identifica archivo y trata el json */
     readFromFile(e, callbackLoad)
     {
         var file = e.target.files[0];
@@ -187,6 +189,8 @@ class Dashboard
          * @param {event} e - The event value.
          */
         let self = this;
+
+        /*Configura el objeto Dashboard, pone todoa default  */
         reader.onload = function(e)
         {
             let dashbObj = JSON.parse(e.target.result);
