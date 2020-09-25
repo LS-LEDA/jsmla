@@ -277,7 +277,7 @@ function moveProgressBar(progress, total) {
         clearInterval(id);
         i = 0;
       } else {
-        elem.style.width = progress / total + "%";
+        elem.style.width = (progress / total) * 100 + "%";
       }
     }
   }
@@ -1163,8 +1163,14 @@ function checkRender() {
   if (notLoaded) {
     setTimeout(() => {
       checkRender();
-      console.log(parseInt(dashLoaderN.innerHTML) / parseInt(dashLoaderTotal.innerHTML));
-      moveProgressBar(parseInt(dashLoaderN.innerHTML), parseInt(dashLoaderTotal.innerHTML));
+      console.log(
+        parseFloat(dashLoaderN.innerHTML) /
+          parseFloat(dashLoaderTotal.innerHTML)
+      );
+      moveProgressBar(
+        parseFloat(dashLoaderN.innerHTML),
+        parseFloat(dashLoaderTotal.innerHTML)
+      );
     }, 500);
   } else {
     let dashLoaderMsg = document.getElementById("loading-resources-msg");
