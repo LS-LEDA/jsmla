@@ -142,7 +142,7 @@ function changeInputFile(e) {
 }
 
 function createLoadingContent() {
-  return '<p id="loading-content">Loading content...</p><div class="loader"></div>';
+  return '<p id="loading-content">Loading content...</p><div class="loader"><span id="progress-bar" class="bar"><span id="my-progress" class="progress"></span></span></div>';
 }
 
 function showFileReaderError() {
@@ -256,14 +256,31 @@ function rlffOnProgress(e) {
       let progress = Math.floor(Math.round(e.loaded / 1024 / 1024));
       let lcP = document.getElementById("loading-content");
       lcP.innerHTML = "Loading content (" + progress + " of " + total + ")...";
+      moveProgressBar(progress, total);
     });
   };
-
   let loading = timeoutPromise(15000, dataLoadingPromise());
 
   loading.catch(() => {
     displayFileContents(showTimeoutError());
   });
+}
+
+function moveProgressBar(progress, total) {
+  var i = 0;
+  if (i == 0) {
+    let elem = document.getElementById("my-progress");
+    let width = 1;
+    let id = setInterval(frame, 10);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        elem.style.width = progress / total + "%";
+      }
+    }
+  }
 }
 
 function createWidgets(widgets) {
@@ -1129,6 +1146,7 @@ function checkRender() {
   let notLoaded = false;
   let numWidgetsLoaded = 0;
   let dashLoaderN = document.getElementById("loading-resources-n");
+  let dashLoaderTotal = document.getElementById("loading-resources-total");
 
   dashb.widgets.forEach((widget) => {
     if (
@@ -1143,10 +1161,13 @@ function checkRender() {
   });
   dashLoaderN.innerHTML = numWidgetsLoaded;
   if (notLoaded) {
-    setTimeout(checkRender, 500);
+    setTimeout(() => {
+      checkRender();
+      console.log(parseInt(dashLoaderN.innerHTML) / parseInt(dashLoaderTotal.innerHTML));
+      moveProgressBar(parseInt(dashLoaderN.innerHTML), parseInt(dashLoaderTotal.innerHTML));
+    }, 500);
   } else {
     let dashLoaderMsg = document.getElementById("loading-resources-msg");
-    let dashLoaderTotal = document.getElementById("loading-resources-total");
 
     dashLoaderMsg.innerHTML = "Rendering charts";
     dashLoaderTotal.innerHTML = dashb.widgets.length;
