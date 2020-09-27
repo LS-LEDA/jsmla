@@ -3,6 +3,21 @@ Moodle Web Log Analytics Tool from Moodle Standard Logs
 Copyright (c) 2020 Source code, Daniel Amo
 Released under the MIT License
 */
+/*
+var color4 = "#1589FF";
+var color3 = "#56A5EC";
+var color2 = "#82CAFF";
+var color1 = "#C6DEFF";
+*/
+
+
+var color4 = "#ec5437";
+/*var color4 = "#e94020";*/
+var color3 = "#f39f91";
+var color1 = "#f8c7bf";
+var color0 = "#f5e3df";
+
+
 
 String.prototype.dePersonalize = function () {
   var hash = 0;
@@ -35,10 +50,10 @@ Date.prototype.diffTimestamp = function (timestamp) {
 
 function gradient(maxVal, val) {
   let perct = (val * 100) / maxVal;
-  if (perct <= 25) return "#C6DEFF";
-  else if (perct <= 50) return "#82CAFF";
-  else if (perct <= 75) return "#56A5EC";
-  else if (perct <= 100) return "#1589FF";
+  if (perct <= 25) return color0;
+  else if (perct <= 50) return color1;
+  else if (perct <= 75) return color3;
+  else if (perct <= 100) return color4;
 }
 
 function getGradientColor(start_color, end_color, percent) {
@@ -97,6 +112,8 @@ var dashb = new Dashboard({
       "\
         .widget {resize:both;overflow:auto;margin:10px;padding:10px;background:white;border: 1px #d7dfe3 solid;border-radius:4px;-webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);}\
         .widget .title {color:green;}\
+        .widget:hover{min-width:250px}\
+        .widget:hover .tooltiptext{visibility: visible}\
         .widget .content {}\
         .widget .rows {font-size:30px;color:green;text-align:center}\
         .widget.section {background:#C9C9C9 !important; color:white !important; margin-top:30px}\
@@ -110,13 +127,16 @@ var dashb = new Dashboard({
     html:
       '\
         <div onresize="console.log(\'t\');" class="widget" id="%ID%" style="width:%WIDTH%px;height:%HEIGHT%px">\n\
-            <h2 id="title_%ID%" onclick="%CALLBACK%(\'%ID%\');" style="white-space:nowrap;overflow:hidden">%TITLE%</h2>\n\
+            <h2 class=tooltip" id="title_%ID%" onclick="%CALLBACK%(\'%ID%\');" style="white-space:nowrap;overflow:hidden">%TITLE%\
+              \<span class="tooltiptext">%TOOLTIP%</span>\n\
+            </h2>\n\
             <div id="content_%ID%" class="content" style="width:100%;overflow:auto">\n\
               <div id="rows_%ID%" class="rows"></div>\n\
             </div>\n\
         </div>\
       ',
   },
+
   db: {
     schema: schema,
     filters: filters,
@@ -314,6 +334,7 @@ function renderDefaultDashboard() {
       size: 0.5,
       css: ".widget .rowsOnly {font-weight:bold}",
       title: "Total",
+      tooltip: "Total de esdeveniments",
       srcJS: "https://canvasjs.com/assets/script/canvasjs.min.js",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,
@@ -325,6 +346,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "Tasques",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -335,6 +357,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "Fitxer",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -348,6 +371,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "Pàgines",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -358,6 +382,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "URL",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -368,6 +393,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "LTI",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -378,6 +404,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "Wiki",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -408,6 +435,7 @@ function renderDefaultDashboard() {
       width: "1000",
       height: "300",
       title: "Timeline d'interaccions",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '\
@@ -499,6 +527,7 @@ function renderDefaultDashboard() {
       width: "1000",
       height: "500",
       title: "Interaccions dies i franja horària",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -561,6 +590,7 @@ function renderDefaultDashboard() {
       width: "1000",
       height: "300",
       title: "Últim accés i estudiant",
+      tooltip: "Total de esdeveniments",
       srcJS: "https://canvasjs.com/assets/script/canvasjs.min.js",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,
@@ -625,6 +655,7 @@ function renderDefaultDashboard() {
       width: "1000",
       height: "500",
       title: "Mapa calor Accesos Recursos - Estudiant",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -678,6 +709,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Participació",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -714,6 +746,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Últim accés",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -760,6 +793,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Última interacció recursos",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -798,6 +832,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb recursos",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -834,6 +869,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb components",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -870,6 +906,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb esdeveniments",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -906,6 +943,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb context",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -943,6 +981,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb URL",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -980,6 +1019,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb Pàgines",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -1017,6 +1057,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb Eina ext LTI",
+      tooltip: "Total de esdeveniments",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -1054,6 +1095,7 @@ function renderDefaultDashboard() {
       width: "1000",
       height: "300",
       title: "Components",
+      tooltip: "Total de esdeveniments",
       srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,

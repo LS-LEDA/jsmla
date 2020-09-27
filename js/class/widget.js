@@ -57,6 +57,7 @@ class Widget
             html:'\
                 <div class="widget" id="%ID%" style="width:%WIDTH%px;height:%HEIGHT%px">\
                     <h2 id="title_%ID%" class="title" onclick="%CALLBACK%(\'%ID%\');">%TITLE%</h2>\
+                    <span class="tooltip">%TOOLTIP%</span>\
                     <div id="content_%ID%" class="content" style="width:%WIDTH%px;height:%HEIGHT%px">%TEXT_CONTENT%</div>\
                 </div>\
             '
@@ -269,6 +270,7 @@ class Widget
             .replace(new RegExp(this._delimiter+"ID"+this._delimiter, 'g'), this._id)
             .replace(new RegExp(this._delimiter+"CALLBACK"+this._delimiter, 'g'), this._callback)
             .replace(new RegExp(this._delimiter+"TITLE"+this._delimiter, 'g'), this._title)
+            .replace(new RegExp(this._delimiter+"TOOLTIP"+this._delimiter, 'g'), this._tooltip)
             .replace(new RegExp(this._delimiter+"WIDTH"+this._delimiter, 'g'), this._width*this._size)
             .replace(new RegExp(this._delimiter+"HEIGHT"+this._delimiter, 'g'), this._height*this._size)
             .replace(new RegExp(this._delimiter+"TEXT_CONTENT"+this._delimiter, 'g'), "");

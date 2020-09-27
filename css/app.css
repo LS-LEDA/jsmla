@@ -456,11 +456,28 @@ td {
 }
 
 .tdGreenLight {
-  background-color: mediumaquamarine;
+  background-color: #e94020;
 }
 .tdOrangeLight {
-  background-color: orange;
+  background-color: #dd9b88;
 }
 .tdRedLight {
-  background-color: orangered;
+  background-color: #f5e3df;
 }
+
+/* Tooltip text */
+.tooltiptext {
+  visibility: hidden;
+  font-size: small;
+  background-color: lightgray;
+  color: black;
+  text-align: center;
+  padding: 5px 15px;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  top: -5px;
+  left: 105%;
+  z-index: 1;
+}
+
