@@ -411,8 +411,6 @@ table {
 
 table, td {
   border-collapse: collapse;
-  border: 1px solid #000;
-
 }
 
 thead {
@@ -435,6 +433,7 @@ th, td {
 tr {
   display: table; /* display purpose; th's border */
   width: 100%;
+  border: 1px solid #000;
 }
 
 td {
