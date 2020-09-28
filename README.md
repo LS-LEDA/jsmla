@@ -1,5 +1,5 @@
 # JSMLA
-JSMLA stands for JavaScript Moodle Learning Analytics, a solution that offers a dashboard in local, instead of cloud computing. Developed in Catalunya.
+JSMLA stands for JavaScript Moodle Learning Analytics, a solution that offers instrument panels in local, instead of cloud computing.
 
 This tool is currently being developed.
 
