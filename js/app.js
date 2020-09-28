@@ -127,7 +127,7 @@ var dashb = new Dashboard({
     html:
       '\
         <div onresize="console.log(\'t\');" class="widget" id="%ID%" style="width:%WIDTH%px;height:%HEIGHT%px">\n\
-            <h2 class=tooltip" id="title_%ID%" onclick="%CALLBACK%(\'%ID%\');" style="white-space:nowrap;overflow:hidden">%TITLE%\
+            <h2 id="title_%ID%" onclick="%CALLBACK%(\'%ID%\');" style="white-space:nowrap;overflow:hidden">%TITLE%\
               \<span class="tooltiptext">%TOOLTIP%</span>\n\
             </h2>\n\
             <div id="content_%ID%" class="content" style="width:100%;overflow:auto">\n\
@@ -334,7 +334,7 @@ function renderDefaultDashboard() {
       size: 0.5,
       css: ".widget .rowsOnly {font-weight:bold}",
       title: "Total",
-      tooltip: "Total de esdeveniments",
+      tooltip: "The total amount of times that every element of a subject has been interacted, including viewing the subject.",
       srcJS: "https://canvasjs.com/assets/script/canvasjs.min.js",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,
@@ -346,7 +346,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "Tasques",
-      tooltip: "Total de esdeveniments",
+      tooltip: "The total amount of times all deliveries of a subject have been interacted.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -357,7 +357,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "Fitxer",
-      tooltip: "Total de esdeveniments",
+      tooltip: "The total amount of times all files of a subject have been interacted.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -371,7 +371,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "Pàgines",
-      tooltip: "Total de esdeveniments",
+      tooltip: "The total amount of times the pages of a subject have been interacted.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -382,7 +382,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "URL",
-      tooltip: "Total de esdeveniments",
+      tooltip: "The total amount of times the URL resource of a subject have been interacted.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -393,7 +393,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "LTI",
-      tooltip: "Total de esdeveniments",
+      tooltip: "The total amount of times the Learning Tools Interoperability resources of a subject have been interacted.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -404,7 +404,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "Wiki",
-      tooltip: "Total de esdeveniments",
+      tooltip: "The total amount of times the wikis of a subject have been interacted.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -527,7 +527,7 @@ function renderDefaultDashboard() {
       width: "1000",
       height: "500",
       title: "Interaccions dies i franja horària",
-      tooltip: "Total de esdeveniments",
+      tooltip: "A table which represents in a week the amount of interactions performed by hour.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -590,7 +590,7 @@ function renderDefaultDashboard() {
       width: "1000",
       height: "300",
       title: "Últim accés i estudiant",
-      tooltip: "Total de esdeveniments",
+      tooltip: "A plot which purpose is to show the last connection from the course's members. If you hover over the plot, it shows who was connected the last day.",
       srcJS: "https://canvasjs.com/assets/script/canvasjs.min.js",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,
@@ -655,7 +655,7 @@ function renderDefaultDashboard() {
       width: "1000",
       height: "500",
       title: "Mapa calor Accesos Recursos - Estudiant",
-      tooltip: "Total de esdeveniments",
+      tooltip: "A table which represents the amount of times the members of the course have interacted with each resource (including viewing the course).",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -709,7 +709,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Participació",
-      tooltip: "Total de esdeveniments",
+      tooltip: "Amount of times each member of the course has interacted with all the resources, including seeing the course.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -746,7 +746,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Últim accés",
-      tooltip: "Total de esdeveniments",
+      tooltip: "List of each member of the course and it's last time connected to the course.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -793,7 +793,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Última interacció recursos",
-      tooltip: "Total de esdeveniments",
+      tooltip: "List of each resource for the course and the last time it was interacted (by any member).",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -832,7 +832,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb recursos",
-      tooltip: "Total de esdeveniments",
+      tooltip: "List of each resource in a course and the amount of times it was interacted, including seeing the course.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -869,7 +869,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb components",
-      tooltip: "Total de esdeveniments",
+      tooltip: "List of different resources used at the course (such as wikis or URL) and the amount of times it was interacted.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -906,7 +906,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb esdeveniments",
-      tooltip: "Total de esdeveniments",
+      tooltip: "List of different interactions performed on the course by it's users and the count for each.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -943,7 +943,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb context",
-      tooltip: "Total de esdeveniments",
+      tooltip: "For each element in the course that can be interacted (created as a resource) it shows the amount of interactions have generated from the users.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -981,7 +981,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb URL",
-      tooltip: "Total de esdeveniments",
+      tooltip: "For each URL in the course that can be interacted, shows the amount of interactions have generated from the users.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -1019,7 +1019,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb Pàgines",
-      tooltip: "Total de esdeveniments",
+      tooltip: "For each Page resource in the course, shows the amount of interactions have generated from the users.\n",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -1057,7 +1057,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interaccions amb Eina ext LTI",
-      tooltip: "Total de esdeveniments",
+      tooltip: "For each Learning Tool Interoperability resource in the course, shows the amount of interactions have generated from the users.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -1095,7 +1095,7 @@ function renderDefaultDashboard() {
       width: "1000",
       height: "300",
       title: "Components",
-      tooltip: "Total de esdeveniments",
+      tooltip: "Pie plot describing the amount of elements the course has.",
       srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,
