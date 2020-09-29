@@ -137,13 +137,13 @@ var codeditor;
  * @param {event} e - The event value.
  */
 function changeInputFile(e) {
-  displayFileContents(createLoadingContent());
+  displayFileContents();
   dashb.msldb.readLogFromFile(e, rlffOnLoad, rlffOnProgress);
 }
 
-function createLoadingContent() {
-  return '<p id="loading-content">Loading content...</p><div class="loader"><span id="progress-bar" class="bar"><span id="my-progress" class="progress"></span></span></div>';
-}
+// function createLoadingContent() {
+//   return '<p id="loading-content">Loading content...</p>';
+// }
 
 function showFileReaderError() {
   return '<div class="timeout-error">There was an error reading the file. Please refresh the page and try again.</div>';
@@ -256,7 +256,8 @@ function rlffOnProgress(e) {
       let progress = Math.floor(Math.round(e.loaded / 1024 / 1024));
       let lcP = document.getElementById("loading-content");
       lcP.innerHTML = "Loading content (" + progress + " of " + total + ")...";
-      moveProgressBar(progress, total);
+      let elem = document.getElementById("loader-my-progress");
+      moveProgressBar(elem, progress, total);
     });
   };
   let loading = timeoutPromise(15000, dataLoadingPromise());
@@ -266,20 +267,11 @@ function rlffOnProgress(e) {
   });
 }
 
-function moveProgressBar(progress, total) {
-  var i = 0;
-  if (i == 0) {
-    let elem = document.getElementById("my-progress");
-    let width = 1;
-    let id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        elem.style.width = (progress / total) * 100 + "%";
-      }
-    }
+function moveProgressBar(elem, progress, total) {
+  if (elem !== undefined && elem !== null) {
+    console.log(elem);
+    console.log((progress / total) * 100);
+    elem.style.width = (progress / total) * 100 + "%";
   }
 }
 
@@ -1148,6 +1140,7 @@ function checkRender() {
   let numWidgetsLoaded = 0;
   let dashLoaderN = document.getElementById("loading-resources-n");
   let dashLoaderTotal = document.getElementById("loading-resources-total");
+  let renderProgressBar = document.getElementById("my-progress");
 
   dashb.widgets.forEach((widget) => {
     if (
@@ -1158,20 +1151,17 @@ function checkRender() {
       notLoaded = true;
     } else {
       numWidgetsLoaded++;
+      moveProgressBar(
+        renderProgressBar,
+        numWidgetsLoaded,
+        dashb.widgets.length
+      );
     }
   });
   dashLoaderN.innerHTML = numWidgetsLoaded;
   if (notLoaded) {
     setTimeout(() => {
       checkRender();
-      console.log(
-        parseFloat(dashLoaderN.innerHTML) /
-          parseFloat(dashLoaderTotal.innerHTML)
-      );
-      moveProgressBar(
-        parseFloat(dashLoaderN.innerHTML),
-        parseFloat(dashLoaderTotal.innerHTML)
-      );
     }, 500);
   } else {
     let dashLoaderMsg = document.getElementById("loading-resources-msg");
