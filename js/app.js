@@ -269,8 +269,6 @@ function rlffOnProgress(e) {
 
 function moveProgressBar(elem, progress, total) {
   if (elem !== undefined && elem !== null) {
-    console.log(elem);
-    console.log((progress / total) * 100);
     elem.style.width = (progress / total) * 100 + "%";
   }
 }
