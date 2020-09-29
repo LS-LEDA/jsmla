@@ -411,8 +411,6 @@ table {
 
 table, td {
   border-collapse: collapse;
-  border: 1px solid #000;
-
 }
 
 thead {
@@ -423,7 +421,6 @@ thead {
 tbody {
   display: block; /* to enable vertical scrolling */
   max-height: 130px;
-  overflow-y: scroll; /* keeps the scrollbar even if it doesn't need it; display purpose */
 }
 
 th, td {
@@ -435,6 +432,7 @@ th, td {
 tr {
   display: table; /* display purpose; th's border */
   width: 100%;
+  border: 1px solid #000;
 }
 
 td {

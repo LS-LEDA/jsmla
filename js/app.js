@@ -95,7 +95,7 @@ var dashb = new Dashboard({
   global: {
     css:
       "\
-        .widget {resize:both;overflow:auto;margin:10px;padding:10px;background:white;border: 1px #d7dfe3 solid;border-radius:4px;-webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);}\
+        .widget {resize:both;overflow:hidden;margin:10px;padding:10px;background:white;border: 1px #d7dfe3 solid;border-radius:4px;-webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);}\
         .widget .title {color:green;}\
         .widget .content {}\
         .widget .rows {font-size:30px;color:green;text-align:center}\
@@ -109,7 +109,7 @@ var dashb = new Dashboard({
   widget: {
     html:
       '\
-        <div onresize="console.log(\'t\');" class="widget" id="%ID%" style="width:%WIDTH%px;height:%HEIGHT%px">\n\
+        <div onresize="console.log(\'t\');" class="widget" id="%ID%" style="width:%WIDTH%px;height:%HEIGHT%px;">\n\
             <h2 id="title_%ID%" onclick="%CALLBACK%(\'%ID%\');" style="white-space:nowrap;overflow:hidden">%TITLE%</h2>\n\
             <div id="content_%ID%" class="content" style="width:100%;overflow:auto">\n\
               <div id="rows_%ID%" class="rows"></div>\n\
@@ -310,6 +310,7 @@ function renderDefaultDashboard() {
       mode: WIDGET_TEXT,
     },
     {
+      width: 260,
       height: 200,
       size: 0.5,
       css: ".widget .rowsOnly {font-weight:bold}",
@@ -497,7 +498,7 @@ function renderDefaultDashboard() {
     },
     {
       width: "1000",
-      height: "500",
+      height: "700",
       title: "Interaccions dies i franja horària",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
