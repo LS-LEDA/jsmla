@@ -3,21 +3,6 @@ Moodle Web Log Analytics Tool from Moodle Standard Logs
 Copyright (c) 2020 Source code, Daniel Amo
 Released under the MIT License
 */
-/*
-var color4 = "#1589FF";
-var color3 = "#56A5EC";
-var color2 = "#82CAFF";
-var color1 = "#C6DEFF";
-*/
-
-
-var color4 = "#ec5437";
-/*var color4 = "#e94020";*/
-var color3 = "#f39f91";
-var color1 = "#f8c7bf";
-var color0 = "#f5e3df";
-
-
 
 String.prototype.dePersonalize = function () {
   var hash = 0;
@@ -48,13 +33,15 @@ Date.prototype.diffTimestamp = function (timestamp) {
   };
 };
 
+
 function gradient(maxVal, val) {
   let perct = (val * 100) / maxVal;
-  if (perct <= 25) return color0;
-  else if (perct <= 50) return color1;
-  else if (perct <= 75) return color3;
-  else if (perct <= 100) return color4;
+  if (perct <= 25) return "#C6DEFF";
+  else if (perct <= 50) return "#82CAFF";
+  else if (perct <= 75) return "#56A5EC";
+  else if (perct <= 100) return "#1589FF";
 }
+
 
 function getGradientColor(start_color, end_color, percent) {
   start_color = start_color.replace(/^\s*#|\s*$/g, "");

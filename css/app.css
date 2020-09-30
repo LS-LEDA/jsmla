@@ -455,16 +455,15 @@ td {
 }
 
 .tdGreenLight {
-  background-color: #e94020;
+  background-color: mediumaquamarine;
 }
 .tdOrangeLight {
-  background-color: #dd9b88;
+  background-color: orange;
 }
 .tdRedLight {
-  background-color: #f5e3df;
+  background-color: orangered;
 }
 
-/* Tooltip text */
 .tooltiptext {
   visibility: hidden;
   font-size: small;
