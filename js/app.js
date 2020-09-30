@@ -303,8 +303,8 @@ function renderDefaultDashboard() {
     {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\
-      <h2>1. Resum d\'interaccions en el curs:</h2>\
-      <p>Informació relativa al número d\'interaccions</p>\
+      <h2>1. Summary of all course interactions:</h2>\
+      <p>Information on the number of interactions</p>\
       </div>',
 
       mode: WIDGET_TEXT,
@@ -325,7 +325,7 @@ function renderDefaultDashboard() {
     {
       height: 200,
       size: 0.5,
-      title: "Tasques",
+      title: "Tasks",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -335,7 +335,7 @@ function renderDefaultDashboard() {
     {
       height: 200,
       size: 0.5,
-      title: "Fitxer",
+      title: "Files",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -348,7 +348,7 @@ function renderDefaultDashboard() {
     {
       height: 200,
       size: 0.5,
-      title: "Pàgines",
+      title: "Pages",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -408,7 +408,7 @@ function renderDefaultDashboard() {
     {
       width: "1000",
       height: "300",
-      title: "Timeline d'interaccions",
+      title: "Interactions Timeline",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '\
@@ -458,19 +458,19 @@ function renderDefaultDashboard() {
           },\
           {\
             type: "line",\
-            name: "Tasca",\
+            name: "Task",\
             showInLegend: true,\
             dataPoints: dataPoints2\
           },\
           {\
             type: "line",\
-            name: "Fitxer",\
+            name: "File",\
             showInLegend: true,\
             dataPoints: dataPoints3\
           },\
           {\
             type: "line",\
-            name: "Pàgina",\
+            name: "Page",\
             showInLegend: true,\
             dataPoints: dataPoints4\
           },\
@@ -499,7 +499,7 @@ function renderDefaultDashboard() {
     {
       width: "1000",
       height: "700",
-      title: "Interaccions dies i franja horària",
+      title: "Interactions Time Slot",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -523,14 +523,14 @@ function renderDefaultDashboard() {
             let str = "<table>\
                 <thead>\
                     <tr>\
-                        <th class=\\"tdLeft\\" style=\\"width:100px\\">Franja</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Dilluns</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Dimarts</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Dimecres</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Dijous</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Divendres</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Dissabte</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Diumenge</th>\
+                        <th class=\\"tdLeft\\" style=\\"width:100px\\">Stripe</th>\
+                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Monday</th>\
+                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Tuesday</th>\
+                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Wednesday</th>\
+                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Thursday</th>\
+                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Friday</th>\
+                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Saturday</th>\
+                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Sunday</th>\
                     </tr>\
                 </thead>\
                 <tbody style=\'max-height:"+height+"px\'>";\
@@ -553,15 +553,15 @@ function renderDefaultDashboard() {
     {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\
-      <h2>2. Estudiants:</h2>\
-      <p>Informació relativa a les interaccions dels estudiants</p>\
+      <h2>2. Students:</h2>\
+      <p>Information on student interactions</p>\
       </div>',
       mode: WIDGET_TEXT,
     },
     {
       width: "1000",
       height: "300",
-      title: "Últim accés i estudiant",
+      title: "Last Access & Student",
       srcJS: "https://canvasjs.com/assets/script/canvasjs.min.js",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,
@@ -612,7 +612,7 @@ function renderDefaultDashboard() {
         data: [\
           {\
             type: "line",\
-            name: "Estudiants",\
+            name: "Students",\
             showInLegend: true,\
             dataPoints: dataPoints\
           },\
@@ -625,7 +625,7 @@ function renderDefaultDashboard() {
     {
       width: "1000",
       height: "500",
-      title: "Mapa calor Accesos Recursos - Estudiant",
+      title: "Resource - Student Access Chart",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -642,7 +642,7 @@ function renderDefaultDashboard() {
         let str = "<table style=\\"min-width:150px\\">\
             <thead>\
                 <tr>\
-                    <th style=\\"min-width:150px;max-width:150px;white-space: nowrap\\" class=\\"tdLeft\\">Recurs</th>";\
+                    <th style=\\"min-width:150px;max-width:150px;white-space: nowrap\\" class=\\"tdLeft\\">Resource</th>";\
                     for (let prop in axisX){\
                       str += "<th title=\\"" + prop + "\\" style=\\"min-width:40px;max-width:40px;overflow: hidden;text-overflow: ellipsis;width:150px;white-space: nowrap\\" class=\\"tdCenter\\">" + prop + "</th>";\
                     };\
@@ -678,7 +678,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Participació",
+      title: "Participation",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -690,7 +690,7 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Estudiant</th>\
+                    <th  class=\\"tdLeft\\">Student</th>\
                     <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
                     <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
                 </tr>\
@@ -714,7 +714,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Últim accés",
+      title: "Last Access",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -726,8 +726,8 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th class=\\"tdLeft\\">Estudiant</th>\
-                    <th style=\\"width:160px;\\" class=\\"tdCenter\\">Últim accés</th>\
+                    <th class=\\"tdLeft\\">Student</th>\
+                    <th style=\\"width:160px;\\" class=\\"tdCenter\\">Last Access</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -752,15 +752,15 @@ function renderDefaultDashboard() {
     {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\
-      <h2>3. Recursos:</h2>\
-      <p>Informació relativa a interaccions amb recursos</p>\
+      <h2>3. Resources:</h2>\
+      <p>Information on interactions with resources</p>\
       </div>',
       mode: WIDGET_TEXT,
     },
     {
       width: "475",
       height: "500",
-      title: "Última interacció recursos",
+      title: "Last interaction with a resource",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -772,8 +772,8 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th class=\\"tdLeft\\">Recurs</th>\
-                    <th style=\\"width:160px;\\" class=\\"tdCenter\\">Últim accés</th>\
+                    <th class=\\"tdLeft\\">Resource</th>\
+                    <th style=\\"width:160px;\\" class=\\"tdCenter\\">Last Access</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -798,7 +798,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Interaccions amb recursos",
+      title: "Interactions with Resources",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -810,7 +810,7 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Recurs</th>\
+                    <th  class=\\"tdLeft\\">Resource</th>\
                     <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
                     <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
                 </tr>\
@@ -834,7 +834,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Interaccions amb components",
+      title: "Interactions with Components",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -870,7 +870,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Interaccions amb esdeveniments",
+      title: "Interactions with Events",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -882,7 +882,7 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Esdeveniment</th>\
+                    <th  class=\\"tdLeft\\">Event</th>\
                     <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
                     <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
                 </tr>\
@@ -906,7 +906,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Interaccions amb context",
+      title: "Interactions with context",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -943,7 +943,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Interaccions amb URL",
+      title: "Interactions with URL",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -980,7 +980,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Interaccions amb Pàgines",
+      title: "Interactions with Pages",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -992,7 +992,7 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Pàgina</th>\
+                    <th  class=\\"tdLeft\\">Page</th>\
                     <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
                     <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
                 </tr>\
@@ -1017,7 +1017,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Interaccions amb Eina ext LTI",
+      title: "Interactions with LTI Tool",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -1029,7 +1029,7 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Eina ext LTI</th>\
+                    <th  class=\\"tdLeft\\">LTI Tool</th>\
                     <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
                     <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
                 </tr>\
