@@ -12,8 +12,8 @@ var color1 = "#C6DEFF";
 */
 
 
-var color4 = "#ec5437";
-/*var color4 = "#e94020";*/
+/*var color4 = "#ec5437";*/
+var color4 = "#e94020";
 var color3 = "#f39f91";
 var color1 = "#f8c7bf";
 var color0 = "#f5e3df";
@@ -54,6 +54,26 @@ function gradient(maxVal, val) {
   else if (perct <= 50) return color1;
   else if (perct <= 75) return color3;
   else if (perct <= 100) return color4;
+}
+
+function gradientSS(val, l1, l2, l3) {
+  console.log(val, l1, l2, l3);
+  if (val <= l1) {
+    return color0;
+  } else {
+    if (l1 < val <= l2) {
+      return color1;
+    } else {
+      if (l2 < val <= l3) {
+        return color3;
+      } else {
+        if (val > l3) {
+          return color4;
+        }
+      }
+    }
+  }
+  return "#008000";
 }
 
 function getGradientColor(start_color, end_color, percent) {
@@ -665,19 +685,48 @@ function renderDefaultDashboard() {
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
         let maxVal = 0;\
-        for (let i = 0; i < labels.length; i++) {\
+        /*for (let i = 0; i < labels.length; i++) {\
           for (let prop in axisX){\
             let val = ((undefined!==values[i][prop])?values[i][prop]:0);\
             if (val > maxVal)\
               maxVal = val;\
           };\
-        };\
+        };*/\
+        \
+        maxVal = 7331;\
+        let firstPosition = -1;\
+        let myArray = [];\
+        for (let i = 0; i < labels.length; i++) {\
+          for (let prop in axisX){\
+            let val = ((undefined!==values[i][prop])?values[i][prop]:0);\
+            myArray.push(val);\
+            \
+          }\
+        }\
+        myArray.sort(function(a,b) {\
+          return a - b;\
+        });\
+        \
+        for (let i = 0; i < myArray.length; i++) {\
+          if (myArray[i] != 0 && firstPosition == -1) {\
+            firstPosition = i;\
+          }\
+        }\
+        console.log(firstPosition);\
+        console.log(myArray);\
+        let half = ((myArray.length - firstPosition) / 2) + firstPosition;\
+        let quart1 = half - ((half - firstPosition) / 2);\
+        var quart2 = half + ((myArray.length - half) / 2);\
+        let valHalf = myArray[Math.round(half)];\
+        let valQuart1 = myArray[Math.round(quart1)];\
+        let valQuart2 = myArray[Math.round(quart2)];\
+        console.log(valQuart1, valHalf, valQuart2);\
         for (let i = 0; i < labels.length; i++) {\
             str += "<tr>";\
             str += "<td title=\\"" + labels[i].replace(\'"\',\'"\') + "\\" style=\\"min-width:150px;max-width:150px;overflow: hidden;text-overflow: ellipsis;width:150px;white-space: nowrap\\" class=\\"tdLeft\\">" + labels[i] + "</td>";\
             for (let prop in axisX){\
               let val = ((undefined!==values[i][prop])?values[i][prop]:0);\
-              str += "<td style=\\"min-width:40px;width:40px;white-space: nowrap;background:"+gradient(maxVal,val)+"\\" class=\\"tdRight\\">" + val.toLocaleString() + "</td>";\
+              str += "<td style=\\"min-width:40px;width:40px;white-space: nowrap;background:"+gradientSS(val, valQuart1, valHalf, valQuart2)+"\\" class=\\"tdRight\\">" + val.toLocaleString() + "</td>";\
             };\
             str += "</tr>"; };\
         str += "</tbody>\
