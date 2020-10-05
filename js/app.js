@@ -142,13 +142,13 @@ var codeditor;
  * @param {event} e - The event value.
  */
 function changeInputFile(e) {
-  displayFileContents(createLoadingContent());
+  displayFileContents();
   dashb.msldb.readLogFromFile(e, rlffOnLoad, rlffOnProgress);
 }
 
-function createLoadingContent() {
-  return '<p id="loading-content">Loading content...</p><div class="loader"></div>';
-}
+// function createLoadingContent() {
+//   return '<p id="loading-content">Loading content...</p>';
+// }
 
 function showFileReaderError() {
   return '<div class="timeout-error">There was an error reading the file. Please refresh the page and try again.</div>';
@@ -261,14 +261,26 @@ function rlffOnProgress(e) {
       let progress = Math.floor(Math.round(e.loaded / 1024 / 1024));
       let lcP = document.getElementById("loading-content");
       lcP.innerHTML = "Loading content (" + progress + " of " + total + ")...";
+      let elem = document.getElementById("loader-my-progress");
+      moveProgressBar(elem, progress, total);
     });
   };
-
   let loading = timeoutPromise(15000, dataLoadingPromise());
 
   loading.catch(() => {
     displayFileContents(showTimeoutError());
   });
+}
+
+function moveProgressBar(elem, progress, total) {
+  if (elem !== undefined && elem !== null) {
+    var width = parseFloat(elem.style.width) / 100.0;
+    if (width <= 100) {
+      elem.style.width = (progress / total) * 100 + "%";
+    } else {
+      elem.style.width = 0;
+    }
+  }
 }
 
 function createWidgets(widgets) {
@@ -1135,6 +1147,8 @@ function checkRender() {
   let notLoaded = false;
   let numWidgetsLoaded = 0;
   let dashLoaderN = document.getElementById("loading-resources-n");
+  let dashLoaderTotal = document.getElementById("loading-resources-total");
+  let renderProgressBar = document.getElementById("my-progress");
 
   dashb.widgets.forEach((widget) => {
     if (
@@ -1145,14 +1159,20 @@ function checkRender() {
       notLoaded = true;
     } else {
       numWidgetsLoaded++;
+      moveProgressBar(
+        renderProgressBar,
+        numWidgetsLoaded,
+        dashb.widgets.length
+      );
     }
   });
   dashLoaderN.innerHTML = numWidgetsLoaded;
   if (notLoaded) {
-    setTimeout(checkRender, 500);
+    setTimeout(() => {
+      checkRender();
+    }, 500);
   } else {
     let dashLoaderMsg = document.getElementById("loading-resources-msg");
-    let dashLoaderTotal = document.getElementById("loading-resources-total");
 
     dashLoaderMsg.innerHTML = "Rendering charts";
     dashLoaderTotal.innerHTML = dashb.widgets.length;
@@ -1174,6 +1194,11 @@ function render() {
   let dashLoaderN = document.getElementById("loading-resources-n");
   let dashLoaderTotal = document.getElementById("loading-resources-total");
   let dashLoader = document.getElementById("loading-resources");
+  let renderProgressBar = document.getElementById("my-progress");
+
+  if (parseInt(dashLoaderN.innerHTML) === 0) {
+    renderProgressBar.style.width = 0;
+  }
 
   dashb.widgets.forEach((widget) => {
     let renderPromise = new Promise((resolve, reject) => {
@@ -1190,6 +1215,12 @@ function render() {
         navigatorInit("Show all students", "fullName");
         navigatorInit("Show all resources", "context");
         document.getElementById("widgets").style.opacity = 1;
+      } else {
+        moveProgressBar(
+          renderProgressBar,
+          parseFloat(dashLoaderN.innerHTML),
+          parseFloat(dashLoaderTotal.innerHTML)
+        );
       }
     });
   });
