@@ -269,7 +269,12 @@ function rlffOnProgress(e) {
 
 function moveProgressBar(elem, progress, total) {
   if (elem !== undefined && elem !== null) {
-    elem.style.width = (progress / total) * 100 + "%";
+    var width = parseFloat(elem.style.width) / 100.0;
+    if (width <= 100) {
+      elem.style.width = (progress / total) * 100 + "%";
+    } else {
+      elem.style.width = 0;
+    }
   }
 }
 
@@ -1184,6 +1189,11 @@ function render() {
   let dashLoaderN = document.getElementById("loading-resources-n");
   let dashLoaderTotal = document.getElementById("loading-resources-total");
   let dashLoader = document.getElementById("loading-resources");
+  let renderProgressBar = document.getElementById("my-progress");
+
+  if (parseInt(dashLoaderN.innerHTML) === 0) {
+    renderProgressBar.style.width = 0;
+  }
 
   dashb.widgets.forEach((widget) => {
     let renderPromise = new Promise((resolve, reject) => {
@@ -1200,6 +1210,12 @@ function render() {
         navigatorInit("Show all students", "fullName");
         navigatorInit("Show all resources", "context");
         document.getElementById("widgets").style.opacity = 1;
+      } else {
+        moveProgressBar(
+          renderProgressBar,
+          parseFloat(dashLoaderN.innerHTML),
+          parseFloat(dashLoaderTotal.innerHTML)
+        );
       }
     });
   });
