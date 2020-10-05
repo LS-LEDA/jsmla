@@ -1,28 +1,29 @@
 @media only print {
   header {
-    display:none !important;
+    display: none !important;
   }
 
   #subheader {
-    display:none !important;
+    display: none !important;
   }
 
   #menu-left {
-    display:none !important;
+    display: none !important;
   }
 
   #dashboard {
-    padding-left:10px !important;
+    padding-left: 10px !important;
   }
 
-  #menu-toggle, #bar-options {
-    display:none !important;
+  #menu-toggle,
+  #bar-options {
+    display: none !important;
   }
 }
 
 * {
-  font-family: 'Courier New', Courier, monospace;
-  --main-bg-color: #0057A3;
+  font-family: "Courier New", Courier, monospace;
+  --main-bg-color: #0057a3;
   --button: #a72911;
   --button-hover: #e33e19;
 }
@@ -32,19 +33,17 @@ body {
 }
 
 h1 {
-  margin:0px;
+  margin: 0px;
   /*margin-left: 35px;*/
-  font-size:4em;
-
+  font-size: 4em;
 }
-
 
 #title.widget {
   display: flex;
   justify-content: center;
 }
 
-.loader {
+/* .loader {
   border: 16px solid #f3f3f3;
   border-top: var(--main-bg-color);
   border-radius: 50%;
@@ -52,11 +51,15 @@ h1 {
   height: 30px;
   animation: spin 2s linear infinite;
   margin: auto;
-}
-  
+} */
+
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 [type="file"] {
@@ -89,28 +92,28 @@ h1 {
 }
 
 .btn.small {
-  color:var(--button-hover);
+  color: var(--button-hover);
   background: white;
-  margin-top:0px !important;
-  padding-bottom:0px !important;
-  width:40px;
-  height:24px;
+  margin-top: 0px !important;
+  padding-bottom: 0px !important;
+  width: 40px;
+  height: 24px;
 }
 
 .btn.small:hover {
-  color:white !important;
+  color: white !important;
   background-color: var(--button-hover);
 }
 
 header {
-  display:flex;
+  display: flex;
   background: var(--main-bg-color);
   box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
   min-height: 50px;
   width: 100%;
-  z-index:9000;
+  z-index: 9000;
 }
 
 header * {
@@ -123,25 +126,27 @@ header div {
 }
 
 header button {
-  margin:0px !important;
-  padding:2px 10px 2px 10px !important;
+  margin: 0px !important;
+  padding: 2px 10px 2px 10px !important;
 }
 
 #subheader {
-  display:none;
+  display: none;
   background: white;
   box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 50px;
   min-height: 37px;
   width: 100%;
-  z-index:1;
+  z-index: 1;
 }
 
 #subheader * {
   font-size: 17px;
 }
-#subheader form,input,select {
+#subheader form,
+input,
+select {
   color: black !important;
 }
 
@@ -150,16 +155,15 @@ header button {
 }
 
 #subheader button {
-  margin:0px !important;
-  padding:2px 11px 2px 10px !important;
-  width:40px;
-  height:25px;
+  margin: 0px !important;
+  padding: 2px 11px 2px 10px !important;
+  width: 40px;
+  height: 25px;
 }
 
-#date-filter
-{
-  margin-top:3px;
-  display:inline-block;
+#date-filter {
+  margin-top: 3px;
+  display: inline-block;
 }
 
 main {
@@ -167,70 +171,71 @@ main {
 }
 
 #menu-options-toggle {
-  cursor:pointer;
+  cursor: pointer;
 }
 
 #menu-options {
-  display:none;
-  position:absolute;
+  display: none;
+  position: absolute;
   background-color: #333;
-  top:50px;
-  left:0px;
-  margin:0px;
-  padding:0px;
+  top: 50px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
-#menu-options  ul {
-  margin:0px;
-  padding:0px;
+#menu-options ul {
+  margin: 0px;
+  padding: 0px;
 }
 
-#menu-options  ul li {
-  margin:5px;
-  padding:5px;
+#menu-options ul li {
+  margin: 5px;
+  padding: 5px;
 }
 
 ul li.separator {
-  height:5px;
-  margin-top:0px;
-  margin-bottom:10px;
-  padding-top:0px;
-  padding-bottom:0px;
-  border-bottom:1px white solid;
+  height: 5px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border-bottom: 1px white solid;
 }
 
-#menu-options  ul li.separator:hover {
+#menu-options ul li.separator:hover {
   background-color: #333;
-  cursor:text;
+  cursor: text;
 }
 
-#menu-options  ul li:hover {
+#menu-options ul li:hover {
   background-color: gray;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 #menu-locales {
-  display:none;
-  position:absolute;
+  display: none;
+  position: absolute;
   background-color: #333;
-  top:50px;
-  left:50px;
-  margin:0px;
-  padding:5px;
+  top: 50px;
+  left: 50px;
+  margin: 0px;
+  padding: 5px;
 }
 
 #menu-locales select {
   background-color: #333;
-  border:0px;
+  border: 0px;
   outline: none;
 }
 
-#menu-locales select option:hover, option:checked {
+#menu-locales select option:hover,
+option:checked {
   background-color: gray;
 }
 
 #menu-bar {
-  display:none;
+  display: none;
 }
 
 #file-log-label {
@@ -238,22 +243,22 @@ ul li.separator {
 }
 
 #loading-resources {
-  display:none;
-  position:absolute; 
-  z-index:999;
-  opacity:1;
-  left: 200px; 
-  right: 0; 
-  top:0;
-  bottom:0;
-  margin-left: auto; 
+  display: none;
+  position: absolute;
+  z-index: 999;
+  opacity: 1;
+  left: 200px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin-left: auto;
   margin-right: auto;
   margin-top: auto;
   margin-bottom: auto;
-  height:125px;
+  height: 125px;
   width: 500px;
   padding: 20px;
-  background:white;
+  background: white;
   border: 1px #d7dfe3 solid;
   border-radius: 5px;
   -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
@@ -265,7 +270,7 @@ ul li.separator {
 #drop-area {
   margin: auto;
   padding: 20px;
-  background:white;
+  background: white;
   border: 1px #d7dfe3 solid;
   border-radius: 5px;
   -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
@@ -281,7 +286,7 @@ ul li.separator {
 
 #file-content {
   display: none;
-  background:white;
+  background: white;
   border: 1px #d7dfe3 solid;
   border-radius: 5px;
   -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
@@ -302,17 +307,17 @@ ul li.separator {
 }
 
 #dashboard {
-  padding-left:200px;
+  padding-left: 200px;
 }
 
 #dashboard #add {
-  border:1px #000000 solid;
+  border: 1px #000000 solid;
   border-radius: 10px;
   width: 125px;
   height: 125px;
   text-align: center;
   cursor: pointer;
-} 
+}
 #dashboard #add p {
   margin: 0px;
   padding: 0px;
@@ -325,11 +330,12 @@ ul li.separator {
 
 #filter {
   width: 400px;
-  height:46px;
-  margin:auto;
-  background-color: rgba(0,0,0,.2);
+  height: 46px;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.2);
   background-clip: padding-box;
-  box-shadow: inset 1px 1px 0 rgba(0,0,0,.1), inset 0 -1px 0 rgba(0,0,0,.07);
+  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
   background-clip: padding-box;
   border: solid transparent;
   border-width: 1px 1px 1px 6px;
@@ -338,59 +344,59 @@ ul li.separator {
 }
 
 #menu-navigator {
-  display:flex;
+  display: flex;
 }
 
 #menu-left {
-  display:none;
+  display: none;
   flex-direction: column;
-  top:50px;
-  width:200px;
-  height:100vh;
-  background:var(--main-bg-color);
+  top: 50px;
+  width: 200px;
+  height: 100vh;
+  background: var(--main-bg-color);
   position: fixed;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 #menu-left ul {
   list-style: none;
-  margin:0px;
-  padding:0px;
-  margin-left:5px;
-  margin-right:5px;
-  padding-top:50px;
+  margin: 0px;
+  padding: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-top: 50px;
 }
 
 #menu-left li {
   color: white;
-  padding:5px;
+  padding: 5px;
 }
 
-#menu-left  ul li:hover {
+#menu-left ul li:hover {
   background-color: white;
-  color:var(--main-bg-color);
-  cursor:pointer;
+  color: var(--main-bg-color);
+  cursor: pointer;
 }
 
-#menu-left  ul li.separator:hover {
+#menu-left ul li.separator:hover {
   background: none;
-  cursor:text;
+  cursor: text;
 }
 
 #menu-left li i {
-  padding-right:10px;
+  padding-right: 10px;
 }
 
 #widgets {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
-  margin:10px;
+  margin: 10px;
   opacity: 0.2;
 }
 
 #widgets h2 {
-  cursor:pointer;
-  margin-left:1%;
+  cursor: pointer;
+  margin-left: 1%;
 }
 
 #pagination {
@@ -405,11 +411,12 @@ ul li.separator {
 
 table {
   width: 100%;
-  font-size:small;
+  font-size: small;
   overflow: auto;
 }
 
-table, td {
+table,
+td {
   border-collapse: collapse;
 }
 
@@ -423,10 +430,11 @@ tbody {
   max-height: 130px;
 }
 
-th, td {
+th,
+td {
   padding: 5px;
   word-break: break-all;
-  border:1px #000000 solid;
+  border: 1px #000000 solid;
 }
 
 tr {
@@ -442,15 +450,15 @@ td {
 }
 
 .tdLeft {
-  text-align:left;
+  text-align: left;
 }
 
 .tdCenter {
-  text-align:center;
+  text-align: center;
 }
 
 .tdRight {
-  text-align:right;
+  text-align: right;
 }
 
 .tdGreenLight {
