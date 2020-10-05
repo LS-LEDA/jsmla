@@ -453,14 +453,12 @@ td {
   text-align:right;
 }
 
-
 .tdGreenLight {
-  background-color: #e94020;
+  background-color: mediumaquamarine;
 }
 .tdOrangeLight {
-  background-color: #f39f91;
+  background-color: orange;
 }
 .tdRedLight {
-  background-color: #f5e3df;
+  background-color: orangered;
 }
-
