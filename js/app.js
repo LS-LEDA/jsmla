@@ -341,7 +341,7 @@ function renderDefaultDashboard() {
       title: "Total",
       srcJS: "https://canvasjs.com/assets/script/canvasjs.min.js",
       srcCSS: "",
-      tooltip:"The total amount of times that every element of a subject has been interacted, including viewing the subject.",
+      tooltip:"The total number of interactions with every element of a subject has been interacted, including viewing the subject.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").classList.add("rowsOnly");document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -351,7 +351,7 @@ function renderDefaultDashboard() {
       height: 200,
       size: 0.5,
       title: "Tasks",
-      tooltip:"The total amount of times all deliveries of a subject have been interacted.",
+      tooltip:"The total number of interactions with all deliveries of a subject have been interacted.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
@@ -532,7 +532,7 @@ function renderDefaultDashboard() {
       width: "1000",
       height: "700",
       title: "Interactions Across Week",
-      tooltip:"A table which represents in a week the amount of interactions performed by hour.",
+      tooltip:"A table which represents the number of interactions in a week performed by hour.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -750,7 +750,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Student's Last Access",
+      title: "List of all members in the course and their last access",
       tooltip:"List of each member of the course and it's last time connected to the course.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
@@ -874,7 +874,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interactions with Components",
-      tooltip: "List of different resources used at the course (such as wikis or URL) and the amount of times it was interacted.",
+      tooltip: "List of different resources used in the course (such as wikis or URL) and the total number of interactions.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -911,7 +911,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interactions with Events",
-      tooltip: "List of different interactions performed on the course by it's users and the count for each.",
+      tooltip: "List of different interactions performed on the course by its users and the count for each.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -948,7 +948,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interactions with context",
-      tooltip:"For each element in the course that can be interacted (created as a resource) it shows the amount of interactions have generated from the users.",
+      tooltip:"For each element in the course that can be interacted with (created as a resource) it shows the amount of interactions have generated from the users.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -986,7 +986,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interactions with URL",
-      tooltip:"For each URL in the course that can be interacted, shows the amount of interactions have generated from the users.",
+      tooltip:"For each URL in the course that can be interacted, it shows the amount of interactions have generated from the users.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -1024,7 +1024,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interactions with Pages",
-      tooltip:"For each Page resource in the course, shows the amount of interactions have generated from the users.",
+      tooltip:"For each Page resource in the course, it shows the amount of interactions have generated from the users.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -1062,7 +1062,7 @@ function renderDefaultDashboard() {
       width: "475",
       height: "500",
       title: "Interactions with LTI Tool",
-      tooltip:"For each Learning Tool Interoperability resource in the course, shows the amount of interactions have generated from the users.",
+      tooltip:"For each Learning Tool Interoperability resource in the course, it shows the amount of interactions have generated from the users.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
