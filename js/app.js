@@ -408,7 +408,7 @@ function renderDefaultDashboard() {
     {
       width: "1000",
       height: "300",
-      title: "Interactions Timeline",
+      title: "Interactions Across Course",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '\
@@ -499,7 +499,7 @@ function renderDefaultDashboard() {
     {
       width: "1000",
       height: "700",
-      title: "Interactions Time Slot",
+      title: "Interactions Across Week",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -561,7 +561,7 @@ function renderDefaultDashboard() {
     {
       width: "1000",
       height: "300",
-      title: "Last Access & Student",
+      title: "Last Access & Students",
       srcJS: "https://canvasjs.com/assets/script/canvasjs.min.js",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,
@@ -625,7 +625,7 @@ function renderDefaultDashboard() {
     {
       width: "1000",
       height: "500",
-      title: "Resource - Student Access Chart",
+      title: "Resource - Students Access Chart",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -678,7 +678,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Participation",
+      title: "Student's Participation",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -714,7 +714,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Last Access",
+      title: "Student's Last Access",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -760,7 +760,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Last interaction with a resource",
+      title: "Last interaction with a Resource",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
