@@ -481,13 +481,37 @@ td {
   background-color: #f5e3df;
 }
 
-button.tooltip_button{
-  border-radius: 100px;
+div.tooltip_handler {
+  background: #c9c9c9;
+  display: flex;
+  border-radius: 20px;
+  border: 1px solid black;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  text-align: center
+}
+
+div.tooltip_handler:hover + p.tooltip_text {
+  display: block;
+  position: absolute;
+  background-color: #C9C9C9;
+  color:white;
+  width: 20%;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 10px 10px 10px 5px;
+  z-index: 30;
 }
 
 div.widgetHeader{
   display: flex;
   align-items: center;
-  vertical-align: middle;
   justify-content: space-between;
+}
+
+p.tooltip_text {
+  display: none;
 }

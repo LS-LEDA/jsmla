@@ -276,8 +276,8 @@ class Widget
             .replace(new RegExp(this._delimiter+"WIDTH"+this._delimiter, 'g'), (this._width)*this._size)
             .replace(new RegExp(this._delimiter+"HEIGHT"+this._delimiter, 'g'), this._height*this._size)
             .replace(new RegExp(this._delimiter+"TEXT_CONTENT"+this._delimiter, 'g'), "")
-            .replace(new RegExp(this._delimiter+"TOOLTIP"+this._delimiter, 'g'), "'" + this._tooltip + "'");
-
+            .replace(new RegExp(this._delimiter+"TOOLTIP"+this._delimiter, 'g'),this._tooltip);
+            
         return this._evaluatedHTML;
     }
 

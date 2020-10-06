@@ -121,7 +121,10 @@ var dashb = new Dashboard({
         <div onresize="console.log(\'t\');" class="widget" id="%ID%" style="width:%WIDTH%px;height:%HEIGHT%px;">\n\
           <div class="widgetHeader">\
             <h2 id="title_%ID%" onclick="%CALLBACK%(\'%ID%\');" style="white-space:nowrap;overflow:hidden">%TITLE%</h2>\n\
-            <button class="tooltip_button" id="tooltip_handler_%ID%" type="button" onclick="alert(%TOOLTIP%)">?</button>\n\
+            <div class="tooltip_handler">\
+              <p>?</p>\
+            </div>\
+            <p class="tooltip_text" id="tooltip_%ID%"> %TOOLTIP% </p>\
           </div>\n\
             <div id="content_%ID%" class="content" style="width:100%;overflow:auto">\n\
               <div id="rows_%ID%" class="rows"></div>\n\
@@ -335,6 +338,7 @@ function renderDefaultDashboard() {
     },
     {
       width: 260,
+      margin_tooltip: 270,
       height: 200,
       size: 0.5,
       css: ".widget .rowsOnly {font-weight:bold}",
@@ -349,6 +353,7 @@ function renderDefaultDashboard() {
     },
     {
       height: 200,
+      margin_tooltip: 210,
       size: 0.5,
       title: "Tasks",
       tooltip:"The total number of interactions with all deliveries of a subject have been interacted.",
@@ -360,6 +365,7 @@ function renderDefaultDashboard() {
     },
     {
       height: 200,
+      margin_tooltip: 210,
       size: 0.5,
       title: "Files",
       mode: WIDGET_CODE_SNIPPET,
@@ -374,6 +380,7 @@ function renderDefaultDashboard() {
     },
     {
       height: 200,
+      margin_tooltip: 210,
       size: 0.5,
       title: "Pages",
       tooltip:"The total amount of times the pages of a subject have been interacted.",
@@ -385,6 +392,7 @@ function renderDefaultDashboard() {
     },
     {
       height: 200,
+      margin_tooltip: 210,
       size: 0.5,
       title: "URL",
       tooltip:"The total amount of times the URL resource of a subject have been interacted.",
@@ -396,6 +404,7 @@ function renderDefaultDashboard() {
     },
     {
       height: 200,
+      margin_tooltip: 210,
       size: 0.5,
       title: "LTI",
       mode: WIDGET_CODE_SNIPPET,
@@ -407,6 +416,7 @@ function renderDefaultDashboard() {
     },
     {
       height: 200,
+      margin_tooltip: 210,
       size: 0.5,
       title: "Wiki",
       tooltip:"The total amount of times the wikis of a subject have been interacted.",
@@ -438,6 +448,7 @@ function renderDefaultDashboard() {
     },
     {
       width: "1000",
+      margin_tooltip: 900,
       height: "300",
       title: "Interactions Across Course",
       tooltip: 'Plot which shows the amount of interactions performed across the time defined at the filter section. Each line represents a different kind of resource.',
@@ -530,6 +541,7 @@ function renderDefaultDashboard() {
     },
     {
       width: "1000",
+      margin_tooltip: 500,
       height: "700",
       title: "Interactions Across Week",
       tooltip:"A table which represents the number of interactions in a week performed by hour.",
@@ -750,7 +762,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "List of all members in the course and their last access",
+      title: "Members last access",
       tooltip:"List of each member of the course and it's last time connected to the course.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
