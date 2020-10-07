@@ -906,7 +906,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Interactions with context",
+      title: "Interactions with Context",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -1017,7 +1017,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Interactions with LTI Tool",
+      title: "Interactions with LTI Tool (external files)",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
