@@ -695,7 +695,7 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Student's Participation",
+      title: "Student Participation",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -707,18 +707,18 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Student</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
+                    <th  class=\\"tdLeft studentParticipation student\\">Student</th>\
+                    <th class=\\"tdCenter studentParticipation\\">%</th>\
+                    <th class=\\"tdCenter studentParticipation\\">#</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
         for (let i = 0; i < labels.length; i++) {\
             let percent = (values[i]*100)/interactions;\
             str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + "\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdRight\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdLeft studentParticipation student\\">" + labels[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " studentParticipation\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+            str += "<td class=\\"tdRight studentParticipation\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\

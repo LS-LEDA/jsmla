@@ -29,3 +29,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.studentParticipation {
+  width: 50px;
+}
+
+.studentParticipation.student {
+  min-width: 350px;
+}
