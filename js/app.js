@@ -540,14 +540,14 @@ function renderDefaultDashboard() {
             let str = "<table>\
                 <thead>\
                     <tr>\
-                        <th class=\\"tdLeft\\" style=\\"width:100px\\">Stripe</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Monday</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Tuesday</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Wednesday</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Thursday</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Friday</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Saturday</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Sunday</th>\
+                        <th class=\\"tdLeft weekInteractions\\">Stripe</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Monday</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Tuesday</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Wednesday</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Thursday</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Friday</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Saturday</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Sunday</th>\
                     </tr>\
                 </thead>\
                 <tbody style=\'max-height:"+height+"px\'>";\
@@ -557,7 +557,7 @@ function renderDefaultDashboard() {
                   for (let j = 1; j <= 7; j++) {\
                     diesHores[j] = diesHores[j] || {};\
                     let val = ((undefined !== diesHores[j][i])?diesHores[j][i]:0);\
-                    str += "<td class=\\"tdCenter\\" style=\\"background:"+gradient(maxVal,val)+";width:100px\\">" + val.toLocaleString() + "</td>";\
+                    str += "<td class=\\"tdCenter weekInteractions\\" style=\\"background:"+gradient(maxVal,val)+"\\">" + val.toLocaleString() + "</td>";\
                   }\
                   str += "</tr>";\
                 }\
