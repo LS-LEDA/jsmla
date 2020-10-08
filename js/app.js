@@ -659,9 +659,9 @@ function renderDefaultDashboard() {
         let str = "<table style=\\"min-width:150px\\">\
             <thead>\
                 <tr>\
-                    <th style=\\"min-width:150px;max-width:150px;white-space: nowrap\\" class=\\"tdLeft\\">Resource</th>";\
+                    <th class=\\"tdLeft resourceStudentsAccessChart\\">Resource</th>";\
                     for (let prop in axisX){\
-                      str += "<th title=\\"" + prop + "\\" style=\\"min-width:40px;max-width:40px;overflow: hidden;text-overflow: ellipsis;width:150px;white-space: nowrap\\" class=\\"tdCenter\\">" + prop + "</th>";\
+                      str += "<th title=\\"" + prop + "\\" class=\\"tdCenter resourceStudentsAccessChart student\\">" + prop + "</th>";\
                     };\
         str += "</tr>\
             </thead>\
@@ -676,10 +676,10 @@ function renderDefaultDashboard() {
         };\
         for (let i = 0; i < labels.length; i++) {\
             str += "<tr>";\
-            str += "<td title=\\"" + labels[i].replace(\'"\',\'"\') + "\\" style=\\"min-width:150px;max-width:150px;overflow: hidden;text-overflow: ellipsis;width:150px;white-space: nowrap\\" class=\\"tdLeft\\">" + labels[i] + "</td>";\
+            str += "<td title=\\"" + labels[i].replace(\'"\',\'"\') + "\\" class=\\"tdLeft resourceStudentsAccessChart resource\\">" + labels[i] + "</td>";\
             for (let prop in axisX){\
               let val = ((undefined!==values[i][prop])?values[i][prop]:0);\
-              str += "<td style=\\"min-width:40px;width:40px;white-space: nowrap;background:"+gradient(maxVal,val)+"\\" class=\\"tdRight\\">" + val.toLocaleString() + "</td>";\
+              str += "<td style=\\"background:"+gradient(maxVal,val)+"\\" class=\\"tdCenter resourceStudentsAccessChart student\\">" + val.toLocaleString() + "</td>";\
             };\
             str += "</tr>"; };\
         str += "</tbody>\

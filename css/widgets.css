@@ -10,3 +10,22 @@
 .weekInteractions {
   width: 100px;
 }
+
+.resourceStudentsAccessChart {
+  min-width: 150px;
+  max-width: 150px;
+  white-space: nowrap;
+}
+
+.resourceStudentsAccessChart.student {
+  min-width: 40px;
+  max-width: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resourceStudentsAccessChart.resource {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
