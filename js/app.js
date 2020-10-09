@@ -553,7 +553,7 @@ function renderDefaultDashboard() {
                 <tbody style=\'max-height:"+height+"px\'>";\
                 for (let i = 0; i <24; i++) {\
                   str += "<tr>";\
-                  str += "<td class=\\"tdLeft\\" style=\\"width:100px\\">" + i + ":00-"+i+":59</td>";\
+                  str += "<td class=\\"tdLeft weekInteractions\\">" + i + ":00-"+i+":59</td>";\
                   for (let j = 1; j <= 7; j++) {\
                     diesHores[j] = diesHores[j] || {};\
                     let val = ((undefined !== diesHores[j][i])?diesHores[j][i]:0);\
@@ -718,7 +718,7 @@ function renderDefaultDashboard() {
             str += "<tr>";\
             str += "<td class=\\"tdLeft studentParticipation student\\">" + labels[i] + "</td>";\
             str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " studentParticipation\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td class=\\"tdRight studentParticipation\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdCenter studentParticipation\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\
@@ -743,8 +743,8 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th class=\\"tdLeft\\">Student</th>\
-                    <th style=\\"width:160px;\\" class=\\"tdCenter\\">Last Access</th>\
+                    <th class=\\"tdLeft lastAccess\\">Student</th>\
+                    <th class=\\"tdCenter lastAccess\\">Last Access</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -755,8 +755,8 @@ function renderDefaultDashboard() {
             let wDateDiff = new Date().diffTimestamp(values[i]);\
             let wDateStr = wDateDiff.days+" dies "+wDateDiff.hours+" hores <br />"+wDateDiff.minutes+" minuts, "+Math.floor(wDateDiff.seconds)+" segons";\
             str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:160px;\\" class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + "\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
+            str += "<td class=\\"tdLeft lastAccess\\">" + labels[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + " lastAccess\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
             str += "</tr>"; };\
           }\
           str += "</tbody>\
