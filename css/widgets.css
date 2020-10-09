@@ -8,7 +8,7 @@
 */
 
 .weekInteractions {
-  min-width: 100px;
+  min-width: 90px;
   max-width: 100px;
   width: 100px;
   overflow: hidden;
@@ -16,14 +16,16 @@
 }
 
 .resourceStudentsAccessChart {
-  min-width: 150px;
+  width: 150px;
+  min-width: 140px;
   max-width: 150px;
   white-space: nowrap;
 }
 
 .resourceStudentsAccessChart.student {
+  width: 50px;
   min-width: 40px;
-  max-width: 40px;
+  max-width: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -35,11 +37,25 @@
 }
 
 .studentParticipation {
-  min-width: 50px;
+  min-width: 40px;
   max-width: 50px;
   width: 50px;
 }
 
 .studentParticipation.student {
   min-width: 150px;
+  max-width: 160px;
+  width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lastAccess {
+  min-width: 120px;
+  max-width: 160px;
+  width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
