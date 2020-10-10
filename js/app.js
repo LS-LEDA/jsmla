@@ -789,8 +789,8 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th class=\\"tdLeft\\">Resource</th>\
-                    <th style=\\"width:160px;\\" class=\\"tdCenter\\">Last Access</th>\
+                    <th class=\\"tdLeft lastInteractionResource\\">Resource</th>\
+                    <th class=\\"tdCenter lastInteractionResource\\">Last Access</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -801,8 +801,8 @@ function renderDefaultDashboard() {
             let wDateDiff = new Date().diffTimestamp(values[i]);\
             let wDateStr = wDateDiff.days+" dies "+wDateDiff.hours+" hores <br />"+wDateDiff.minutes+" minuts, "+Math.floor(wDateDiff.seconds)+" segons";\
             str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:160px;\\" class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + "\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
+            str += "<td class=\\"tdLeft lastInteractionResource\\">" + labels[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + " lastInteractionResource\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
             str += "</tr>"; };\
           }\
           str += "</tbody>\

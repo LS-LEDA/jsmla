@@ -40,11 +40,13 @@
   min-width: 40px;
   max-width: 50px;
   width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .studentParticipation.student {
-  min-width: 150px;
-  max-width: 160px;
+  min-width: 220px;
   width: 160px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -58,4 +60,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.lastInteractionResource {
+  width: 160px;
+  min-width: 150px;
+  max-width: 160px;
 }
