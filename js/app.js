@@ -972,9 +972,9 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">URL</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
+                    <th class=\\"tdLeft\\">URL</th>\
+                    <th class=\\"tdCenter interactionURL\\">%</th>\
+                    <th class=\\"tdCenter interactionURL\\">#</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -982,8 +982,8 @@ function renderDefaultDashboard() {
             let percent = (values[i]*100)/interactions;\
             str += "<tr>";\
             str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + "\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdRight\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionURL\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+            str += "<td class=\\"tdRight interactionURL\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\
@@ -1009,9 +1009,9 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Page</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
+                    <th class=\\"tdLeft\\">Page</th>\
+                    <th class=\\"tdCenter interactionPages\\">%</th>\
+                    <th class=\\"tdCenter interactionPages\\">#</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -1019,8 +1019,8 @@ function renderDefaultDashboard() {
             let percent = (values[i]*100)/interactions;\
             str += "<tr>";\
             str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + "\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdRight\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionPages\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+            str += "<td class=\\"tdRight interactionPages\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\
@@ -1046,9 +1046,9 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">LTI Tool</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
+                    <th class=\\"tdLeft\\">LTI Tool</th>\
+                    <th class=\\"tdCenter interactionLTI\\">%</th>\
+                    <th class=\\"tdCenter interactionLTI\\">#</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -1056,8 +1056,8 @@ function renderDefaultDashboard() {
             let percent = (values[i]*100)/interactions;\
             str += "<tr>";\
             str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + "\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdRight\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionLTI\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+            str += "<td class=\\"tdRight interactionLTI\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\

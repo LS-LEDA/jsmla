@@ -71,7 +71,10 @@
 .interactionResource,
 .interactionComponents,
 .interactionEvents,
-.interactionContext {
+.interactionContext,
+.interactionURL,
+.interactionPages,
+.interactionLTI {
   width: 50px;
   min-width: 40px;
   max-width: 50px;
