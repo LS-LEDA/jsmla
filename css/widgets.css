@@ -68,7 +68,10 @@
   max-width: 160px;
 }
 
-.interactionResource {
+.interactionResource,
+.interactionComponents,
+.interactionEvents,
+.interactionContext {
   width: 50px;
   min-width: 40px;
   max-width: 50px;
