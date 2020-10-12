@@ -23,12 +23,10 @@
 }
 
 .resourceStudentsAccessChart.student {
-  width: 50px;
-  min-width: 40px;
-  max-width: 50px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+  white-space: normal;
 }
 
 .resourceStudentsAccessChart.resource {
