@@ -35,6 +35,8 @@ class Widget
             /** @type {boolean} Every widget can be visible (by default) or hidden for internal calculus */
             visible:true,
 
+            counter:false,
+
             field:undefined,
             
             /** @type {string} Sort by 'value' or 'label' */
@@ -239,6 +241,31 @@ class Widget
     get visible()
     {
         return this._visible;
+    }
+
+    /**
+     * Set the widget visible value.
+     */
+    set visible(visible)
+    {
+        this._visible = visible;
+    }
+
+    /**
+     * Get the widget counter value.
+     * @return {object} The counter value.
+     */
+    get counter()
+    {
+        return this._counter;
+    }
+
+    /**
+     * Get the widget counter value.
+     */
+    set counter(counter)
+    {
+        this._counter = counter;
     }
 
     /**
