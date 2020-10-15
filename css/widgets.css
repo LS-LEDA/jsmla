@@ -1,0 +1,79 @@
+/** 
+* FILE DESCRIPTION: Stylesheet for the dashboard widgets
+* @package jsmla 
+* @copyright 2020 Daniel Amo * daniel.amo@salle.url.edu 
+* @copyright 2020 La Salle Campus Barcelona, Universitat Ramon Llull https://www.salleurl.edu 
+* @author Nicole Marie Jimenez
+* @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later 
+*/
+
+.weekInteractions {
+  min-width: 90px;
+  max-width: 100px;
+  width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resourceStudentsAccessChart {
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  white-space: nowrap;
+}
+
+.resourceStudentsAccessChart.student {
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+  white-space: normal;
+}
+
+.resourceStudentsAccessChart.resource {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.studentParticipation {
+  min-width: 40px;
+  max-width: 50px;
+  width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.studentParticipation.student {
+  min-width: 220px;
+  width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lastAccess {
+  min-width: 120px;
+  max-width: 160px;
+  width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lastInteractionResource {
+  width: 160px;
+  min-width: 150px;
+  max-width: 160px;
+}
+
+.interactionResource,
+.interactionComponents,
+.interactionEvents,
+.interactionContext,
+.interactionURL,
+.interactionPages,
+.interactionLTI {
+  width: 50px;
+  min-width: 40px;
+  max-width: 50px;
+}
