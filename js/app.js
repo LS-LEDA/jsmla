@@ -350,6 +350,7 @@ function renderDefaultDashboard() {
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").classList.add("rowsOnly");document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
       kpi: "",
+      counter: true,
     },
     {
       height: 200,
@@ -362,6 +363,7 @@ function renderDefaultDashboard() {
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
       field: "event",
       filter: { description: ["CONTAINS (assignment)"] },
+      counter: true,
     },
     {
       height: 200,
@@ -377,6 +379,7 @@ function renderDefaultDashboard() {
         component: ["IN (Fitxer)"],
         description: ["CONTAINS ('resource' activity)"],
       },
+      counter: true,
     },
     {
       height: 200,
@@ -389,6 +392,7 @@ function renderDefaultDashboard() {
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
       field: "component",
       filter: { component: ["BEGIN (Pà)"] },
+      counter: true,
     },
     {
       height: 200,
@@ -401,6 +405,7 @@ function renderDefaultDashboard() {
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
       field: "component",
       filter: { component: ["IN (URL)"] },
+      counter: true,
     },
     {
       height: 200,
@@ -413,6 +418,7 @@ function renderDefaultDashboard() {
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
       field: "component",
       filter: { component: ["CONTAINS (lti)"] },
+      counter: true,
     },
     {
       height: 200,
@@ -425,6 +431,7 @@ function renderDefaultDashboard() {
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
       field: "component",
       filter: { component: ["CONTAINS (Wiki)"] },
+      counter: true,
     },
     {
       html: '<div style="flex-basis: 100%;"></div>',
@@ -568,24 +575,24 @@ function renderDefaultDashboard() {
             let str = "<table>\
                 <thead>\
                     <tr>\
-                        <th class=\\"tdLeft\\" style=\\"width:100px\\">Stripe</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Monday</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Tuesday</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Wednesday</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Thursday</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Friday</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Saturday</th>\
-                        <th class=\\"tdCenter\\" style=\\"width:100px\\">Sunday</th>\
+                        <th class=\\"tdLeft weekInteractions\\">Stripe</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Monday</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Tuesday</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Wednesday</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Thursday</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Friday</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Saturday</th>\
+                        <th class=\\"tdCenter weekInteractions\\">Sunday</th>\
                     </tr>\
                 </thead>\
                 <tbody style=\'max-height:"+height+"px\'>";\
                 for (let i = 0; i <24; i++) {\
                   str += "<tr>";\
-                  str += "<td class=\\"tdLeft\\" style=\\"width:100px\\">" + i + ":00-"+i+":59</td>";\
+                  str += "<td class=\\"tdLeft weekInteractions\\">" + i + ":00-"+i+":59</td>";\
                   for (let j = 1; j <= 7; j++) {\
                     diesHores[j] = diesHores[j] || {};\
                     let val = ((undefined !== diesHores[j][i])?diesHores[j][i]:0);\
-                    str += "<td class=\\"tdCenter\\" style=\\"background:"+gradient(maxVal,val)+";width:100px\\">" + val.toLocaleString() + "</td>";\
+                    str += "<td class=\\"tdCenter weekInteractions\\" style=\\"background:"+gradient(maxVal,val)+"\\">" + val.toLocaleString() + "</td>";\
                   }\
                   str += "</tr>";\
                 }\
@@ -689,9 +696,9 @@ function renderDefaultDashboard() {
         let str = "<table style=\\"min-width:150px\\">\
             <thead>\
                 <tr>\
-                    <th style=\\"min-width:150px;max-width:150px;white-space: nowrap\\" class=\\"tdLeft\\">Resource</th>";\
+                    <th class=\\"tdLeft resourceStudentsAccessChart\\">Resource</th>";\
                     for (let prop in axisX){\
-                      str += "<th title=\\"" + prop + "\\" style=\\"min-width:40px;max-width:40px;overflow: hidden;text-overflow: ellipsis;width:150px;white-space: nowrap\\" class=\\"tdCenter\\">" + prop + "</th>";\
+                      str += "<th title=\\"" + prop + "\\" class=\\"tdCenter resourceStudentsAccessChart student\\">" + prop + "</th>";\
                     };\
         str += "</tr>\
             </thead>\
@@ -706,10 +713,10 @@ function renderDefaultDashboard() {
         };\
         for (let i = 0; i < labels.length; i++) {\
             str += "<tr>";\
-            str += "<td title=\\"" + labels[i].replace(\'"\',\'"\') + "\\" style=\\"min-width:150px;max-width:150px;overflow: hidden;text-overflow: ellipsis;width:150px;white-space: nowrap\\" class=\\"tdLeft\\">" + labels[i] + "</td>";\
+            str += "<td title=\\"" + labels[i].replace(\'"\',\'"\') + "\\" class=\\"tdLeft resourceStudentsAccessChart resource\\">" + labels[i] + "</td>";\
             for (let prop in axisX){\
               let val = ((undefined!==values[i][prop])?values[i][prop]:0);\
-              str += "<td style=\\"min-width:40px;width:40px;white-space: nowrap;background:"+gradient(maxVal,val)+"\\" class=\\"tdRight\\">" + val.toLocaleString() + "</td>";\
+              str += "<td style=\\"background:"+gradient(maxVal,val)+"\\" class=\\"tdCenter resourceStudentsAccessChart student\\">" + val.toLocaleString() + "</td>";\
             };\
             str += "</tr>"; };\
         str += "</tbody>\
@@ -725,8 +732,8 @@ function renderDefaultDashboard() {
     {
       width: "475",
       height: "500",
-      title: "Student's Participation",
-      tooltip:"Amount of times each member of the course has interacted with all the resources, including seeing the course.",
+      title: "Student Participation",
+      tooltip:"Total number of interactions between each member of the course and all the resources, including seeing the course.",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
         '{\
@@ -738,18 +745,18 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Student</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
+                    <th  class=\\"tdLeft studentParticipation student\\">Student</th>\
+                    <th class=\\"tdCenter studentParticipation\\">%</th>\
+                    <th class=\\"tdCenter studentParticipation\\">#</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
         for (let i = 0; i < labels.length; i++) {\
             let percent = (values[i]*100)/interactions;\
             str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + "\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdRight\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdLeft studentParticipation student\\">" + labels[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " studentParticipation\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+            str += "<td class=\\"tdCenter studentParticipation\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\
@@ -775,8 +782,8 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th class=\\"tdLeft\\">Student</th>\
-                    <th style=\\"width:160px;\\" class=\\"tdCenter\\">Last Access</th>\
+                    <th class=\\"tdLeft lastAccess\\">Student</th>\
+                    <th class=\\"tdCenter lastAccess\\">Last Access</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -787,8 +794,8 @@ function renderDefaultDashboard() {
             let wDateDiff = new Date().diffTimestamp(values[i]);\
             let wDateStr = wDateDiff.days+" dies "+wDateDiff.hours+" hores <br />"+wDateDiff.minutes+" minuts, "+Math.floor(wDateDiff.seconds)+" segons";\
             str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:160px;\\" class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + "\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
+            str += "<td class=\\"tdLeft lastAccess\\">" + labels[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + " lastAccess\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
             str += "</tr>"; };\
           }\
           str += "</tbody>\
@@ -822,8 +829,8 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th class=\\"tdLeft\\">Resource</th>\
-                    <th style=\\"width:160px;\\" class=\\"tdCenter\\">Last Access</th>\
+                    <th class=\\"tdLeft lastInteractionResource\\">Resource</th>\
+                    <th class=\\"tdCenter lastInteractionResource\\">Last Access</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -834,8 +841,8 @@ function renderDefaultDashboard() {
             let wDateDiff = new Date().diffTimestamp(values[i]);\
             let wDateStr = wDateDiff.days+" dies "+wDateDiff.hours+" hores <br />"+wDateDiff.minutes+" minuts, "+Math.floor(wDateDiff.seconds)+" segons";\
             str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:160px;\\" class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + "\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
+            str += "<td class=\\"tdLeft lastInteractionResource\\">" + labels[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + " lastInteractionResource\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
             str += "</tr>"; };\
           }\
           str += "</tbody>\
@@ -861,9 +868,9 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Resource</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
+                    <th class=\\"tdLeft\\">Resource</th>\
+                    <th class=\\"tdCenter interactionResource\\">%</th>\
+                    <th class=\\"tdCenter interactionResource\\">#</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -871,8 +878,8 @@ function renderDefaultDashboard() {
             let percent = (values[i]*100)/interactions;\
             str += "<tr>";\
             str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + "\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdRight\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionResource\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+            str += "<td class=\\"tdRight interactionResource\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\
@@ -898,9 +905,9 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Component</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
+                    <th class=\\"tdLeft\\">Component</th>\
+                    <th class=\\"tdCenter interactionComponents\\">%</th>\
+                    <th class=\\"tdCenter interactionComponents\\">#</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -908,8 +915,8 @@ function renderDefaultDashboard() {
             let percent = (values[i]*100)/interactions;\
             str += "<tr>";\
             str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + "\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdRight\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionComponents\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+            str += "<td class=\\"tdRight interactionComponents\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\
@@ -935,9 +942,9 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Event</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
+                    <th class=\\"tdLeft\\">Event</th>\
+                    <th class=\\"tdCenter interactionEvents\\">%</th>\
+                    <th class=\\"tdCenter interactionEvents\\">#</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -945,8 +952,8 @@ function renderDefaultDashboard() {
             let percent = (values[i]*100)/interactions;\
             str += "<tr>";\
             str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + "\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdRight\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionEvents\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+            str += "<td class=\\"tdRight interactionEvents\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\
@@ -972,9 +979,9 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Context</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
+                    <th class=\\"tdLeft\\">Context</th>\
+                    <th class=\\"tdCenter interactionContext\\">%</th>\
+                    <th class=\\"tdCenter interactionContext\\">#</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -982,8 +989,8 @@ function renderDefaultDashboard() {
             let percent = (values[i]*100)/interactions;\
             str += "<tr>";\
             str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + "\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdRight\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionContext\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+            str += "<td class=\\"tdRight interactionContext\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\
@@ -1010,9 +1017,9 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">URL</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
+                    <th class=\\"tdLeft\\">URL</th>\
+                    <th class=\\"tdCenter interactionURL\\">%</th>\
+                    <th class=\\"tdCenter interactionURL\\">#</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -1020,8 +1027,8 @@ function renderDefaultDashboard() {
             let percent = (values[i]*100)/interactions;\
             str += "<tr>";\
             str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + "\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdRight\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionURL\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+            str += "<td class=\\"tdRight interactionURL\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\
@@ -1048,9 +1055,9 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">Page</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
+                    <th class=\\"tdLeft\\">Page</th>\
+                    <th class=\\"tdCenter interactionPages\\">%</th>\
+                    <th class=\\"tdCenter interactionPages\\">#</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -1058,8 +1065,8 @@ function renderDefaultDashboard() {
             let percent = (values[i]*100)/interactions;\
             str += "<tr>";\
             str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + "\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdRight\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionPages\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+            str += "<td class=\\"tdRight interactionPages\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\
@@ -1086,9 +1093,9 @@ function renderDefaultDashboard() {
         let str = "<table>\
             <thead>\
                 <tr>\
-                    <th  class=\\"tdLeft\\">LTI Tool</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">%</th>\
-                    <th style=\\"width:50px;\\" class=\\"tdCenter\\">#</th>\
+                    <th class=\\"tdLeft\\">LTI Tool</th>\
+                    <th class=\\"tdCenter interactionLTI\\">%</th>\
+                    <th class=\\"tdCenter interactionLTI\\">#</th>\
                 </tr>\
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
@@ -1096,8 +1103,8 @@ function renderDefaultDashboard() {
             let percent = (values[i]*100)/interactions;\
             str += "<tr>";\
             str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + "\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td style=\\"width:50px;\\" class=\\"tdRight\\">" + values[i] + "</td>";\
+            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionLTI\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+            str += "<td class=\\"tdRight interactionLTI\\">" + values[i] + "</td>";\
             str += "</tr>"; };\
         str += "</tbody>\
             </table>";\
@@ -1309,9 +1316,8 @@ function renderJSWidget(widget) {
     document
       .getElementById("widgets")
       .insertAdjacentHTML("beforeend", widget.evaluatedCSSHTML);
+    widget.evalAndExecuteSnippet();
   }
-
-  widget.evalAndExecuteSnippet();
 }
 
 function editJSWidget(widget) {
@@ -1321,9 +1327,8 @@ function editJSWidget(widget) {
     //replacement.innerHTML = widget.evaluatedCSSHTML;
     //document.getElementById(widget.id).parentNode.replaceChild(replacement, document.getElementById(widget.id));
     //document.getElementById(widget.id).insertAdjacentHTML('beforeend', widget.evaluatedCSSHTML);
+    widget.evalAndExecuteSnippet();
   }
-
-  widget.evalAndExecuteSnippet();
 }
 
 function renderTextWidget(widget) {
