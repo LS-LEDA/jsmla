@@ -338,6 +338,7 @@ function renderDefaultDashboard() {
       snippet:
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").classList.add("rowsOnly");document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
       kpi: "",
+      counter: true,
     },
     {
       height: 200,
@@ -348,6 +349,7 @@ function renderDefaultDashboard() {
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
       field: "event",
       filter: { description: ["CONTAINS (assignment)"] },
+      counter: true,
     },
     {
       height: 200,
@@ -361,6 +363,7 @@ function renderDefaultDashboard() {
         component: ["IN (Fitxer)"],
         description: ["CONTAINS ('resource' activity)"],
       },
+      counter: true,
     },
     {
       height: 200,
@@ -371,6 +374,7 @@ function renderDefaultDashboard() {
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
       field: "component",
       filter: { component: ["BEGIN (Pà)"] },
+      counter: true,
     },
     {
       height: 200,
@@ -381,6 +385,7 @@ function renderDefaultDashboard() {
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
       field: "component",
       filter: { component: ["IN (URL)"] },
+      counter: true,
     },
     {
       height: 200,
@@ -391,6 +396,7 @@ function renderDefaultDashboard() {
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
       field: "component",
       filter: { component: ["CONTAINS (lti)"] },
+      counter: true,
     },
     {
       height: 200,
@@ -401,6 +407,7 @@ function renderDefaultDashboard() {
         '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
       field: "component",
       filter: { component: ["CONTAINS (Wiki)"] },
+      counter: true,
     },
     {
       html: '<div style="flex-basis: 100%;"></div>',
@@ -1268,9 +1275,8 @@ function renderJSWidget(widget) {
     document
       .getElementById("widgets")
       .insertAdjacentHTML("beforeend", widget.evaluatedCSSHTML);
+    widget.evalAndExecuteSnippet();
   }
-
-  widget.evalAndExecuteSnippet();
 }
 
 function editJSWidget(widget) {
@@ -1280,9 +1286,8 @@ function editJSWidget(widget) {
     //replacement.innerHTML = widget.evaluatedCSSHTML;
     //document.getElementById(widget.id).parentNode.replaceChild(replacement, document.getElementById(widget.id));
     //document.getElementById(widget.id).insertAdjacentHTML('beforeend', widget.evaluatedCSSHTML);
+    widget.evalAndExecuteSnippet();
   }
-
-  widget.evalAndExecuteSnippet();
 }
 
 function renderTextWidget(widget) {
