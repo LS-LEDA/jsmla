@@ -123,8 +123,8 @@ var dashb = new Dashboard({
             <h2 id="title_%ID%" onclick="%CALLBACK%(\'%ID%\');" style="white-space:nowrap;overflow:hidden">%TITLE%</h2>\n\
             <div class="tooltip_handler">\
               <p>?</p>\
+              <p class="tooltip_text" id="tooltip_%ID%"> %TOOLTIP% </p>\
             </div>\
-            <p class="tooltip_text" id="tooltip_%ID%"> %TOOLTIP% </p>\
           </div>\n\
             <div id="content_%ID%" class="content" style="width:100%;overflow:auto">\n\
               <div id="rows_%ID%" class="rows"></div>\n\
