@@ -575,7 +575,7 @@ function renderDefaultDashboard() {
             let str = "<table>\
                 <thead>\
                     <tr>\
-                        <th class=\\"tdLeft weekInteractions\\">Stripe</th>\
+                        <th class=\\"tdLeft weekInteractions\\">Time Slot</th>\
                         <th class=\\"tdCenter weekInteractions\\">Monday</th>\
                         <th class=\\"tdCenter weekInteractions\\">Tuesday</th>\
                         <th class=\\"tdCenter weekInteractions\\">Wednesday</th>\
