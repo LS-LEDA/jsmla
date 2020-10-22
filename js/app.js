@@ -8,6 +8,7 @@
 * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later 
 */
 
+var color4 = "#cc2000";
 var color3 = "#e94020";
 var color2 = "#f39f91";
 var color1 = "#f8c7bf";
@@ -48,6 +49,21 @@ function gradient(maxVal, val) {
   else if (perct <= 50) return color1;
   else if (perct <= 75) return color2;
   else if (perct <= 100) return color3;
+}
+
+function gradientHM(maxVal,secMaxVal,val) {
+  if (val < maxVal) {
+
+    let perct = (val * 100) / secMaxVal;
+    if (perct <= 25) return color0;
+    else if (perct <= 50) return color1;
+    else if (perct <= 75) return color2;
+    else if (perct <= 100) return color3;
+
+  } else {
+    return color4;
+  }
+
 }
 
 function getGradientColor(start_color, end_color, percent) {
@@ -690,11 +706,15 @@ function renderDefaultDashboard() {
             </thead>\
             <tbody style=\'max-height:"+height+"px\'>";\
         let maxVal = 0;\
+        let secMaxVal = 0;\
         for (let i = 0; i < labels.length; i++) {\
           for (let prop in axisX){\
             let val = ((undefined!==values[i][prop])?values[i][prop]:0);\
-            if (val > maxVal)\
+            if (val > maxVal) {\
               maxVal = val;\
+            } else if (val > secMaxVal){\
+              secMaxVal = val;\
+            }\
           };\
         };\
         for (let i = 0; i < labels.length; i++) {\
@@ -702,7 +722,7 @@ function renderDefaultDashboard() {
             str += "<td title=\\"" + labels[i].replace(\'"\',\'"\') + "\\" class=\\"tdLeft resourceStudentsAccessChart resource\\">" + labels[i] + "</td>";\
             for (let prop in axisX){\
               let val = ((undefined!==values[i][prop])?values[i][prop]:0);\
-              str += "<td style=\\"background:"+gradient(maxVal,val)+"\\" class=\\"tdCenter resourceStudentsAccessChart student\\">" + val.toLocaleString() + "</td>";\
+              str += "<td style=\\"background:"+gradientHM(maxVal,secMaxVal,val)+"\\" class=\\"tdCenter resourceStudentsAccessChart student\\">" + val.toLocaleString() + "</td>";\
             };\
             str += "</tr>"; };\
         str += "</tbody>\
