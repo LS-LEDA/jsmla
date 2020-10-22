@@ -440,7 +440,7 @@ function renderDefaultDashboard() {
       filter: { component: ["IN (URL)"] },
     },
     {
-      width: "1000",
+      width: "1012",
       margin_tooltip: 900,
       height: "300",
       title: "Interactions Across Course",
@@ -533,7 +533,7 @@ function renderDefaultDashboard() {
       ],
     },
     {
-      width: "1000",
+      width: "1012",
       margin_tooltip: 500,
       height: "700",
       title: "Interactions Across Week",
@@ -597,7 +597,7 @@ function renderDefaultDashboard() {
       mode: WIDGET_TEXT,
     },
     {
-      width: "1000",
+      width: "1012",
       height: "300",
       title: "Last Access & Students",
       tooltip:"A plot which purpose is to show the last connection from the course's members. If you hover over the plot, it shows who was connected the last day.",
@@ -662,7 +662,7 @@ function renderDefaultDashboard() {
       calcFn: { fn: "lastconnection", field: "timestamp" },
     },
     {
-      width: "1000",
+      width: "1012",
       height: "500",
       title: "Resource - Students Access Chart",
       tooltip: "A table which represents the amount of times the members of the course have interacted with each resource (including viewing the course).",
@@ -800,7 +800,7 @@ function renderDefaultDashboard() {
       mode: WIDGET_TEXT,
     },
     {
-      width: "475",
+      width: "500",
       height: "500",
       title: "Last interaction with a Resource",
       tooltip: "List of each resource for the course and tand the last time any member has interacted with it.",
@@ -839,7 +839,7 @@ function renderDefaultDashboard() {
       calcFn: { fn: "lastconnection", field: "timestamp" },
     },
     {
-      width: "475",
+      width: "500",
       height: "500",
       title: "Interactions with Resources",
       tooltip:"List of each resource in a course and the number of interactions, including viewing the course",
@@ -876,7 +876,7 @@ function renderDefaultDashboard() {
       field: "context",
     },
     {
-      width: "475",
+      width: "500",
       height: "500",
       title: "Interactions with Components",
       tooltip: "List of different resources used in the course (such as wikis or URL) and the total number of interactions.",
@@ -913,7 +913,7 @@ function renderDefaultDashboard() {
       field: "component",
     },
     {
-      width: "475",
+      width: "500",
       height: "500",
       title: "Interactions with Events",
       tooltip: "List of different interactions performed on the course by its users and the count for each.",
@@ -950,7 +950,7 @@ function renderDefaultDashboard() {
       field: "event",
     },
     {
-      width: "475",
+      width: "500",
       height: "500",
       title: "Interactions with context",
       tooltip:"For each element in the course that can be interacted with, it shows the total number of interactions generated from the users.",
@@ -988,7 +988,7 @@ function renderDefaultDashboard() {
       filter: { context: ["NOT BEGIN (Curs:)"] },
     },
     {
-      width: "475",
+      width: "500",
       height: "500",
       title: "Interactions with URL",
       tooltip:"For each URL in the course that can be interacted, it shows the number of interactions generated from the users.",
@@ -1102,7 +1102,7 @@ function renderDefaultDashboard() {
       filter: { component: ["IN (Eina ext LTI)"] },
     },
     {
-      width: "1000",
+      width: "1062",
       height: "300",
       title: "Components",
       tooltip:"Pie plot describing the amount of elements the course has.",
