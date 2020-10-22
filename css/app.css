@@ -506,7 +506,7 @@ td {
   border-radius: 20px;
   padding: 10px 10px 10px 5px;
   z-index: 30;
-  transition: opacity 0.3s;
+  transition: opacity 1s;
   bottom: 125%;
 }
 

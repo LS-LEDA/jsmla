@@ -101,21 +101,7 @@ function YMDToDate(ymd) {
 
 /** @type {Dashboard} */
 var dashb = new Dashboard({
-  global: {
-    css:
-      "\
-        .widget {resize:both;overflow:hidden;margin:10px;padding:10px;background:white;border: 1px #d7dfe3 solid;border-radius:4px;-webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);}\
-        .widget .title {color:green;}\
-        .widget .content {}\
-        .widget .rows {font-size:30px;color:green;text-align:center}\
-        .widget.section {background:#C9C9C9 !important; color:white !important; margin-top:30px}\
-        .widget.section h2 {margin:2px}\
-        .widget.section p {margin:2px; margin-left:35px}\
-        .widget table {background:white}\
-        .widget table > thead {background:gray;color:white}\
-      ",
-  },
-  widget: {
+    widget: {
     html:
       '\
         <div onresize="console.log(\'t\');" class="widget" id="%ID%" style="width:%WIDTH%px;height:%HEIGHT%px;">\n\
