@@ -107,14 +107,14 @@ var dashb = new Dashboard({
         <div onresize="console.log(\'t\');" class="widget" id="%ID%" style="width:%WIDTH%px;height:%HEIGHT%px;">\n\
           <div class="widgetHeader">\
             <h2 id="title_%ID%" onclick="%CALLBACK%(\'%ID%\');" style="white-space:nowrap;overflow:hidden">%TITLE%</h2>\n\
-            <div class="tooltip_handler">\
-              <p>?</p>\
-              <p class="tooltip_text" id="tooltip_%ID%"> %TOOLTIP% </p>\
-            </div>\
           </div>\n\
             <div id="content_%ID%" class="content" style="width:100%;overflow:auto">\n\
               <div id="rows_%ID%" class="rows"></div>\n\
             </div>\n\
+        </div>\
+        <div class="tooltip_handler">\
+          <p>?</p>\
+          <p class="tooltip_text" id="tooltip_%ID%"> %TOOLTIP% </p>\
         </div>\
       ',
   },

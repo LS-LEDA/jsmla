@@ -494,6 +494,8 @@ td {
   height: 20px;
   width: 20px;
   text-align: center;
+  right: 48px;
+    top: 40px;
 }
 
 .tooltip_handler .tooltip_text {
