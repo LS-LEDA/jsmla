@@ -672,7 +672,7 @@ function renderDefaultDashboard() {
         let widget = document.getElementById("content_%ID%");\
         let labels = %LABELS%;\
         let values = %VALUES%;\
-        let height = %HEIGHT% - 100;\
+        let height = %HEIGHT% - 130;\
         let axisX = new Array();\
         for (let i = 0; i < labels.length; i++) {\
           for (let prop in values[i]){\
