@@ -1,3 +1,13 @@
+/** 
+* FILE DESCRIPTION: Stylesheet for the client 
+* @package jsmla 
+* @copyright 2020 Daniel Amo * daniel.amo@salle.url.edu 
+* @copyright 2020 La Salle Campus Barcelona, Universitat Ramon Llull https://www.salleurl.edu 
+* @author Daniel Amo 
+* @author Pablo Gómez
+* @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later 
+*/
+
 @media only print {
   header {
     display: none !important;
@@ -471,3 +481,44 @@ td {
   background-color: #f5e3df;
 }
 
+.tooltip_handler {
+  display: block;
+  position: relative;
+  background: #c9c9c9;
+  display: flex;
+  border-radius: 20px;
+  border: 1px solid black;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  right: 48px;
+    top: 40px;
+}
+
+.tooltip_handler .tooltip_text {
+  visibility: hidden;
+  position: absolute;
+  background-color: #c9c9c9;
+  color: white;
+  width: 300px;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 10px 10px 10px 5px;
+  z-index: 30;
+  transition: opacity 1s;
+  bottom: 125%;
+}
+
+.tooltip_handler:hover .tooltip_text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.widgetHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
