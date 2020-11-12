@@ -1620,7 +1620,7 @@ function schema(item) {
           "" +
           item["Marca temporal"].substr(14, 2),
         consentimiento:
-          item[" Por todo ello, DOY MI CONSENTIMIENTO:"] === "Sí"
+          item[" Por todo ello, DOY MI CONSENTIMIENTO:"] === "Sí" || item[" Por todo ello, DOY MI CONSENTIMIENTO:"] === "YES"
             ? true
             : false,
         dni: item["DNI o Pasaporte"],
