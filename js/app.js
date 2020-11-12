@@ -132,6 +132,9 @@ var dashb = new Dashboard({
         </div>\
       ',
   },
+  global: {
+    css: "",
+  },
   db: {
     schema: schema,
     filters: filters,
