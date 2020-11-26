@@ -1674,7 +1674,7 @@ function schema(item) {
           item[
             "Los métodos de enseñanza descritos me involucran (enganchan) activamente en el curso."
           ],
-        distrutarActividades:
+        disfrutarActividades:
           item["Creo que voy a disfrutar de las actividades del curso."],
         capacidadAltaCalificacion:
           item[
@@ -1686,7 +1686,7 @@ function schema(item) {
           ],
         preocupacionProfe:
           item["El/la profesor/a se preocupa por mi desempeño en el curso."],
-        conocimientoFuture:
+        conocimientoFuturo:
           item[
             "Considero que los conocimientos adquiridos en este curso son importantes para mi futuro."
           ],
