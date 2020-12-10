@@ -331,9 +331,9 @@ class MoodleStandardLogsDataBase {
 
             this._logs.forEach((row) => {
               // include or exclude row by filter query
-              if (this.filterRegEx(row, field, query)) {
+              //if (this.filterRegEx(row, field, query)) {
                 dataset.push(row);
-              }
+              //}
             });
 
             // set the filtered store

@@ -179,7 +179,7 @@ var dashb = new Dashboard({
   },
   db: {
     schema: schema,
-    filters: filters,
+    //filters: filters,
     widgetFilter: {
       yearMonthDay: ["BETWEENEQ (" + dateToYMD(365) + "," + dateToYMD(0) + ")"],
     },
@@ -380,827 +380,859 @@ function renderDefaultDashboard() {
     {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\
-      <h2>1. Summary of all course interactions:</h2>\
-      <p>Information on the number of interactions</p>\
+      <h2>1. Topología de alumnos</h2>\
+      <p>Distribución según el tipo de alumnos</p>\
       </div>',
 
       mode: WIDGET_TEXT,
     },
-    {
-      width: 260,
-      margin_tooltip: 270,
-      height: 200,
-      size: 0.5,
-      css: ".widget .rowsOnly {font-weight:bold}",
-      title: "Total",
-      srcJS: "https://canvasjs.com/assets/script/canvasjs.min.js",
-      srcCSS: "",
-      tooltip:
-        "The total number of interactions with every element of a subject has been interacted, including viewing the subject.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").classList.add("rowsOnly");document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-      kpi: "",
-      counter: true,
-    },
-    {
-      height: 200,
-      margin_tooltip: 210,
-      size: 0.5,
-      title: "Tasks",
-      tooltip:
-        "The total number of interactions with all deliveries of a subject.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-      field: "event",
-      filter: { description: ["CONTAINS (assignment)"] },
-      counter: true,
-    },
-    {
-      height: 200,
-      margin_tooltip: 210,
-      size: 0.5,
-      title: "Files",
-      mode: WIDGET_CODE_SNIPPET,
-      tooltip: "The total number of interactions with all files of a subject.",
-      snippet:
-        '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-      field: "event",
-      filter: {
-        component: ["IN (Fitxer)"],
-        description: ["CONTAINS ('resource' activity)"],
-      },
-      counter: true,
-    },
-    {
-      height: 200,
-      margin_tooltip: 210,
-      size: 0.5,
-      title: "Pages",
-      tooltip: "The total number of interactions with the pages of a subject.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-      field: "component",
-      filter: { component: ["BEGIN (Pà)"] },
-      counter: true,
-    },
-    {
-      height: 200,
-      margin_tooltip: 210,
-      size: 0.5,
-      title: "URL",
-      tooltip:
-        "The total number of interactions with the URL resource of a subject.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-      field: "component",
-      filter: { component: ["IN (URL)"] },
-      counter: true,
-    },
-    {
-      height: 200,
-      margin_tooltip: 210,
-      size: 0.5,
-      title: "LTI",
-      mode: WIDGET_CODE_SNIPPET,
-      tooltip:
-        "The total number of interactions with the Learning Tools Interoperability resources of a subject.",
-      snippet:
-        '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-      field: "component",
-      filter: { component: ["CONTAINS (lti)"] },
-      counter: true,
-    },
-    {
-      height: 200,
-      margin_tooltip: 210,
-      size: 0.5,
-      title: "Wiki",
-      tooltip: "The total number of interactions with the wikis of a subject.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-      field: "component",
-      filter: { component: ["CONTAINS (Wiki)"] },
-      counter: true,
-    },
-    {
-      html: '<div style="flex-basis: 100%;"></div>',
-      mode: WIDGET_TEXT,
-    },
-    {
-      visible: false,
-      mode: WIDGET_CODE_SNIPPET,
-      snippet: "[%LABELS%,%VALUES%]",
-      field: "yearMonthDay",
-      sortBy: "key",
-      filter: { component: ["BEGIN (Pà)"] },
-    },
-    {
-      visible: false,
-      mode: WIDGET_CODE_SNIPPET,
-      snippet: "[%LABELS%,%VALUES%]",
-      field: "yearMonthDay",
-      sortBy: "key",
-      filter: { component: ["IN (URL)"] },
-    },
-    {
-      width: "1012",
-      margin_tooltip: 900,
-      height: "300",
-      title: "Interactions Across Course",
-      tooltip:
-        "Plot which shows the number of interactions performed across the time defined at the filter section. Each line represents a different kind of resource.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '\
-      let labels = %LABELS%;\
-      let values = %VALUES%;\
-      let dataPoints = new Array();\
-      for (let i = 0; i < labels[0].length; i++){\
-        dataPoints.push({x:new Date(labels[0][i].substr(0,4), labels[0][i].substr(4,2)-1, labels[0][i].substr(6,2)),y:values[0][i]});\
-      };\
-      let dataPoints2 = new Array();\
-      for (let i = 0; i < labels[1].length; i++){\
-        dataPoints2.push({x:new Date(labels[1][i].substr(0,4), labels[1][i].substr(4,2)-1, labels[1][i].substr(6,2)),y:values[1][i]});\
-      };\
-      let dataPoints3 = new Array();\
-      for (let i = 0; i < labels[2].length; i++){\
-        dataPoints3.push({x:new Date(labels[2][i].substr(0,4), labels[2][i].substr(4,2)-1, labels[2][i].substr(6,2)),y:values[2][i]});\
-      };\
-      let dataPoints4 = new Array();\
-      for (let i = 0; i < labels[3].length; i++){\
-        dataPoints4.push({x:new Date(labels[3][i].substr(0,4), labels[3][i].substr(4,2)-1, labels[3][i].substr(6,2)),y:values[3][i]});\
-      };\
-      let dataPoints5 = new Array();\
-      for (let i = 0; i < labels[4].length; i++){\
-        dataPoints5.push({x:new Date(labels[4][i].substr(0,4), labels[4][i].substr(4,2)-1, labels[4][i].substr(6,2)),y:values[4][i]});\
-      };\
-      document.getElementById("content_%ID%").style.height = (%HEIGHT%-70)+"px";\
-      var chart = new CanvasJS.Chart("content_%ID%", {\
-        height:%HEIGHT%-70\
-        ,animationEnabled: true,\
-        title:{\
-          text: ""\
-        },\
-        toolTip: {\
-          shared: true\
-        },\
-        legend: {\
-          cursor: "pointer",\
-          verticalAlign: "top",\
-          itemWidth:150\
-        },\
-        data: [\
-          {\
-            type: "line",\
-            name: "Total",\
-            showInLegend: true,\
-            dataPoints: dataPoints\
-          },\
-          {\
-            type: "line",\
-            name: "Task",\
-            showInLegend: true,\
-            dataPoints: dataPoints2\
-          },\
-          {\
-            type: "line",\
-            name: "File",\
-            showInLegend: true,\
-            dataPoints: dataPoints3\
-          },\
-          {\
-            type: "line",\
-            name: "Page",\
-            showInLegend: true,\
-            dataPoints: dataPoints4\
-          },\
-          {\
-            type: "line",\
-            name: "URL",\
-            showInLegend: true,\
-            dataPoints: dataPoints5\
-          }\
-        ]\
-      });\
-      chart.render();',
-      field: "yearMonthDay",
-      sortBy: "key",
-      filter: [
-        {},
-        { description: ["CONTAINS (assignment)"] },
-        {
-          component: ["IN (Fitxer)"],
-          description: ["CONTAINS ('resource' activity)"],
-        },
-        { component: ["BEGIN (Pà)"] },
-        { component: ["IN (URL)"] },
-      ],
-    },
-    {
-      width: "1012",
-      margin_tooltip: 500,
-      height: "700",
-      title: "Interactions Across Week",
-      tooltip:
-        "A table which represents the number of interactions in a week performed by hour.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{\
-            let widget = document.getElementById("content_%ID%");\
-            let labels = %LABELS%;\
-            let values = %VALUES%;\
-            let height = %HEIGHT% - 100;\
-            let diesHores = {};\
-            let maxVal = 0;\
-            for (let i = 0; i < labels.length; i++){\
-              let wDate = new Date(labels[i]*1000);\
-              if (undefined === diesHores[wDate.getDay()])\
-                diesHores[wDate.getDay()] = {};\
-              if (undefined === diesHores[wDate.getDay()][wDate.getHours()])\
-                diesHores[wDate.getDay()][wDate.getHours()] = 0;\
-              diesHores[wDate.getDay()][wDate.getHours()] += values[i];\
-              if (diesHores[wDate.getDay()][wDate.getHours()] > maxVal)\
-                maxVal = diesHores[wDate.getDay()][wDate.getHours()];\
-            }\
-            diesHores[7] = diesHores[0];\
-            let str = "<table>\
-                <thead>\
-                    <tr>\
-                        <th class=\\"tdLeft weekInteractions\\">Time Slot</th>\
-                        <th class=\\"tdCenter weekInteractions\\">Monday</th>\
-                        <th class=\\"tdCenter weekInteractions\\">Tuesday</th>\
-                        <th class=\\"tdCenter weekInteractions\\">Wednesday</th>\
-                        <th class=\\"tdCenter weekInteractions\\">Thursday</th>\
-                        <th class=\\"tdCenter weekInteractions\\">Friday</th>\
-                        <th class=\\"tdCenter weekInteractions\\">Saturday</th>\
-                        <th class=\\"tdCenter weekInteractions\\">Sunday</th>\
-                    </tr>\
-                </thead>\
-                <tbody style=\'max-height:"+height+"px\'>";\
-                for (let i = 0; i <24; i++) {\
-                  str += "<tr>";\
-                  str += "<td class=\\"tdLeft weekInteractions\\">" + i + ":00-"+i+":59</td>";\
-                  for (let j = 1; j <= 7; j++) {\
-                    diesHores[j] = diesHores[j] || {};\
-                    let val = ((undefined !== diesHores[j][i])?diesHores[j][i]:0);\
-                    str += "<td class=\\"tdCenter weekInteractions\\" style=\\"background:"+gradient(maxVal,val)+"\\">" + val.toLocaleString() + "</td>";\
-                  }\
-                  str += "</tr>";\
-                }\
-                str += "</tbody>\
-                </table>";\
-              widget.insertAdjacentHTML("afterbegin", str);\
-          }',
-      field: "timestamp",
-    },
+    // {
+    //   width: 260,
+    //   margin_tooltip: 270,
+    //   height: 200,
+    //   size: 0.5,
+    //   css: ".widget .rowsOnly {font-weight:bold}",
+    //   title: "Total",
+    //   srcJS: "https://canvasjs.com/assets/script/canvasjs.min.js",
+    //   srcCSS: "",
+    //   tooltip:
+    //     "The total number of interactions with every element of a subject has been interacted, including viewing the subject.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").classList.add("rowsOnly");document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
+    //   kpi: "",
+    //   counter: true,
+    // },
+    // {
+    //   height: 200,
+    //   margin_tooltip: 210,
+    //   size: 0.5,
+    //   title: "Tasks",
+    //   tooltip:
+    //     "The total number of interactions with all deliveries of a subject.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
+    //   field: "event",
+    //   filter: { description: ["CONTAINS (assignment)"] },
+    //   counter: true,
+    // },
+    // {
+    //   height: 200,
+    //   margin_tooltip: 210,
+    //   size: 0.5,
+    //   title: "Files",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   tooltip: "The total number of interactions with all files of a subject.",
+    //   snippet:
+    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
+    //   field: "event",
+    //   filter: {
+    //     component: ["IN (Fitxer)"],
+    //     description: ["CONTAINS ('resource' activity)"],
+    //   },
+    //   counter: true,
+    // },
+    // {
+    //   height: 200,
+    //   margin_tooltip: 210,
+    //   size: 0.5,
+    //   title: "Pages",
+    //   tooltip: "The total number of interactions with the pages of a subject.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
+    //   field: "component",
+    //   filter: { component: ["BEGIN (Pà)"] },
+    //   counter: true,
+    // },
+    // {
+    //   height: 200,
+    //   margin_tooltip: 210,
+    //   size: 0.5,
+    //   title: "URL",
+    //   tooltip:
+    //     "The total number of interactions with the URL resource of a subject.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
+    //   field: "component",
+    //   filter: { component: ["IN (URL)"] },
+    //   counter: true,
+    // },
+    // {
+    //   height: 200,
+    //   margin_tooltip: 210,
+    //   size: 0.5,
+    //   title: "LTI",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   tooltip:
+    //     "The total number of interactions with the Learning Tools Interoperability resources of a subject.",
+    //   snippet:
+    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
+    //   field: "component",
+    //   filter: { component: ["CONTAINS (lti)"] },
+    //   counter: true,
+    // },
+    // {
+    //   height: 200,
+    //   margin_tooltip: 210,
+    //   size: 0.5,
+    //   title: "Wiki",
+    //   tooltip: "The total number of interactions with the wikis of a subject.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
+    //   field: "component",
+    //   filter: { component: ["CONTAINS (Wiki)"] },
+    //   counter: true,
+    // },
+    // {
+    //   html: '<div style="flex-basis: 100%;"></div>',
+    //   mode: WIDGET_TEXT,
+    // },
+    // {
+    //   visible: false,
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet: "[%LABELS%,%VALUES%]",
+    //   field: "yearMonthDay",
+    //   sortBy: "key",
+    //   filter: { component: ["BEGIN (Pà)"] },
+    // },
+    // {
+    //   visible: false,
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet: "[%LABELS%,%VALUES%]",
+    //   field: "yearMonthDay",
+    //   sortBy: "key",
+    //   filter: { component: ["IN (URL)"] },
+    // },
+    // {
+    //   width: "1012",
+    //   margin_tooltip: 900,
+    //   height: "300",
+    //   title: "Interactions Across Course",
+    //   tooltip:
+    //     "Plot which shows the number of interactions performed across the time defined at the filter section. Each line represents a different kind of resource.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '\
+    //   let labels = %LABELS%;\
+    //   let values = %VALUES%;\
+    //   let dataPoints = new Array();\
+    //   for (let i = 0; i < labels[0].length; i++){\
+    //     dataPoints.push({x:new Date(labels[0][i].substr(0,4), labels[0][i].substr(4,2)-1, labels[0][i].substr(6,2)),y:values[0][i]});\
+    //   };\
+    //   let dataPoints2 = new Array();\
+    //   for (let i = 0; i < labels[1].length; i++){\
+    //     dataPoints2.push({x:new Date(labels[1][i].substr(0,4), labels[1][i].substr(4,2)-1, labels[1][i].substr(6,2)),y:values[1][i]});\
+    //   };\
+    //   let dataPoints3 = new Array();\
+    //   for (let i = 0; i < labels[2].length; i++){\
+    //     dataPoints3.push({x:new Date(labels[2][i].substr(0,4), labels[2][i].substr(4,2)-1, labels[2][i].substr(6,2)),y:values[2][i]});\
+    //   };\
+    //   let dataPoints4 = new Array();\
+    //   for (let i = 0; i < labels[3].length; i++){\
+    //     dataPoints4.push({x:new Date(labels[3][i].substr(0,4), labels[3][i].substr(4,2)-1, labels[3][i].substr(6,2)),y:values[3][i]});\
+    //   };\
+    //   let dataPoints5 = new Array();\
+    //   for (let i = 0; i < labels[4].length; i++){\
+    //     dataPoints5.push({x:new Date(labels[4][i].substr(0,4), labels[4][i].substr(4,2)-1, labels[4][i].substr(6,2)),y:values[4][i]});\
+    //   };\
+    //   document.getElementById("content_%ID%").style.height = (%HEIGHT%-70)+"px";\
+    //   var chart = new CanvasJS.Chart("content_%ID%", {\
+    //     height:%HEIGHT%-70\
+    //     ,animationEnabled: true,\
+    //     title:{\
+    //       text: ""\
+    //     },\
+    //     toolTip: {\
+    //       shared: true\
+    //     },\
+    //     legend: {\
+    //       cursor: "pointer",\
+    //       verticalAlign: "top",\
+    //       itemWidth:150\
+    //     },\
+    //     data: [\
+    //       {\
+    //         type: "line",\
+    //         name: "Total",\
+    //         showInLegend: true,\
+    //         dataPoints: dataPoints\
+    //       },\
+    //       {\
+    //         type: "line",\
+    //         name: "Task",\
+    //         showInLegend: true,\
+    //         dataPoints: dataPoints2\
+    //       },\
+    //       {\
+    //         type: "line",\
+    //         name: "File",\
+    //         showInLegend: true,\
+    //         dataPoints: dataPoints3\
+    //       },\
+    //       {\
+    //         type: "line",\
+    //         name: "Page",\
+    //         showInLegend: true,\
+    //         dataPoints: dataPoints4\
+    //       },\
+    //       {\
+    //         type: "line",\
+    //         name: "URL",\
+    //         showInLegend: true,\
+    //         dataPoints: dataPoints5\
+    //       }\
+    //     ]\
+    //   });\
+    //   chart.render();',
+    //   field: "yearMonthDay",
+    //   sortBy: "key",
+    //   filter: [
+    //     {},
+    //     { description: ["CONTAINS (assignment)"] },
+    //     {
+    //       component: ["IN (Fitxer)"],
+    //       description: ["CONTAINS ('resource' activity)"],
+    //     },
+    //     { component: ["BEGIN (Pà)"] },
+    //     { component: ["IN (URL)"] },
+    //   ],
+    // },
+    // {
+    //   width: "1012",
+    //   margin_tooltip: 500,
+    //   height: "700",
+    //   title: "Interactions Across Week",
+    //   tooltip:
+    //     "A table which represents the number of interactions in a week performed by hour.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{\
+    //         let widget = document.getElementById("content_%ID%");\
+    //         let labels = %LABELS%;\
+    //         let values = %VALUES%;\
+    //         let height = %HEIGHT% - 100;\
+    //         let diesHores = {};\
+    //         let maxVal = 0;\
+    //         for (let i = 0; i < labels.length; i++){\
+    //           let wDate = new Date(labels[i]*1000);\
+    //           if (undefined === diesHores[wDate.getDay()])\
+    //             diesHores[wDate.getDay()] = {};\
+    //           if (undefined === diesHores[wDate.getDay()][wDate.getHours()])\
+    //             diesHores[wDate.getDay()][wDate.getHours()] = 0;\
+    //           diesHores[wDate.getDay()][wDate.getHours()] += values[i];\
+    //           if (diesHores[wDate.getDay()][wDate.getHours()] > maxVal)\
+    //             maxVal = diesHores[wDate.getDay()][wDate.getHours()];\
+    //         }\
+    //         diesHores[7] = diesHores[0];\
+    //         let str = "<table>\
+    //             <thead>\
+    //                 <tr>\
+    //                     <th class=\\"tdLeft weekInteractions\\">Time Slot</th>\
+    //                     <th class=\\"tdCenter weekInteractions\\">Monday</th>\
+    //                     <th class=\\"tdCenter weekInteractions\\">Tuesday</th>\
+    //                     <th class=\\"tdCenter weekInteractions\\">Wednesday</th>\
+    //                     <th class=\\"tdCenter weekInteractions\\">Thursday</th>\
+    //                     <th class=\\"tdCenter weekInteractions\\">Friday</th>\
+    //                     <th class=\\"tdCenter weekInteractions\\">Saturday</th>\
+    //                     <th class=\\"tdCenter weekInteractions\\">Sunday</th>\
+    //                 </tr>\
+    //             </thead>\
+    //             <tbody style=\'max-height:"+height+"px\'>";\
+    //             for (let i = 0; i <24; i++) {\
+    //               str += "<tr>";\
+    //               str += "<td class=\\"tdLeft weekInteractions\\">" + i + ":00-"+i+":59</td>";\
+    //               for (let j = 1; j <= 7; j++) {\
+    //                 diesHores[j] = diesHores[j] || {};\
+    //                 let val = ((undefined !== diesHores[j][i])?diesHores[j][i]:0);\
+    //                 str += "<td class=\\"tdCenter weekInteractions\\" style=\\"background:"+gradient(maxVal,val)+"\\">" + val.toLocaleString() + "</td>";\
+    //               }\
+    //               str += "</tr>";\
+    //             }\
+    //             str += "</tbody>\
+    //             </table>";\
+    //           widget.insertAdjacentHTML("afterbegin", str);\
+    //       }',
+    //   field: "timestamp",
+    // },
     {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\
-      <h2>2. Students:</h2>\
-      <p>Information on student interactions</p>\
+      <h2>2. Cantidad de alumnos por escuela:</h2>\
+      <p>Información sobre el número de alumnos por escuela</p>\
+      </div>',
+      mode: WIDGET_TEXT,
+    },
+    // {
+    //   width: "1012",
+    //   height: "300",
+    //   title: "Last Access & Students",
+    //   tooltip:
+    //     "A plot which purpose is to show the last connection from the course's members. If you hover over the plot, it shows who was connected the last day.",
+    //   srcJS: "https://canvasjs.com/assets/script/canvasjs.min.js",
+    //   srcCSS: "",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '\
+    //   let labels = %LABELS%;\
+    //   let values = %VALUES%;\
+    //   let lvGroup = {};\
+    //   let lvGroupStudent = {};\
+    //   let dataPoints = new Array();\
+    //   let maxDays = 0;\
+    //   for (let i = 0; i < labels.length; i++){\
+    //     let diff = new Date().diffTimestamp(values[i]);\
+    //     lvGroup[diff.days] = ((undefined!==lvGroup[diff.days])?lvGroup[diff.days]:0) + 1;\
+    //     if (undefined===lvGroupStudent[diff.days])\
+    //     {\
+    //       lvGroupStudent[diff.days] = new Array();\
+    //     }\
+    //     lvGroupStudent[diff.days][lvGroupStudent[diff.days].length] = labels[i];\
+    //     maxDays = (diff.days > maxDays)?diff.days:maxDays;\
+    //   };\
+    //   for (let prop in lvGroup){\
+    //     dataPoints.push({x:prop,y:lvGroup[prop]});\
+    //   };\
+    //   document.getElementById("content_%ID%").style.height = (%HEIGHT%-70)+"px";\
+    //   var chart = new CanvasJS.Chart("content_%ID%", {\
+    //     height:%HEIGHT%-70\
+    //     ,animationEnabled: true,\
+    //     title:{\
+    //       text: ""\
+    //     },\
+    //     toolTip: {\
+    //       contentFormatter: function ( e ) {\
+    //                   return "Fa " +  e.entries[0].dataPoint.x + " dies accediren " + e.entries[0].dataPoint.y + " estudiants<br/>" + lvGroupStudent[e.entries[0].dataPoint.x].join("<br/>");  \
+    //       },\
+    //       shared: true\
+    //     },\
+    //     legend: {\
+    //       cursor: "pointer",\
+    //       verticalAlign: "top",\
+    //       itemWidth:150\
+    //     },\
+    //     axisX:{\
+    //       interval: 5,\
+    //       maximum: maxDays+1,\
+    //       includeZero: true\
+    //     },\
+    //     data: [\
+    //       {\
+    //         type: "line",\
+    //         name: "Students",\
+    //         showInLegend: true,\
+    //         dataPoints: dataPoints\
+    //       },\
+    //     ]\
+    //   });\
+    //   chart.render();',
+    //   field: "fullName",
+    //   calcFn: { fn: "lastconnection", field: "timestamp" },
+    // },
+    // {
+    //   width: "1012",
+    //   height: "500",
+    //   title: "Resource - Students Access Chart",
+    //   tooltip:
+    //     "A table which represents the amount of times the members of the course have interacted with each resource (including viewing the course).",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{\
+    //     let widget = document.getElementById("content_%ID%");\
+    //     let labels = %LABELS%;\
+    //     let values = %VALUES%;\
+    //     let height = %HEIGHT% - 130;\
+    //     let axisX = new Array();\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //       for (let prop in values[i]){\
+    //         axisX[prop] = 0;\
+    //       }\
+    //     }\
+    //     let str = "<table style=\\"min-width:150px\\">\
+    //         <thead>\
+    //             <tr>\
+    //                 <th class=\\"tdLeft resourceStudentsAccessChart\\">Resource</th>";\
+    //                 for (let prop in axisX){\
+    //                   str += "<th title=\\"" + prop + "\\" class=\\"tdCenter resourceStudentsAccessChart student\\">" + prop + "</th>";\
+    //                 };\
+    //     str += "</tr>\
+    //         </thead>\
+    //         <tbody style=\'max-height:"+height+"px\'>";\
+    //     let maxVal = 0;\
+    //     let secMaxVal = 0;\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //       for (let prop in axisX){\
+    //         let val = ((undefined!==values[i][prop])?values[i][prop]:0);\
+    //         if (val > maxVal) {\
+    //           maxVal = val;\
+    //         } else if (val > secMaxVal){\
+    //           secMaxVal = val;\
+    //         }\
+    //       };\
+    //     };\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //         str += "<tr>";\
+    //         str += "<td title=\\"" + labels[i].replace(\'"\',\'"\') + "\\" class=\\"tdLeft resourceStudentsAccessChart resource\\">" + labels[i] + "</td>";\
+    //         for (let prop in axisX){\
+    //           let val = ((undefined!==values[i][prop])?values[i][prop]:0);\
+    //           str += "<td style=\\"background:"+gradientHM(maxVal,secMaxVal,val)+"\\" class=\\"tdCenter resourceStudentsAccessChart student\\">" + val.toLocaleString() + "</td>";\
+    //         };\
+    //         str += "</tr>"; };\
+    //     str += "</tbody>\
+    //         </table>";\
+    //     widget.insertAdjacentHTML("afterbegin", str);\
+    //   }',
+    //   sortBy: "key",
+    //   order: "ASC",
+    //   field: "context",
+    //   calcFn: { fn: "countgroup", field: "fullName" },
+    //   filter: { fullName: ["NOT BEGIN (undefined)"] },
+    // },
+    // {
+    //   width: "475",
+    //   height: "500",
+    //   title: "Student Participation",
+    //   tooltip:
+    //     "Total number of interactions between each member of the course and all the resources, including seeing the course.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{\
+    //     let interactions = dashb.widgets[2].data.values[0];\
+    //     let widget = document.getElementById("content_%ID%");\
+    //     let labels = %LABELS%;\
+    //     let values = %VALUES%;\
+    //     let height = %HEIGHT% - 100;\
+    //     let str = "<table>\
+    //         <thead>\
+    //             <tr>\
+    //                 <th  class=\\"tdLeft studentParticipation student\\">Student</th>\
+    //                 <th class=\\"tdCenter studentParticipation\\">%</th>\
+    //                 <th class=\\"tdCenter studentParticipation\\">#</th>\
+    //             </tr>\
+    //         </thead>\
+    //         <tbody style=\'max-height:"+height+"px\'>";\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //         let percent = (values[i]*100)/interactions;\
+    //         str += "<tr>";\
+    //         str += "<td class=\\"tdLeft studentParticipation student\\">" + labels[i] + "</td>";\
+    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " studentParticipation\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+    //         str += "<td class=\\"tdCenter studentParticipation\\">" + values[i] + "</td>";\
+    //         str += "</tr>"; };\
+    //     str += "</tbody>\
+    //         </table>";\
+    //     widget.insertAdjacentHTML("afterbegin", str);\
+    //   }',
+    //   sortBy: "key",
+    //   order: "ASC",
+    //   field: "fullName",
+    // },
+    // {
+    //   width: "475",
+    //   height: "500",
+    //   title: "Members last access",
+    //   tooltip:
+    //     "List of each member of the course and the last time they accessed the course.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{\
+    //     let interactions = dashb.widgets[2].data.values[0];\
+    //     let widget = document.getElementById("content_%ID%");\
+    //     let labels = %LABELS%;\
+    //     let values = %VALUES%;\
+    //     let height = %HEIGHT% - 100;\
+    //     let str = "<table>\
+    //         <thead>\
+    //             <tr>\
+    //                 <th class=\\"tdLeft lastAccess\\">Student</th>\
+    //                 <th class=\\"tdCenter lastAccess\\">Last Access</th>\
+    //             </tr>\
+    //         </thead>\
+    //         <tbody style=\'max-height:"+height+"px\'>";\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //       if (labels[0].length){\
+    //         let wDate = new Date(values[i]*1000).toLocaleString();\
+    //         let percent = (values[i]*100)/interactions;\
+    //         let wDateDiff = new Date().diffTimestamp(values[i]);\
+    //         let wDateStr = wDateDiff.days+" dies "+wDateDiff.hours+" hores <br />"+wDateDiff.minutes+" minuts, "+Math.floor(wDateDiff.seconds)+" segons";\
+    //         str += "<tr>";\
+    //         str += "<td class=\\"tdLeft lastAccess\\">" + labels[i] + "</td>";\
+    //         str += "<td class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + " lastAccess\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
+    //         str += "</tr>"; };\
+    //       }\
+    //       str += "</tbody>\
+    //         </table>";\
+    //       widget.insertAdjacentHTML("afterbegin", str);\
+    //     }',
+    //   field: "fullName",
+    //   calcFn: { fn: "lastconnection", field: "timestamp" },
+    // },
+    {
+      html:
+        '<div class="widget section" style="flex-basis: 100%;">\
+      <h2>3. Distribución de respuestas para Trabajo en Equipo:</h2>\
+      <p>Información sobre las respuestas para el Trabajo en Equipo</p>\
+      </div>',
+      mode: WIDGET_TEXT,
+    },
+    // {
+    //   width: "500",
+    //   height: "500",
+    //   title: "Last interaction with a Resource",
+    //   tooltip:
+    //     "List of each resource for the course and tand the last time any member has interacted with it.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{\
+    //     let interactions = dashb.widgets[2].data.values[0];\
+    //     let widget = document.getElementById("content_%ID%");\
+    //     let labels = %LABELS%;\
+    //     let values = %VALUES%;\
+    //     let height = %HEIGHT% - 100;\
+    //     let str = "<table>\
+    //         <thead>\
+    //             <tr>\
+    //                 <th class=\\"tdLeft lastInteractionResource\\">Resource</th>\
+    //                 <th class=\\"tdCenter lastInteractionResource\\">Last Access</th>\
+    //             </tr>\
+    //         </thead>\
+    //         <tbody style=\'max-height:"+height+"px\'>";\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //       if (labels[0].length){\
+    //         let wDate = new Date(values[i]*1000).toLocaleString();\
+    //         let percent = (values[i]*100)/interactions;\
+    //         let wDateDiff = new Date().diffTimestamp(values[i]);\
+    //         let wDateStr = wDateDiff.days+" dies "+wDateDiff.hours+" hores <br />"+wDateDiff.minutes+" minuts, "+Math.floor(wDateDiff.seconds)+" segons";\
+    //         str += "<tr>";\
+    //         str += "<td class=\\"tdLeft lastInteractionResource\\">" + labels[i] + "</td>";\
+    //         str += "<td class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + " lastInteractionResource\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
+    //         str += "</tr>"; };\
+    //       }\
+    //       str += "</tbody>\
+    //         </table>";\
+    //       widget.insertAdjacentHTML("afterbegin", str);\
+    //     }',
+    //   field: "context",
+    //   calcFn: { fn: "lastconnection", field: "timestamp" },
+    // },
+    // {
+    //   width: "500",
+    //   height: "500",
+    //   title: "Interactions with Resources",
+    //   tooltip:
+    //     "List of each resource in a course and the number of interactions, including viewing the course",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{\
+    //     let interactions = dashb.widgets[2].data.values[0];\
+    //     let widget = document.getElementById("content_%ID%");\
+    //     let labels = %LABELS%;\
+    //     let values = %VALUES%;\
+    //     let height = %HEIGHT% - 100;\
+    //     let str = "<table>\
+    //         <thead>\
+    //             <tr>\
+    //                 <th class=\\"tdLeft\\">Resource</th>\
+    //                 <th class=\\"tdCenter interactionResource\\">%</th>\
+    //                 <th class=\\"tdCenter interactionResource\\">#</th>\
+    //             </tr>\
+    //         </thead>\
+    //         <tbody style=\'max-height:"+height+"px\'>";\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //         let percent = (values[i]*100)/interactions;\
+    //         str += "<tr>";\
+    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
+    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionResource\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+    //         str += "<td class=\\"tdRight interactionResource\\">" + values[i] + "</td>";\
+    //         str += "</tr>"; };\
+    //     str += "</tbody>\
+    //         </table>";\
+    //     widget.insertAdjacentHTML("afterbegin", str);\
+    //   }',
+    //   sortBy: "key",
+    //   order: "ASC",
+    //   field: "context",
+    // },
+    // {
+    //   width: "500",
+    //   height: "500",
+    //   title: "Interactions with Components",
+    //   tooltip:
+    //     "List of different resources used in the course (such as wikis or URL) and the total number of interactions.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{\
+    //     let interactions = dashb.widgets[2].data.values[0];\
+    //     let widget = document.getElementById("content_%ID%");\
+    //     let labels = %LABELS%;\
+    //     let values = %VALUES%;\
+    //     let height = %HEIGHT% - 100;\
+    //     let str = "<table>\
+    //         <thead>\
+    //             <tr>\
+    //                 <th class=\\"tdLeft\\">Component</th>\
+    //                 <th class=\\"tdCenter interactionComponents\\">%</th>\
+    //                 <th class=\\"tdCenter interactionComponents\\">#</th>\
+    //             </tr>\
+    //         </thead>\
+    //         <tbody style=\'max-height:"+height+"px\'>";\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //         let percent = (values[i]*100)/interactions;\
+    //         str += "<tr>";\
+    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
+    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionComponents\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+    //         str += "<td class=\\"tdRight interactionComponents\\">" + values[i] + "</td>";\
+    //         str += "</tr>"; };\
+    //     str += "</tbody>\
+    //         </table>";\
+    //     widget.insertAdjacentHTML("afterbegin", str);\
+    //   }',
+    //   sortBy: "key",
+    //   order: "ASC",
+    //   field: "component",
+    // },
+    // {
+    //   width: "500",
+    //   height: "500",
+    //   title: "Interactions with Events",
+    //   tooltip:
+    //     "List of different interactions performed on the course by its users and the count for each.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{\
+    //     let interactions = dashb.widgets[2].data.values[0];\
+    //     let widget = document.getElementById("content_%ID%");\
+    //     let labels = %LABELS%;\
+    //     let values = %VALUES%;\
+    //     let height = %HEIGHT% - 100;\
+    //     let str = "<table>\
+    //         <thead>\
+    //             <tr>\
+    //                 <th class=\\"tdLeft\\">Event</th>\
+    //                 <th class=\\"tdCenter interactionEvents\\">%</th>\
+    //                 <th class=\\"tdCenter interactionEvents\\">#</th>\
+    //             </tr>\
+    //         </thead>\
+    //         <tbody style=\'max-height:"+height+"px\'>";\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //         let percent = (values[i]*100)/interactions;\
+    //         str += "<tr>";\
+    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
+    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionEvents\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+    //         str += "<td class=\\"tdRight interactionEvents\\">" + values[i] + "</td>";\
+    //         str += "</tr>"; };\
+    //     str += "</tbody>\
+    //         </table>";\
+    //     widget.insertAdjacentHTML("afterbegin", str);\
+    //   }',
+    //   sortBy: "key",
+    //   order: "ASC",
+    //   field: "event",
+    // },
+    // {
+    //   width: "500",
+    //   height: "500",
+    //   title: "Interactions with context",
+    //   tooltip:
+    //     "For each element in the course that can be interacted with, it shows the total number of interactions generated from the users.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{\
+    //     let interactions = dashb.widgets[2].data.values[0];\
+    //     let widget = document.getElementById("content_%ID%");\
+    //     let labels = %LABELS%;\
+    //     let values = %VALUES%;\
+    //     let height = %HEIGHT% - 100;\
+    //     let str = "<table>\
+    //         <thead>\
+    //             <tr>\
+    //                 <th class=\\"tdLeft\\">Context</th>\
+    //                 <th class=\\"tdCenter interactionContext\\">%</th>\
+    //                 <th class=\\"tdCenter interactionContext\\">#</th>\
+    //             </tr>\
+    //         </thead>\
+    //         <tbody style=\'max-height:"+height+"px\'>";\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //         let percent = (values[i]*100)/interactions;\
+    //         str += "<tr>";\
+    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
+    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionContext\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+    //         str += "<td class=\\"tdRight interactionContext\\">" + values[i] + "</td>";\
+    //         str += "</tr>"; };\
+    //     str += "</tbody>\
+    //         </table>";\
+    //     widget.insertAdjacentHTML("afterbegin", str);\
+    //   }',
+    //   sortBy: "key",
+    //   order: "ASC",
+    //   field: "context",
+    //   filter: { context: ["NOT BEGIN (Curs:)"] },
+    // },
+    // {
+    //   width: "500",
+    //   height: "500",
+    //   title: "Interactions with URL",
+    //   tooltip:
+    //     "For each URL in the course that can be interacted, it shows the number of interactions generated from the users.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{\
+    //     let interactions = dashb.widgets[2].data.values[0];\
+    //     let widget = document.getElementById("content_%ID%");\
+    //     let labels = %LABELS%;\
+    //     let values = %VALUES%;\
+    //     let height = %HEIGHT% - 100;\
+    //     let str = "<table>\
+    //         <thead>\
+    //             <tr>\
+    //                 <th class=\\"tdLeft\\">URL</th>\
+    //                 <th class=\\"tdCenter interactionURL\\">%</th>\
+    //                 <th class=\\"tdCenter interactionURL\\">#</th>\
+    //             </tr>\
+    //         </thead>\
+    //         <tbody style=\'max-height:"+height+"px\'>";\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //         let percent = (values[i]*100)/interactions;\
+    //         str += "<tr>";\
+    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
+    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionURL\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+    //         str += "<td class=\\"tdRight interactionURL\\">" + values[i] + "</td>";\
+    //         str += "</tr>"; };\
+    //     str += "</tbody>\
+    //         </table>";\
+    //     widget.insertAdjacentHTML("afterbegin", str);\
+    //   }',
+    //   sortBy: "key",
+    //   order: "ASC",
+    //   field: "context",
+    //   filter: { component: ["IN (URL)"] },
+    // },
+    // {
+    //   width: "475",
+    //   height: "500",
+    //   title: "Interactions with Pages",
+    //   tooltip:
+    //     "For each Page resource in the course, it shows the number of interactions generated from the users.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{\
+    //     let interactions = dashb.widgets[2].data.values[0];\
+    //     let widget = document.getElementById("content_%ID%");\
+    //     let labels = %LABELS%;\
+    //     let values = %VALUES%;\
+    //     let height = %HEIGHT% - 100;\
+    //     let str = "<table>\
+    //         <thead>\
+    //             <tr>\
+    //                 <th class=\\"tdLeft\\">Page</th>\
+    //                 <th class=\\"tdCenter interactionPages\\">%</th>\
+    //                 <th class=\\"tdCenter interactionPages\\">#</th>\
+    //             </tr>\
+    //         </thead>\
+    //         <tbody style=\'max-height:"+height+"px\'>";\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //         let percent = (values[i]*100)/interactions;\
+    //         str += "<tr>";\
+    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
+    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionPages\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+    //         str += "<td class=\\"tdRight interactionPages\\">" + values[i] + "</td>";\
+    //         str += "</tr>"; };\
+    //     str += "</tbody>\
+    //         </table>";\
+    //     widget.insertAdjacentHTML("afterbegin", str);\
+    //   }',
+    //   sortBy: "key",
+    //   order: "ASC",
+    //   field: "context",
+    //   filter: { component: ["IN (Pàgina)"] },
+    // },
+    // {
+    //   width: "475",
+    //   height: "500",
+    //   title: "Interactions with LTI Tool",
+    //   tooltip:
+    //     "For each Learning Tool Interoperability resource in the course, it shows the amount of interactions have generated from the users.",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     '{\
+    //     let interactions = dashb.widgets[2].data.values[0];\
+    //     let widget = document.getElementById("content_%ID%");\
+    //     let labels = %LABELS%;\
+    //     let values = %VALUES%;\
+    //     let height = %HEIGHT% - 100;\
+    //     let str = "<table>\
+    //         <thead>\
+    //             <tr>\
+    //                 <th class=\\"tdLeft\\">LTI Tool</th>\
+    //                 <th class=\\"tdCenter interactionLTI\\">%</th>\
+    //                 <th class=\\"tdCenter interactionLTI\\">#</th>\
+    //             </tr>\
+    //         </thead>\
+    //         <tbody style=\'max-height:"+height+"px\'>";\
+    //     for (let i = 0; i < labels.length; i++) {\
+    //         let percent = (values[i]*100)/interactions;\
+    //         str += "<tr>";\
+    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
+    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionLTI\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
+    //         str += "<td class=\\"tdRight interactionLTI\\">" + values[i] + "</td>";\
+    //         str += "</tr>"; };\
+    //     str += "</tbody>\
+    //         </table>";\
+    //     widget.insertAdjacentHTML("afterbegin", str);\
+    //   }',
+    //   sortBy: "key",
+    //   order: "ASC",
+    //   field: "context",
+    //   filter: { component: ["IN (Eina ext LTI)"] },
+    // },
+    // {
+    //   width: "1062",
+    //   height: "300",
+    //   title: "Components",
+    //   tooltip: "Pie plot describing the amount of elements the course has.",
+    //   srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+    //   srcCSS: "",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     "var canvas = document.createElement('canvas');\
+    //         canvas.id = 'canvas_%ID%';\
+    //         canvas.width = '%WIDTH%';\
+    //         canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);new Chart(document.getElementById('canvas_%ID%').getContext('2d'), {type: 'pie',options:{tooltips: {bodyFontColor:'#FFFFFF',bodyFontSize:14,bodyFontStyle:'bold',caretSize:0,xPadding:0,yPadding:0},responsive: false,maintainAspectRatio:false,legend:{position:'left'}},data: {labels: %LABELS%,datasets: [{data: %VALUES%,backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']}]}});",
+    //   field: "component",
+    // },
+    {
+      html:
+        '<div class="widget section" style="flex-basis: 100%;">\
+      <h2>4. Distribución de respuestas para Comunicación Oral:</h2>\
+      <p>Información sobre las respuestas para la Comunicación Oral</p>\
       </div>',
       mode: WIDGET_TEXT,
     },
     {
-      width: "1012",
-      height: "300",
-      title: "Last Access & Students",
-      tooltip:
-        "A plot which purpose is to show the last connection from the course's members. If you hover over the plot, it shows who was connected the last day.",
-      srcJS: "https://canvasjs.com/assets/script/canvasjs.min.js",
-      srcCSS: "",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '\
-      let labels = %LABELS%;\
-      let values = %VALUES%;\
-      let lvGroup = {};\
-      let lvGroupStudent = {};\
-      let dataPoints = new Array();\
-      let maxDays = 0;\
-      for (let i = 0; i < labels.length; i++){\
-        let diff = new Date().diffTimestamp(values[i]);\
-        lvGroup[diff.days] = ((undefined!==lvGroup[diff.days])?lvGroup[diff.days]:0) + 1;\
-        if (undefined===lvGroupStudent[diff.days])\
-        {\
-          lvGroupStudent[diff.days] = new Array();\
-        }\
-        lvGroupStudent[diff.days][lvGroupStudent[diff.days].length] = labels[i];\
-        maxDays = (diff.days > maxDays)?diff.days:maxDays;\
-      };\
-      for (let prop in lvGroup){\
-        dataPoints.push({x:prop,y:lvGroup[prop]});\
-      };\
-      document.getElementById("content_%ID%").style.height = (%HEIGHT%-70)+"px";\
-      var chart = new CanvasJS.Chart("content_%ID%", {\
-        height:%HEIGHT%-70\
-        ,animationEnabled: true,\
-        title:{\
-          text: ""\
-        },\
-        toolTip: {\
-          contentFormatter: function ( e ) {\
-                      return "Fa " +  e.entries[0].dataPoint.x + " dies accediren " + e.entries[0].dataPoint.y + " estudiants<br/>" + lvGroupStudent[e.entries[0].dataPoint.x].join("<br/>");  \
-          },\
-          shared: true\
-        },\
-        legend: {\
-          cursor: "pointer",\
-          verticalAlign: "top",\
-          itemWidth:150\
-        },\
-        axisX:{\
-          interval: 5,\
-          maximum: maxDays+1,\
-          includeZero: true\
-        },\
-        data: [\
-          {\
-            type: "line",\
-            name: "Students",\
-            showInLegend: true,\
-            dataPoints: dataPoints\
-          },\
-        ]\
-      });\
-      chart.render();',
-      field: "fullName",
-      calcFn: { fn: "lastconnection", field: "timestamp" },
-    },
-    {
-      width: "1012",
-      height: "500",
-      title: "Resource - Students Access Chart",
-      tooltip:
-        "A table which represents the amount of times the members of the course have interacted with each resource (including viewing the course).",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{\
-        let widget = document.getElementById("content_%ID%");\
-        let labels = %LABELS%;\
-        let values = %VALUES%;\
-        let height = %HEIGHT% - 130;\
-        let axisX = new Array();\
-        for (let i = 0; i < labels.length; i++) {\
-          for (let prop in values[i]){\
-            axisX[prop] = 0;\
-          }\
-        }\
-        let str = "<table style=\\"min-width:150px\\">\
-            <thead>\
-                <tr>\
-                    <th class=\\"tdLeft resourceStudentsAccessChart\\">Resource</th>";\
-                    for (let prop in axisX){\
-                      str += "<th title=\\"" + prop + "\\" class=\\"tdCenter resourceStudentsAccessChart student\\">" + prop + "</th>";\
-                    };\
-        str += "</tr>\
-            </thead>\
-            <tbody style=\'max-height:"+height+"px\'>";\
-        let maxVal = 0;\
-        let secMaxVal = 0;\
-        for (let i = 0; i < labels.length; i++) {\
-          for (let prop in axisX){\
-            let val = ((undefined!==values[i][prop])?values[i][prop]:0);\
-            if (val > maxVal) {\
-              maxVal = val;\
-            } else if (val > secMaxVal){\
-              secMaxVal = val;\
-            }\
-          };\
-        };\
-        for (let i = 0; i < labels.length; i++) {\
-            str += "<tr>";\
-            str += "<td title=\\"" + labels[i].replace(\'"\',\'"\') + "\\" class=\\"tdLeft resourceStudentsAccessChart resource\\">" + labels[i] + "</td>";\
-            for (let prop in axisX){\
-              let val = ((undefined!==values[i][prop])?values[i][prop]:0);\
-              str += "<td style=\\"background:"+gradientHM(maxVal,secMaxVal,val)+"\\" class=\\"tdCenter resourceStudentsAccessChart student\\">" + val.toLocaleString() + "</td>";\
-            };\
-            str += "</tr>"; };\
-        str += "</tbody>\
-            </table>";\
-        widget.insertAdjacentHTML("afterbegin", str);\
-      }',
-      sortBy: "key",
-      order: "ASC",
-      field: "context",
-      calcFn: { fn: "countgroup", field: "fullName" },
-      filter: { fullName: ["NOT BEGIN (undefined)"] },
-    },
-    {
-      width: "475",
-      height: "500",
-      title: "Student Participation",
-      tooltip:
-        "Total number of interactions between each member of the course and all the resources, including seeing the course.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{\
-        let interactions = dashb.widgets[2].data.values[0];\
-        let widget = document.getElementById("content_%ID%");\
-        let labels = %LABELS%;\
-        let values = %VALUES%;\
-        let height = %HEIGHT% - 100;\
-        let str = "<table>\
-            <thead>\
-                <tr>\
-                    <th  class=\\"tdLeft studentParticipation student\\">Student</th>\
-                    <th class=\\"tdCenter studentParticipation\\">%</th>\
-                    <th class=\\"tdCenter studentParticipation\\">#</th>\
-                </tr>\
-            </thead>\
-            <tbody style=\'max-height:"+height+"px\'>";\
-        for (let i = 0; i < labels.length; i++) {\
-            let percent = (values[i]*100)/interactions;\
-            str += "<tr>";\
-            str += "<td class=\\"tdLeft studentParticipation student\\">" + labels[i] + "</td>";\
-            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " studentParticipation\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td class=\\"tdCenter studentParticipation\\">" + values[i] + "</td>";\
-            str += "</tr>"; };\
-        str += "</tbody>\
-            </table>";\
-        widget.insertAdjacentHTML("afterbegin", str);\
-      }',
-      sortBy: "key",
-      order: "ASC",
-      field: "fullName",
-    },
-    {
-      width: "475",
-      height: "500",
-      title: "Members last access",
-      tooltip:
-        "List of each member of the course and the last time they accessed the course.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{\
-        let interactions = dashb.widgets[2].data.values[0];\
-        let widget = document.getElementById("content_%ID%");\
-        let labels = %LABELS%;\
-        let values = %VALUES%;\
-        let height = %HEIGHT% - 100;\
-        let str = "<table>\
-            <thead>\
-                <tr>\
-                    <th class=\\"tdLeft lastAccess\\">Student</th>\
-                    <th class=\\"tdCenter lastAccess\\">Last Access</th>\
-                </tr>\
-            </thead>\
-            <tbody style=\'max-height:"+height+"px\'>";\
-        for (let i = 0; i < labels.length; i++) {\
-          if (labels[0].length){\
-            let wDate = new Date(values[i]*1000).toLocaleString();\
-            let percent = (values[i]*100)/interactions;\
-            let wDateDiff = new Date().diffTimestamp(values[i]);\
-            let wDateStr = wDateDiff.days+" dies "+wDateDiff.hours+" hores <br />"+wDateDiff.minutes+" minuts, "+Math.floor(wDateDiff.seconds)+" segons";\
-            str += "<tr>";\
-            str += "<td class=\\"tdLeft lastAccess\\">" + labels[i] + "</td>";\
-            str += "<td class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + " lastAccess\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
-            str += "</tr>"; };\
-          }\
-          str += "</tbody>\
-            </table>";\
-          widget.insertAdjacentHTML("afterbegin", str);\
-        }',
-      field: "fullName",
-      calcFn: { fn: "lastconnection", field: "timestamp" },
-    },
-    {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\
-      <h2>3. Resources:</h2>\
-      <p>Information on interactions with resources</p>\
+      <h2>5. MUSIC SCORE:</h2>\
+      <p>Información sobre las distribuciones de Music Score por escuela</p>\
       </div>',
       mode: WIDGET_TEXT,
     },
     {
-      width: "500",
-      height: "500",
-      title: "Last interaction with a Resource",
-      tooltip:
-        "List of each resource for the course and tand the last time any member has interacted with it.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{\
-        let interactions = dashb.widgets[2].data.values[0];\
-        let widget = document.getElementById("content_%ID%");\
-        let labels = %LABELS%;\
-        let values = %VALUES%;\
-        let height = %HEIGHT% - 100;\
-        let str = "<table>\
-            <thead>\
-                <tr>\
-                    <th class=\\"tdLeft lastInteractionResource\\">Resource</th>\
-                    <th class=\\"tdCenter lastInteractionResource\\">Last Access</th>\
-                </tr>\
-            </thead>\
-            <tbody style=\'max-height:"+height+"px\'>";\
-        for (let i = 0; i < labels.length; i++) {\
-          if (labels[0].length){\
-            let wDate = new Date(values[i]*1000).toLocaleString();\
-            let percent = (values[i]*100)/interactions;\
-            let wDateDiff = new Date().diffTimestamp(values[i]);\
-            let wDateStr = wDateDiff.days+" dies "+wDateDiff.hours+" hores <br />"+wDateDiff.minutes+" minuts, "+Math.floor(wDateDiff.seconds)+" segons";\
-            str += "<tr>";\
-            str += "<td class=\\"tdLeft lastInteractionResource\\">" + labels[i] + "</td>";\
-            str += "<td class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + " lastInteractionResource\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
-            str += "</tr>"; };\
-          }\
-          str += "</tbody>\
-            </table>";\
-          widget.insertAdjacentHTML("afterbegin", str);\
-        }',
-      field: "context",
-      calcFn: { fn: "lastconnection", field: "timestamp" },
+      html:
+        '<div class="widget section" style="flex-basis: 100%;">\
+      <h2>6. TAGS:</h2>\
+      <p>Información sobre los tags</p>\
+      </div>',
+      mode: WIDGET_TEXT,
     },
     {
-      width: "500",
-      height: "500",
-      title: "Interactions with Resources",
-      tooltip:
-        "List of each resource in a course and the number of interactions, including viewing the course",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{\
-        let interactions = dashb.widgets[2].data.values[0];\
-        let widget = document.getElementById("content_%ID%");\
-        let labels = %LABELS%;\
-        let values = %VALUES%;\
-        let height = %HEIGHT% - 100;\
-        let str = "<table>\
-            <thead>\
-                <tr>\
-                    <th class=\\"tdLeft\\">Resource</th>\
-                    <th class=\\"tdCenter interactionResource\\">%</th>\
-                    <th class=\\"tdCenter interactionResource\\">#</th>\
-                </tr>\
-            </thead>\
-            <tbody style=\'max-height:"+height+"px\'>";\
-        for (let i = 0; i < labels.length; i++) {\
-            let percent = (values[i]*100)/interactions;\
-            str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionResource\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td class=\\"tdRight interactionResource\\">" + values[i] + "</td>";\
-            str += "</tr>"; };\
-        str += "</tbody>\
-            </table>";\
-        widget.insertAdjacentHTML("afterbegin", str);\
-      }',
-      sortBy: "key",
-      order: "ASC",
-      field: "context",
-    },
-    {
-      width: "500",
-      height: "500",
-      title: "Interactions with Components",
-      tooltip:
-        "List of different resources used in the course (such as wikis or URL) and the total number of interactions.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{\
-        let interactions = dashb.widgets[2].data.values[0];\
-        let widget = document.getElementById("content_%ID%");\
-        let labels = %LABELS%;\
-        let values = %VALUES%;\
-        let height = %HEIGHT% - 100;\
-        let str = "<table>\
-            <thead>\
-                <tr>\
-                    <th class=\\"tdLeft\\">Component</th>\
-                    <th class=\\"tdCenter interactionComponents\\">%</th>\
-                    <th class=\\"tdCenter interactionComponents\\">#</th>\
-                </tr>\
-            </thead>\
-            <tbody style=\'max-height:"+height+"px\'>";\
-        for (let i = 0; i < labels.length; i++) {\
-            let percent = (values[i]*100)/interactions;\
-            str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionComponents\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td class=\\"tdRight interactionComponents\\">" + values[i] + "</td>";\
-            str += "</tr>"; };\
-        str += "</tbody>\
-            </table>";\
-        widget.insertAdjacentHTML("afterbegin", str);\
-      }',
-      sortBy: "key",
-      order: "ASC",
-      field: "component",
-    },
-    {
-      width: "500",
-      height: "500",
-      title: "Interactions with Events",
-      tooltip:
-        "List of different interactions performed on the course by its users and the count for each.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{\
-        let interactions = dashb.widgets[2].data.values[0];\
-        let widget = document.getElementById("content_%ID%");\
-        let labels = %LABELS%;\
-        let values = %VALUES%;\
-        let height = %HEIGHT% - 100;\
-        let str = "<table>\
-            <thead>\
-                <tr>\
-                    <th class=\\"tdLeft\\">Event</th>\
-                    <th class=\\"tdCenter interactionEvents\\">%</th>\
-                    <th class=\\"tdCenter interactionEvents\\">#</th>\
-                </tr>\
-            </thead>\
-            <tbody style=\'max-height:"+height+"px\'>";\
-        for (let i = 0; i < labels.length; i++) {\
-            let percent = (values[i]*100)/interactions;\
-            str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionEvents\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td class=\\"tdRight interactionEvents\\">" + values[i] + "</td>";\
-            str += "</tr>"; };\
-        str += "</tbody>\
-            </table>";\
-        widget.insertAdjacentHTML("afterbegin", str);\
-      }',
-      sortBy: "key",
-      order: "ASC",
-      field: "event",
-    },
-    {
-      width: "500",
-      height: "500",
-      title: "Interactions with context",
-      tooltip:
-        "For each element in the course that can be interacted with, it shows the total number of interactions generated from the users.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{\
-        let interactions = dashb.widgets[2].data.values[0];\
-        let widget = document.getElementById("content_%ID%");\
-        let labels = %LABELS%;\
-        let values = %VALUES%;\
-        let height = %HEIGHT% - 100;\
-        let str = "<table>\
-            <thead>\
-                <tr>\
-                    <th class=\\"tdLeft\\">Context</th>\
-                    <th class=\\"tdCenter interactionContext\\">%</th>\
-                    <th class=\\"tdCenter interactionContext\\">#</th>\
-                </tr>\
-            </thead>\
-            <tbody style=\'max-height:"+height+"px\'>";\
-        for (let i = 0; i < labels.length; i++) {\
-            let percent = (values[i]*100)/interactions;\
-            str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionContext\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td class=\\"tdRight interactionContext\\">" + values[i] + "</td>";\
-            str += "</tr>"; };\
-        str += "</tbody>\
-            </table>";\
-        widget.insertAdjacentHTML("afterbegin", str);\
-      }',
-      sortBy: "key",
-      order: "ASC",
-      field: "context",
-      filter: { context: ["NOT BEGIN (Curs:)"] },
-    },
-    {
-      width: "500",
-      height: "500",
-      title: "Interactions with URL",
-      tooltip:
-        "For each URL in the course that can be interacted, it shows the number of interactions generated from the users.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{\
-        let interactions = dashb.widgets[2].data.values[0];\
-        let widget = document.getElementById("content_%ID%");\
-        let labels = %LABELS%;\
-        let values = %VALUES%;\
-        let height = %HEIGHT% - 100;\
-        let str = "<table>\
-            <thead>\
-                <tr>\
-                    <th class=\\"tdLeft\\">URL</th>\
-                    <th class=\\"tdCenter interactionURL\\">%</th>\
-                    <th class=\\"tdCenter interactionURL\\">#</th>\
-                </tr>\
-            </thead>\
-            <tbody style=\'max-height:"+height+"px\'>";\
-        for (let i = 0; i < labels.length; i++) {\
-            let percent = (values[i]*100)/interactions;\
-            str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionURL\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td class=\\"tdRight interactionURL\\">" + values[i] + "</td>";\
-            str += "</tr>"; };\
-        str += "</tbody>\
-            </table>";\
-        widget.insertAdjacentHTML("afterbegin", str);\
-      }',
-      sortBy: "key",
-      order: "ASC",
-      field: "context",
-      filter: { component: ["IN (URL)"] },
-    },
-    {
-      width: "475",
-      height: "500",
-      title: "Interactions with Pages",
-      tooltip:
-        "For each Page resource in the course, it shows the number of interactions generated from the users.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{\
-        let interactions = dashb.widgets[2].data.values[0];\
-        let widget = document.getElementById("content_%ID%");\
-        let labels = %LABELS%;\
-        let values = %VALUES%;\
-        let height = %HEIGHT% - 100;\
-        let str = "<table>\
-            <thead>\
-                <tr>\
-                    <th class=\\"tdLeft\\">Page</th>\
-                    <th class=\\"tdCenter interactionPages\\">%</th>\
-                    <th class=\\"tdCenter interactionPages\\">#</th>\
-                </tr>\
-            </thead>\
-            <tbody style=\'max-height:"+height+"px\'>";\
-        for (let i = 0; i < labels.length; i++) {\
-            let percent = (values[i]*100)/interactions;\
-            str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionPages\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td class=\\"tdRight interactionPages\\">" + values[i] + "</td>";\
-            str += "</tr>"; };\
-        str += "</tbody>\
-            </table>";\
-        widget.insertAdjacentHTML("afterbegin", str);\
-      }',
-      sortBy: "key",
-      order: "ASC",
-      field: "context",
-      filter: { component: ["IN (Pàgina)"] },
-    },
-    {
-      width: "475",
-      height: "500",
-      title: "Interactions with LTI Tool",
-      tooltip:
-        "For each Learning Tool Interoperability resource in the course, it shows the amount of interactions have generated from the users.",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        '{\
-        let interactions = dashb.widgets[2].data.values[0];\
-        let widget = document.getElementById("content_%ID%");\
-        let labels = %LABELS%;\
-        let values = %VALUES%;\
-        let height = %HEIGHT% - 100;\
-        let str = "<table>\
-            <thead>\
-                <tr>\
-                    <th class=\\"tdLeft\\">LTI Tool</th>\
-                    <th class=\\"tdCenter interactionLTI\\">%</th>\
-                    <th class=\\"tdCenter interactionLTI\\">#</th>\
-                </tr>\
-            </thead>\
-            <tbody style=\'max-height:"+height+"px\'>";\
-        for (let i = 0; i < labels.length; i++) {\
-            let percent = (values[i]*100)/interactions;\
-            str += "<tr>";\
-            str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-            str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionLTI\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-            str += "<td class=\\"tdRight interactionLTI\\">" + values[i] + "</td>";\
-            str += "</tr>"; };\
-        str += "</tbody>\
-            </table>";\
-        widget.insertAdjacentHTML("afterbegin", str);\
-      }',
-      sortBy: "key",
-      order: "ASC",
-      field: "context",
-      filter: { component: ["IN (Eina ext LTI)"] },
-    },
-    {
-      width: "1062",
-      height: "300",
-      title: "Components",
-      tooltip: "Pie plot describing the amount of elements the course has.",
-      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
-      srcCSS: "",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        "var canvas = document.createElement('canvas');\
-            canvas.id = 'canvas_%ID%';\
-            canvas.width = '%WIDTH%';\
-            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);new Chart(document.getElementById('canvas_%ID%').getContext('2d'), {type: 'pie',options:{tooltips: {bodyFontColor:'#FFFFFF',bodyFontSize:14,bodyFontStyle:'bold',caretSize:0,xPadding:0,yPadding:0},responsive: false,maintainAspectRatio:false,legend:{position:'left'}},data: {labels: %LABELS%,datasets: [{data: %VALUES%,backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']}]}});",
-      field: "component",
+      html:
+        '<div class="widget section" style="flex-basis: 100%;">\
+      <h2>7. Autocorrelación lineal:</h2>\
+      <p>Información sobre la autocorrelación lineal</p>\
+      </div>',
+      mode: WIDGET_TEXT,
     },
   ];
 
