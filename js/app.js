@@ -1202,6 +1202,38 @@ function renderDefaultDashboard() {
     //         canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);new Chart(document.getElementById('canvas_%ID%').getContext('2d'), {type: 'pie',options:{tooltips: {bodyFontColor:'#FFFFFF',bodyFontSize:14,bodyFontStyle:'bold',caretSize:0,xPadding:0,yPadding:0},responsive: false,maintainAspectRatio:false,legend:{position:'left'}},data: {labels: %LABELS%,datasets: [{data: %VALUES%,backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']}]}});",
     //   field: "component",
     // },
+    {
+      html:
+        '<div class="widget section" style="flex-basis: 100%;">\
+      <h2>4. Distribución de respuestas para Comunicación Oral:</h2>\
+      <p>Información sobre las respuestas para la Comunicación Oral</p>\
+      </div>',
+      mode: WIDGET_TEXT,
+    },
+    {
+      html:
+        '<div class="widget section" style="flex-basis: 100%;">\
+      <h2>5. MUSIC SCORE:</h2>\
+      <p>Información sobre las distribuciones de Music Score por escuela</p>\
+      </div>',
+      mode: WIDGET_TEXT,
+    },
+    {
+      html:
+        '<div class="widget section" style="flex-basis: 100%;">\
+      <h2>6. TAGS:</h2>\
+      <p>Información sobre los tags</p>\
+      </div>',
+      mode: WIDGET_TEXT,
+    },
+    {
+      html:
+        '<div class="widget section" style="flex-basis: 100%;">\
+      <h2>7. Autocorrelación lineal:</h2>\
+      <p>Información sobre la autocorrelación lineal</p>\
+      </div>',
+      mode: WIDGET_TEXT,
+    },
   ];
 
   widgets = widgets.concat(widgetsTemplate);
