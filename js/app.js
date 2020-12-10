@@ -5,8 +5,51 @@
  * @copyright 2020 La Salle Campus Barcelona, Universitat Ramon Llull https://www.salleurl.edu
  * @author Daniel Amo
  * @author Pablo Gómez
+ * @author Nicole Marie Jimenez
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+const COTRAMOKEYS = {
+  FULLDATE: "Marca temporal",
+  CONSENTIMIENTO: " Por todo ello, DOY MI CONSENTIMIENTO:",
+  DNI: "DNI o Pasaporte",
+  TAG: "TAG",
+  CENTER: "Center",
+  INDICADOR_1A:
+    "Indicador 1: Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+  INDICADOR_2A:
+    "Indicador 2: Participa de forma activa en los espacios de encuentro del equipo, compartiendo la información, los conocimientos y las experiencias",
+  INDICADOR_3A:
+    "Indicador 3: Colabora en la definición, la organización y distribución de las tareas de grupo.",
+  MAYOR_POS_MEJORA_INDICADOR_A:
+    "Señala el indicador sobre el que percibes mayor posibilidad de mejora: ",
+  PLAN_MEJOR_INDICADOR_A:
+    "Señala un plan de mejora para avanzar en el indicador en el que percibas una mayor debilidad: ",
+  INDICADOR_1B: "Indicador 1: Transmito información relevante.",
+  INDICADOR_2B:
+    "Indicador 2: Las presentaciones están estructuradas, cumpliendo con los requisitos exigidos, si los hubiera.",
+  INDICADOR_3B: "Indicador 3: En mis presentaciones utilizo medios de apoyo.",
+  MAYOR_POS_MEJORA_INDICADOR_B:
+    "Señala el indicador sobre el que percibes mayor posibilidad de mejora: 2",
+  PLAN_MEJOR_INDICADOR_B:
+    "Señala un plan de mejora para avanzar en el indicador en el que percibas una mayor debilidad: 3",
+  ACTIVIDADES_UTILES:
+    "En general, las actividades previstas del curso son útiles.",
+  CAPACIDAD_REALIZACION:
+    "Confío en mi capacidad de realizar exitosamente las actividades establecidas.",
+  METODOS_ENSENANZA:
+    "Los métodos de enseñanza descritos me involucran (enganchan) activamente en el curso.",
+  DISFRUTAR_ACTIVIDAD: "Creo que voy a disfrutar de las actividades del curso.",
+  CAPACIDAD_CALIFICACION:
+    "Me considero capaz de obtener una alta calificación en la actividad.",
+  CONTROL_APRENDIZAJE:
+    "Tengo control sobre cómo aprendo los contenidos del curso/actividad.",
+  PREOCUPACION_PROFESOR:
+    "El/la profesor/a se preocupa por mi desempeño en el curso.",
+  CONOCIMIENTO_FUTURO:
+    "Considero que los conocimientos adquiridos en este curso son importantes para mi futuro.",
+  PROFESOR_AMIGABLE: "El/La profesor/a es amigable/comprensible.",
+};
 
 var color4 = "#cc2000";
 var color3 = "#e94020";
@@ -235,7 +278,12 @@ function rlffOnLoad(e, error) {
   let subHeader = document.getElementById("subheader");
   let menuBar = document.getElementById("menu-bar");
   let menuLeft = document.getElementById("menu-left");
-  let subjectName = dashb.msldb.logs[0].context.split("_")[1];
+  let subjectName;
+  try {
+    subjectName = dashb.msldb.logs[0].context.split("_")[1];
+  } catch (e) {
+    subjectName = "";
+  }
 
   subHeader.style.display = "flex";
   menuBar.style.display = "block";
@@ -1585,58 +1633,123 @@ function updateWidget(id, form) {
 }
 
 function schema(item) {
-  // if first day of month is < 10 then add 0
-  if ("/" === item[0].substr(1, 1)) {
-    item[0] = "0" + item[0];
-  }
-  let fields = {
-    fullDate: item[0],
-    yearMonthDay:
-      item[0].substr(6, 4) +
-      "" +
-      item[0].substr(3, 2) +
-      "" +
-      item[0].substr(0, 2),
-    yearMonthDayHourMinute:
-      item[0].substr(6, 4) +
-      "" +
-      item[0].substr(3, 2) +
-      "" +
-      item[0].substr(0, 2) +
-      "" +
-      item[0].substr(11, 2) +
-      "" +
-      item[0].substr(14, 2),
-    timestamp:
-      Date.parse(
-        item[0].substr(6, 4) +
-          "-" +
+  let fields;
+  if (item) {
+    if (item.hasOwnProperty(COTRAMOKEYS.FULLDATE)) {
+      // if first day of month is < 10 then add 0
+      if ("/" === item[COTRAMOKEYS.FULLDATE].substr(1, 1)) {
+        item[COTRAMOKEYS.FULLDATE] = "0" + item[COTRAMOKEYS.FULLDATE];
+      }
+      if ("/" === item[COTRAMOKEYS.FULLDATE].substr(4, 1)) {
+        item[COTRAMOKEYS.FULLDATE] =
+          item[COTRAMOKEYS.FULLDATE].substr(0, 3) +
+          "0" +
+          item[COTRAMOKEYS.FULLDATE].substr(3, 15);
+      }
+      fields = {
+        fullDate: item[COTRAMOKEYS.FULLDATE],
+        yearMonthDay:
+          item[COTRAMOKEYS.FULLDATE].substr(6, 4) +
+          "" +
+          item[COTRAMOKEYS.FULLDATE].substr(0, 2) +
+          "" +
+          item[COTRAMOKEYS.FULLDATE].substr(3, 2),
+        yearMonthDayHourMinute:
+          item[COTRAMOKEYS.FULLDATE].substr(6, 4) +
+          "" +
+          item[COTRAMOKEYS.FULLDATE].substr(0, 2) +
+          "" +
+          item[COTRAMOKEYS.FULLDATE].substr(3, 2) +
+          "" +
+          item[COTRAMOKEYS.FULLDATE].substr(11, 2) +
+          "" +
+          item[COTRAMOKEYS.FULLDATE].substr(14, 2),
+        consentimiento:
+          item[COTRAMOKEYS.CONSENTIMIENTO] === "Sí" ||
+          item[COTRAMOKEYS.CONSENTIMIENTO] === "YES"
+            ? true
+            : false,
+        dni: item[COTRAMOKEYS.DNI],
+        tag: item[COTRAMOKEYS.TAG],
+        center: item[COTRAMOKEYS.CENTER],
+        indicador1a: item[COTRAMOKEYS.INDICADOR_1A],
+        indicador2a: item[COTRAMOKEYS.INDICADOR_2A],
+        indicador3a: item[COTRAMOKEYS.INDICADOR_3B],
+        mayorPosMejoraIndicadorA:
+          item[COTRAMOKEYS.MAYOR_POS_MEJORA_INDICADOR_A],
+        planMejoraIndicadorA: item[COTRAMOKEYS.PLAN_MEJOR_INDICADOR_A],
+        indicador1b: item[COTRAMOKEYS.INDICADOR_1B],
+        indicador2b: item[COTRAMOKEYS.INDICADOR_2B],
+        indicador3b: item[COTRAMOKEYS.INDICADOR_3B],
+        mayorPosMejoraIndicadorB:
+          item[COTRAMOKEYS.MAYOR_POS_MEJORA_INDICADOR_B],
+        planMejoraIndicadorB: item[COTRAMOKEYS.PLAN_MEJOR_INDICADOR_B],
+        actividadesUtiles: item[COTRAMOKEYS.ACTIVIDADES_UTILES],
+        capacidadRealizacionAct: item[COTRAMOKEYS.CAPACIDAD_REALIZACION],
+        metodosEnsenanza: item[COTRAMOKEYS.METODOS_ENSENANZA],
+        disfrutarActividades: item[COTRAMOKEYS.DISFRUTAR_ACTIVIDAD],
+        capacidadAltaCalificacion: item[COTRAMOKEYS.CAPACIDAD_CALIFICACION],
+        controlAprendizaje: item[COTRAMOKEYS.CONTROL_APRENDIZAJE],
+        preocupacionProfe: item[COTRAMOKEYS.PREOCUPACION_PROFESOR],
+        conocimientoFuturo: item[COTRAMOKEYS.CONOCIMIENTO_FUTURO],
+        profeAmigable: item[COTRAMOKEYS.PROFESOR_AMIGABLE],
+      };
+    } else if (Object.prototype.hasOwnProperty.call(item, "fullDate")) {
+      fields = item;
+    } else if (item[0]) {
+      // if first day of month is < 10 then add 0
+      if ("/" === item[0].substr(1, 1)) {
+        item[0] = "0" + item[0];
+      }
+      fields = {
+        fullDate: item[0],
+        yearMonthDay:
+          item[0].substr(6, 4) +
+          "" +
           item[0].substr(3, 2) +
-          "-" +
+          "" +
+          item[0].substr(0, 2),
+        yearMonthDayHourMinute:
+          item[0].substr(6, 4) +
+          "" +
+          item[0].substr(3, 2) +
+          "" +
           item[0].substr(0, 2) +
-          "T" +
+          "" +
           item[0].substr(11, 2) +
-          ":" +
-          item[0].substr(14, 2) +
-          ":00"
-      ) / 1000,
-    user: item[1],
-    name: item[1].split(" ")[0],
-    middleName: item[1].split(" ")[item[1].split(" ").length - 2],
-    lastName: item[1].split(" ")[item[1].split(" ").length - 1],
-    affectedUser: item[2],
-    context: item[3],
-    component: item[4],
-    event: item[5],
-    description: item[6],
-    origin: item[7],
-    ip: item[8],
-  };
-
-  fields.fullName =
-    fields.middleName + " " + fields.lastName + ", " + fields.name;
-  fields.fullNameDePersonalized = fields.fullName.dePersonalize();
-
+          "" +
+          item[0].substr(14, 2),
+        timestamp:
+          Date.parse(
+            item[0].substr(6, 4) +
+              "-" +
+              item[0].substr(3, 2) +
+              "-" +
+              item[0].substr(0, 2) +
+              "T" +
+              item[0].substr(11, 2) +
+              ":" +
+              item[0].substr(14, 2) +
+              ":00"
+          ) / 1000,
+        user: item[1],
+        name: item[1].split(" ")[0],
+        middleName: item[1].split(" ")[item[1].split(" ").length - 2],
+        lastName: item[1].split(" ")[item[1].split(" ").length - 1],
+        affectedUser: item[2],
+        context: item[3],
+        component: item[4],
+        event: item[5],
+        description: item[6],
+        origin: item[7],
+        ip: item[8],
+      };
+      fields.fullName =
+        fields.middleName + " " + fields.lastName + ", " + fields.name;
+      fields.fullNameDePersonalized = fields.fullName.dePersonalize();
+    }
+  }
+  console.log(fields);
   return fields;
 }
 

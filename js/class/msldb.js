@@ -76,7 +76,81 @@ class MoodleStandardLogsDataBase {
   }
 
   schema(item) {
-    /*
+    if (item["Marca temporal"]) {
+      return {
+        marcaTemporal: item["Marca temporal"],
+        consentimiento:
+          item[" Por todo ello, DOY MI CONSENTIMIENTO:"] === "Sí"
+            ? true
+            : false,
+        dni: item["DNI o Pasaporte"],
+        tag: item["TAG"],
+        center: item["Center"],
+        indicador1a:
+          item[
+            "Indicador 1: Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos."
+          ],
+        indicador2a:
+          item[
+            "Indicador 2: Participa de forma activa en los espacios de encuentro del equipo, compartiendo la información, los conocimientos y las experiencias"
+          ],
+        indicador3a:
+          item[
+            "Indicador 3: Colabora en la definición, la organización y distribución de las tareas de grupo."
+          ],
+        mayorPosMejoraIndicadorA:
+          item[
+            "Señala el indicador sobre el que percibes mayor posibilidad de mejora: "
+          ],
+        planMejoraIndicadorA:
+          item[
+            "Señala un plan de mejora para avanzar en el indicador en el que percibas una mayor debilidad: "
+          ],
+        indicador1b: item["Indicador 1: Transmito información relevante."],
+        indicador2b:
+          item[
+            "Indicador 2: Las presentaciones están estructuradas, cumpliendo con los requisitos exigidos, si los hubiera."
+          ],
+        indicador3b:
+          item["Indicador 3: En mis presentaciones utilizo medios de apoyo."],
+        mayorPosMejoraIndicadorB:
+          item[
+            "Señala el indicador sobre el que percibes mayor posibilidad de mejora: 2"
+          ],
+        planMejoraIndicadorB:
+          item[
+            "Señala un plan de mejora para avanzar en el indicador en el que percibas una mayor debilidad: 3"
+          ],
+        actividadesUtiles:
+          item["En general, las actividades previstas del curso son útiles."],
+        capacidadRealizacionAct:
+          item[
+            "Confío en mi capacidad de realizar exitosamente las actividades establecidas."
+          ],
+        metodosEnsenanza:
+          item[
+            "Los métodos de enseñanza descritos me involucran (enganchan) activamente en el curso."
+          ],
+        distrutarActividades:
+          item["Creo que voy a disfrutar de las actividades del curso."],
+        capacidadAltaCalificacion:
+          item[
+            "Me considero capaz de obtener una alta calificación en la actividad."
+          ],
+        controlAprendizaje:
+          item[
+            "Tengo control sobre cómo aprendo los contenidos del curso/actividad."
+          ],
+        preocupacionProfe:
+          item["El/la profesor/a se preocupa por mi desempeño en el curso."],
+        conocimientoFuture:
+          item[
+            "Considero que los conocimientos adquiridos en este curso son importantes para mi futuro."
+          ],
+        profeAmigable: item["El/La profesor/a es amigable/comprensible."],
+      };
+    } else {
+      /*
             Standard json exported log fields:
                 fullDate
                 user
@@ -93,34 +167,35 @@ class MoodleStandardLogsDataBase {
                 yearMonthDayHourMinute
 
         */
-    return {
-      fullDate: item[0],
-      yearMonthDay:
-        item[0].substr(6, 4) +
-        "" +
-        item[0].substr(3, 2) +
-        "" +
-        item[0].substr(0, 2),
-      yearMonthDayHourMinute:
-        item[0].substr(6, 4) +
-        "" +
-        item[0].substr(3, 2) +
-        "" +
-        item[0].substr(0, 2) +
-        "" +
-        item[0].substr(11, 2) +
-        "" +
-        item[0].substr(14, 2),
-      timestamp: Date.parse(item[0]) / 1000,
-      user: item[1],
-      affectedUser: item[2],
-      context: item[3],
-      component: item[4],
-      event: item[5],
-      description: item[6],
-      origin: item[7],
-      ip: item[8],
-    };
+      return {
+        fullDate: item[0],
+        yearMonthDay:
+          item[0].substr(6, 4) +
+          "" +
+          item[0].substr(3, 2) +
+          "" +
+          item[0].substr(0, 2),
+        yearMonthDayHourMinute:
+          item[0].substr(6, 4) +
+          "" +
+          item[0].substr(3, 2) +
+          "" +
+          item[0].substr(0, 2) +
+          "" +
+          item[0].substr(11, 2) +
+          "" +
+          item[0].substr(14, 2),
+        timestamp: Date.parse(item[0]) / 1000,
+        user: item[1],
+        affectedUser: item[2],
+        context: item[3],
+        component: item[4],
+        event: item[5],
+        description: item[6],
+        origin: item[7],
+        ip: item[8],
+      };
+    }
   }
 
   /**
@@ -145,10 +220,18 @@ class MoodleStandardLogsDataBase {
     let self = this;
     reader.onload = function (e) {
       try {
-        JSON.parse(e.target.result)[0].forEach((item) => {
-          // no transformation, logs will contain arrays of data
-          logs[logs.length] = item;
-        });
+        let jsonRes = JSON.parse(e.target.result);
+        if (!jsonRes[0]["Marca temporal"]) {
+          jsonRes[0].forEach((item) => {
+            // no transformation, logs will contain arrays of data
+            logs[logs.length] = item;
+          });
+        } else {
+          jsonRes.forEach((item) => {
+            // no transformation, logs will contain arrays of data
+            logs[logs.length] = item;
+          });
+        }
         self.init();
         e.fileName = file.name;
         callbackLoad(e, null);
@@ -229,6 +312,9 @@ class MoodleStandardLogsDataBase {
           // schema user callback
           rowSchema = this._schema(row);
         }
+      } else {
+        // schema user callback
+        rowSchema = this._schema(row);
       }
       return rowSchema;
     });
