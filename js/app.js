@@ -179,7 +179,7 @@ var dashb = new Dashboard({
   },
   db: {
     schema: schema,
-    filters: filters,
+    //filters: filters,
     widgetFilter: {
       yearMonthDay: ["BETWEENEQ (" + dateToYMD(365) + "," + dateToYMD(0) + ")"],
     },
