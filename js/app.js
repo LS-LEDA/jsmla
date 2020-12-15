@@ -290,7 +290,7 @@ function rlffOnLoad(e, error) {
   menuLeft.style.display = "flex";
   dropArea.style.display = "none";
   logLabel.innerHTML = "Log: <b>" + e.fileName + "</b>";
-  document.title = subjectName + " | Moodle Log Analytics";
+  document.title = subjectName + " | COTRAMO Log Analytics";
 
   renderDefaultDashboard();
   // }

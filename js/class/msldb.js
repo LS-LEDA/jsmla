@@ -557,7 +557,6 @@ class MoodleStandardLogsDataBase {
     calcFn = { fn: "count", field: undefined }
   ) {
     let lav = {};
-
     // if field set then extract key/value, else return logs count
     if (undefined !== field) {
       let labels;
