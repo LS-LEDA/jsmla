@@ -696,17 +696,11 @@ function renderDefaultDashboard() {
       snippet:
           "var labels = %LABELS%;\
           var values = %VALUES%;\
-          var realLabels = [];\
-          realLabels[0] = labels[0];\
-          realLabels[1] = labels[1];\
-          var realValues = [];\
-          realValues[0] = values[0];\
-          realValues[1] = values[1];\
           var canvas = document.createElement('canvas');\
               canvas.id = 'canvas_%ID%';\
               canvas.width = '%WIDTH%';\
-              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);new Chart(document.getElementById('canvas_%ID%').getContext('2d'), {type: 'pie',options:{tooltips: {bodyFontColor:'#FFFFFF',bodyFontSize:14,bodyFontStyle:'bold',caretSize:0,xPadding:0,yPadding:0},responsive: false,maintainAspectRatio:false,legend:{position:'left'}},data: {labels: realLabels,datasets: [{data: realValues,backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']}]}});",
-      field: "tag",
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);new Chart(document.getElementById('canvas_%ID%').getContext('2d'), {type: 'pie',options:{tooltips: {bodyFontColor:'#FFFFFF',bodyFontSize:14,bodyFontStyle:'bold',caretSize:0,xPadding:0,yPadding:0},responsive: false,maintainAspectRatio:false,legend:{position:'left'}},data: {labels: labels,datasets: [{data: values,backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']}]}});",
+      field: "center",
       filter: { tag: ["NOT BEGIN (undefined)"] },
     },
     // {
@@ -1824,7 +1818,6 @@ function schema(item) {
       fields.fullNameDePersonalized = fields.fullName.dePersonalize();
     }
   }
-  console.log(fields);
   return fields;
 }
 
