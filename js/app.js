@@ -6,6 +6,7 @@
  * @author Daniel Amo
  * @author Pablo Gómez
  * @author Nicole Marie Jimenez
+ * @author Sandra Cea Torrescassana
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -682,6 +683,25 @@ function renderDefaultDashboard() {
       <p>Información sobre el número de alumnos por escuela</p>\
       </div>',
       mode: WIDGET_TEXT,
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "Distribución de tipo de alumnos",
+      tooltip:
+          "Gráfico circular que describe la distribución por tipo de estudiante",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var labels = %LABELS%;\
+          var values = %VALUES%;\
+          var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);new Chart(document.getElementById('canvas_%ID%').getContext('2d'), {type: 'pie',options:{tooltips: {bodyFontColor:'#FFFFFF',bodyFontSize:14,bodyFontStyle:'bold',caretSize:0,xPadding:0,yPadding:0},responsive: false,maintainAspectRatio:false,legend:{position:'left'}},data: {labels: labels,datasets: [{data: values,backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']}]}});",
+      field: "center",
+      filter: { tag: ["NOT BEGIN (undefined)"] },
     },
     // {
     //   width: "1012",
@@ -1834,7 +1854,6 @@ function schema(item) {
       fields.fullNameDePersonalized = fields.fullName.dePersonalize();
     }
   }
-  console.log(fields);
   return fields;
 }
 
