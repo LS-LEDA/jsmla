@@ -894,6 +894,42 @@ function renderDefaultDashboard() {
       </div>',
       mode: WIDGET_TEXT,
     },
+    {
+      width: "1062",
+      height: "300",
+      title: "TW1",
+      tooltip:
+        "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);new Chart(document.getElementById('canvas_%ID%').getContext('2d'), {type: 'bar',options:{legend:{position:'left'}},data: {labels: %LABELS%,datasets: [{data: %VALUES%,backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']}]}});",
+      field: "indicador1a",
+      filter: { indicador1a: ["NOT BEGIN (undefined)"] },
+      calcFn: { fn: "countmultiple", field: "tag" },
+      order: "ASC",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "Indicador a mejorar",
+      tooltip:
+        "Gráfico circular que describe la distribución de las respuestas por indicador",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);new Chart(document.getElementById('canvas_%ID%').getContext('2d'), {type: 'pie',options:{tooltips: {bodyFontColor:'#FFFFFF',bodyFontSize:14,bodyFontStyle:'bold',caretSize:0,xPadding:0,yPadding:0},responsive: false,maintainAspectRatio:false,legend:{position:'left'}},data: {labels: %LABELS%,datasets: [{data: %VALUES%,backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']}]}});",
+      field: "indicador1a",
+      filter: { indicador1a: ["NOT BEGIN (undefined)"] },
+    },
     // {
     //   width: "500",
     //   height: "500",
