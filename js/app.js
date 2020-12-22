@@ -278,6 +278,7 @@ function rlffOnLoad(e, error) {
   let subHeader = document.getElementById("subheader");
   let menuBar = document.getElementById("menu-bar");
   let menuLeft = document.getElementById("menu-left");
+  let dash = document.getElementById("dashboard");
   let subjectName;
   try {
     subjectName = dashb.msldb.logs[0].context.split("_")[1];
@@ -287,8 +288,9 @@ function rlffOnLoad(e, error) {
 
   subHeader.style.display = "flex";
   menuBar.style.display = "block";
-  menuLeft.style.display = "flex";
+  menuLeft.style.display = "none";
   dropArea.style.display = "none";
+  dash.style.marginLeft = "0";
   logLabel.innerHTML = "Log: <b>" + e.fileName + "</b>";
   document.title = subjectName + " | Moodle Log Analytics";
 
