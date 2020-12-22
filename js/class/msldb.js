@@ -447,6 +447,45 @@ class MoodleStandardLogsDataBase {
    * @param {string} limit - The limit value.
    * @return {array} The countified labels value.
    */
+  labelsCountMultiple(
+    field,
+    groupField,
+    sortBy = "value",
+    order = "DESC",
+    limit = undefined
+  ) {
+    let labels = {};
+    let newLabels = new Array();
+
+    // count duplicates
+    this._logs.forEach(function (obj) {
+      labels[obj[field]] = (labels[obj[field]] || 0) + 1;
+    });
+
+    // new dataset is {key:'', value:['Law', 0]}
+    for (var prop in labels) {
+      newLabels.push({ key: prop, value: [labels[prop]] });
+    }
+
+    // sort
+    labels = this.sort(newLabels, sortBy, order);
+
+    // limit results
+    if (undefined !== limit) {
+      labels.length = limit;
+    }
+    return labels;
+  }
+
+  /**
+   * Get the countified labels of the dataset value.
+   * @param {string} field - The field value.
+   * @param {string} groupField - The group field value.
+   * @param {string} sortBy - The field to sortBy value.
+   * @param {string} order - The order value.
+   * @param {string} limit - The limit value.
+   * @return {array} The countified labels value.
+   */
   labelsCountGroup(
     field,
     groupField = "fullDate",
@@ -579,6 +618,15 @@ class MoodleStandardLogsDataBase {
         // group by field and set values to: last connection
         case "lastconnection":
           labels = this.labelsLastInteraction(
+            field,
+            calcFn.field,
+            sortBy,
+            order,
+            limit
+          );
+          break;
+        case "countmultiple":
+          labels = this.labelsCountMultiple(
             field,
             calcFn.field,
             sortBy,
