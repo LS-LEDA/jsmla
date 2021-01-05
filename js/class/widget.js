@@ -49,7 +49,7 @@ class Widget
             limit:undefined,
             calcFn:{fn:"count", field:undefined},
             filter:undefined,
-
+            dsLabels:undefined,
             callback:"editWidget",
 
             srcJS:undefined,
@@ -101,6 +101,15 @@ class Widget
         // import js and css content if needed
         this.loadJS();
         this.loadCSS();
+    }
+
+    /**
+     * Get the widget dataset labels value.
+     * @return {string} The dataset labels.
+     */
+    get dsLabels()
+    {
+        return this._dsLabels;
     }
 
     /**
@@ -333,6 +342,7 @@ class Widget
                 .replace(new RegExp(this._delimiter+"WIDTH"+this._delimiter, 'g'), this._width*this._size)
                 .replace(new RegExp(this._delimiter+"HEIGHT"+this._delimiter, 'g'), this._height*this._size)
                 .replace(new RegExp(this._delimiter+"LABELS"+this._delimiter, 'g'), JSON.stringify(this._data.labels))
+                .replace(new RegExp(this._delimiter+"DS_LABEL"+this._delimiter, 'g'), JSON.stringify(this._data.dsLabels))
                 .replace(new RegExp(this._delimiter+"VALUES"+this._delimiter, 'g'), JSON.stringify(this._data.values))
                 .replace(new RegExp(this._delimiter+"COUNT"+this._delimiter, 'g'), (0<this._data.values.length)?this._data.values.reduce(function (total, num) { return total + num;}):this._data.values);
         }

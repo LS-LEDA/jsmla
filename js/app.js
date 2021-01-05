@@ -668,6 +668,7 @@ function renderDefaultDashboard() {
                   labels: %LABELS%,\
                   datasets: [\
                     {\
+                      label: %DS_LABEL%,\
                       borderColor: 'rgb(255, 99, 132)',\
 				              backgroundColor: 'rgb(255, 99, 132)',\
                       fill: false,\
@@ -679,9 +680,10 @@ function renderDefaultDashboard() {
               });",
       field: "indicador1a",
       filter: { indicador1a: ["NOT BEGIN (undefined)"] },
-      calcFn: { fn: "countmultiple", field: "tag" },
+      calcFn: { fn: "countmultiple" },
       order: "ASC",
       sortBy: "key",
+      dsLabels: "tag",
     },
     {
       width: "1062",

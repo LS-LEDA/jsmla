@@ -449,7 +449,6 @@ class MoodleStandardLogsDataBase {
    */
   labelsCountMultiple(
     field,
-    groupField,
     sortBy = "key",
     order = "DESC",
     limit = undefined
@@ -628,7 +627,6 @@ class MoodleStandardLogsDataBase {
         case "countmultiple":
           labels = this.labelsCountMultiple(
             field,
-            calcFn.field,
             sortBy,
             order,
             limit
