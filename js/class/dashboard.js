@@ -232,6 +232,7 @@ class Dashboard {
           );
           widget.data.labels[widget.data.labels.length] = lvs.labels;
           widget.data.values[widget.data.values.length] = lvs.values;
+          // TODO: filter out the data by its dsLabels and return the array of dataset labels
         });
       } else {
         this._msldb.filter(widget.filter);
