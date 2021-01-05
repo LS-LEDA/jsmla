@@ -450,7 +450,7 @@ class MoodleStandardLogsDataBase {
   labelsCountMultiple(
     field,
     groupField,
-    sortBy = "value",
+    sortBy = "key",
     order = "DESC",
     limit = undefined
   ) {
@@ -462,7 +462,7 @@ class MoodleStandardLogsDataBase {
       labels[obj[field]] = (labels[obj[field]] || 0) + 1;
     });
 
-    // new dataset is {key:'', value:['Law', 0]}
+    // new dataset is {key:'', value: 0}
     for (var prop in labels) {
       newLabels.push({ key: prop, value: [labels[prop]] });
     }
