@@ -647,7 +647,7 @@ function renderDefaultDashboard() {
     {
       width: "1062",
       height: "300",
-      title: "TW1",
+      title: "TW1 - Law",
       tooltip:
         "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
       srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
@@ -670,7 +670,7 @@ function renderDefaultDashboard() {
                   labels: %LABELS%,\
                   datasets: [\
                     {\
-                      label: %DS_LABEL%,\
+                      label: 'Law',\
                       borderColor: 'rgb(255, 99, 132)',\
 				              backgroundColor: 'rgb(255, 99, 132)',\
                       fill: false,\
@@ -681,11 +681,103 @@ function renderDefaultDashboard() {
                 }\
               });",
       field: "indicador1a",
-      filter: { indicador1a: ["NOT BEGIN (undefined)"] },
+      filter: {
+        indicador1a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Law)"],
+      },
       calcFn: { fn: "countmultiple" },
       order: "ASC",
       sortBy: "key",
-      dsLabels: "tag",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "TW1 - Architecture",
+      tooltip:
+        "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Architecture',\
+                      borderColor: 'rgb(255, 99, 132)',\
+				              backgroundColor: 'rgb(255, 99, 132)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "indicador1a",
+      filter: {
+        indicador1a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Architecture)"],
+      },
+      calcFn: { fn: "countmultiple" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "TW1 - Computer Tools",
+      tooltip:
+        "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Computer Tools',\
+                      borderColor: 'rgb(255, 99, 132)',\
+				              backgroundColor: 'rgb(255, 99, 132)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "indicador1a",
+      filter: {
+        indicador1a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Computer Tools)"],
+      },
+      calcFn: { fn: "countmultiple" },
+      order: "ASC",
+      sortBy: "key",
     },
     {
       width: "1062",
