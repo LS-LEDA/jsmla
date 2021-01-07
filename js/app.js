@@ -685,7 +685,7 @@ function renderDefaultDashboard() {
         indicador1a: ["NOT BEGIN (undefined)"],
         tag: ["CONTAINS (Law)"],
       },
-      calcFn: { fn: "countmultiple" },
+      calcFn: { fn: "countpercentage" },
       order: "ASC",
       sortBy: "key",
     },
@@ -716,8 +716,8 @@ function renderDefaultDashboard() {
                   datasets: [\
                     {\
                       label: 'Architecture',\
-                      borderColor: 'rgb(255, 99, 132)',\
-				              backgroundColor: 'rgb(255, 99, 132)',\
+                      borderColor: 'rgb(255, 205, 86)',\
+				              backgroundColor: 'rgb(255, 205, 86)',\
                       fill: false,\
                       lineTension: 0,\
                       data: %VALUES%,\
@@ -730,7 +730,7 @@ function renderDefaultDashboard() {
         indicador1a: ["NOT BEGIN (undefined)"],
         tag: ["CONTAINS (Architecture)"],
       },
-      calcFn: { fn: "countmultiple" },
+      calcFn: { fn: "countpercentage" },
       order: "ASC",
       sortBy: "key",
     },
@@ -761,8 +761,8 @@ function renderDefaultDashboard() {
                   datasets: [\
                     {\
                       label: 'Computer Tools',\
-                      borderColor: 'rgb(255, 99, 132)',\
-				              backgroundColor: 'rgb(255, 99, 132)',\
+                      borderColor: 'rgb(54, 162, 235)',\
+				              backgroundColor: 'rgb(54, 162, 235)',\
                       fill: false,\
                       lineTension: 0,\
                       data: %VALUES%,\
@@ -775,52 +775,52 @@ function renderDefaultDashboard() {
         indicador1a: ["NOT BEGIN (undefined)"],
         tag: ["CONTAINS (Computer Tools)"],
       },
-      calcFn: { fn: "countmultiple" },
+      calcFn: { fn: "countpercentage" },
       order: "ASC",
       sortBy: "key",
     },
-    {
-      width: "1062",
-      height: "300",
-      title: "Indicador a mejorar",
-      tooltip:
-        "Gráfico circular que describe la distribución de las respuestas por indicador",
-      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
-      srcCSS: "",
-      mode: WIDGET_CODE_SNIPPET,
-      snippet:
-        "var canvas = document.createElement('canvas');\
-            canvas.id = 'canvas_%ID%';\
-            canvas.width = '%WIDTH%';\
-            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
-            new Chart(document.getElementById('canvas_%ID%').getContext('2d'), \
-            {type: 'pie',\
-            options: {\
-              tooltips: {bodyFontColor:'#FFFFFF',\
-              bodyFontSize:14,\
-              bodyFontStyle:'bold',\
-              caretSize:0,\
-              xPadding:0,\
-              yPadding:0\
-            },\
-            responsive: false,\
-            maintainAspectRatio:false,\
-            legend: {\
-              position:'left'\
-            }\
-          },\
-          data: {\
-            labels: %LABELS%,\
-            datasets: [\
-              {\
-                data: %VALUES%,\
-                backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']\
-              }\
-            ]\
-          }});",
-      field: "indicador1a",
-      filter: { indicador1a: ["NOT BEGIN (undefined)"] },
-    },
+    // {
+    //   width: "1062",
+    //   height: "300",
+    //   title: "Indicador a mejorar",
+    //   tooltip:
+    //     "Gráfico circular que describe la distribución de las respuestas por indicador",
+    //   srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+    //   srcCSS: "",
+    //   mode: WIDGET_CODE_SNIPPET,
+    //   snippet:
+    //     "var canvas = document.createElement('canvas');\
+    //         canvas.id = 'canvas_%ID%';\
+    //         canvas.width = '%WIDTH%';\
+    //         canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+    //         new Chart(document.getElementById('canvas_%ID%').getContext('2d'), \
+    //         {type: 'pie',\
+    //         options: {\
+    //           tooltips: {bodyFontColor:'#FFFFFF',\
+    //           bodyFontSize:14,\
+    //           bodyFontStyle:'bold',\
+    //           caretSize:0,\
+    //           xPadding:0,\
+    //           yPadding:0\
+    //         },\
+    //         responsive: false,\
+    //         maintainAspectRatio:false,\
+    //         legend: {\
+    //           position:'left'\
+    //         }\
+    //       },\
+    //       data: {\
+    //         labels: %LABELS%,\
+    //         datasets: [\
+    //           {\
+    //             data: %VALUES%,\
+    //             backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']\
+    //           }\
+    //         ]\
+    //       }});",
+    //   field: "indicador1a",
+    //   filter: { indicador1a: ["NOT BEGIN (undefined)"] },
+    // },
     {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\

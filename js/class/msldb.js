@@ -447,7 +447,7 @@ class MoodleStandardLogsDataBase {
    * @param {string} limit - The limit value.
    * @return {array} The countified labels value.
    */
-  labelsCountMultiple(
+  labelsCountPercentage(
     field,
     sortBy = "key",
     order = "DESC",
@@ -461,9 +461,16 @@ class MoodleStandardLogsDataBase {
       labels[obj[field]] = (labels[obj[field]] || 0) + 1;
     });
 
+    // count total
+    let total = 0;
+    for (var prop in labels) {
+      total = total + labels[prop];
+    }
+
     // new dataset is {key:'', value: 0}
     for (var prop in labels) {
-      newLabels.push({ key: prop, value: [labels[prop]] });
+      let newVal = (labels[prop] / total) * 100;
+      newLabels.push({ key: prop, value: [newVal] });
     }
 
     // sort
@@ -624,13 +631,8 @@ class MoodleStandardLogsDataBase {
             limit
           );
           break;
-        case "countmultiple":
-          labels = this.labelsCountMultiple(
-            field,
-            sortBy,
-            order,
-            limit
-          );
+        case "countpercentage":
+          labels = this.labelsCountPercentage(field, sortBy, order, limit);
           break;
       }
 
