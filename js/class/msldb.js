@@ -447,6 +447,51 @@ class MoodleStandardLogsDataBase {
    * @param {string} limit - The limit value.
    * @return {array} The countified labels value.
    */
+  labelsCountPercentage(
+    field,
+    sortBy = "key",
+    order = "DESC",
+    limit = undefined
+  ) {
+    let labels = {};
+    let newLabels = new Array();
+
+    // count duplicates
+    this._logs.forEach(function (obj) {
+      labels[obj[field]] = (labels[obj[field]] || 0) + 1;
+    });
+
+    // count total
+    let total = 0;
+    for (var prop in labels) {
+      total = total + labels[prop];
+    }
+
+    // new dataset is {key:'', value: 0}
+    for (var prop in labels) {
+      let newVal = (labels[prop] / total) * 100;
+      newLabels.push({ key: prop, value: [newVal] });
+    }
+
+    // sort
+    labels = this.sort(newLabels, sortBy, order);
+
+    // limit results
+    if (undefined !== limit) {
+      labels.length = limit;
+    }
+    return labels;
+  }
+
+  /**
+   * Get the countified labels of the dataset value.
+   * @param {string} field - The field value.
+   * @param {string} groupField - The group field value.
+   * @param {string} sortBy - The field to sortBy value.
+   * @param {string} order - The order value.
+   * @param {string} limit - The limit value.
+   * @return {array} The countified labels value.
+   */
   labelsCountGroup(
     field,
     groupField = "fullDate",
@@ -585,6 +630,9 @@ class MoodleStandardLogsDataBase {
             order,
             limit
           );
+          break;
+        case "countpercentage":
+          labels = this.labelsCountPercentage(field, sortBy, order, limit);
           break;
       }
 
