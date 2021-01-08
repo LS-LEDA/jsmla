@@ -1730,7 +1730,7 @@ function schema(item) {
         center: item[COTRAMOKEYS.CENTER],
         indicador1a: item[COTRAMOKEYS.INDICADOR_1A],
         indicador2a: item[COTRAMOKEYS.INDICADOR_2A],
-        indicador3a: item[COTRAMOKEYS.INDICADOR_3B],
+        indicador3a: item[COTRAMOKEYS.INDICADOR_3A],
         mayorPosMejoraIndicadorA:
           item[COTRAMOKEYS.MAYOR_POS_MEJORA_INDICADOR_A],
         planMejoraIndicadorA: item[COTRAMOKEYS.PLAN_MEJOR_INDICADOR_A],
