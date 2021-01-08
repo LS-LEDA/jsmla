@@ -287,7 +287,7 @@ function rlffOnLoad(e, error) {
     subjectName = "";
   }
 
-  subHeader.style.display = "flex";
+  subHeader.style.display = "none";
   menuBar.style.display = "block";
   menuLeft.style.display = "none";
   dropArea.style.display = "none";
