@@ -282,7 +282,7 @@ function rlffOnLoad(e, error) {
   let dash = document.getElementById("dashboard");
   let subjectName;
   try {
-    subjectName = dashb.msldb.logs[0].context.split("_")[1];
+    subjectName = dashb.msldb.logs[0].context.split("_")[1] + " | ";
   } catch (e) {
     subjectName = "";
   }
@@ -293,7 +293,7 @@ function rlffOnLoad(e, error) {
   dropArea.style.display = "none";
   dash.style.marginLeft = "0";
   logLabel.innerHTML = "Log: <b>" + e.fileName + "</b>";
-  document.title = subjectName + " | COTRAMO Log Analytics";
+  document.title = subjectName + "COTRAMO Log Analytics";
 
   renderDefaultDashboard();
   // }
