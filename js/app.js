@@ -406,278 +406,6 @@ function renderDefaultDashboard() {
       field: "tag",
       filter: { tag: ["NOT BEGIN (undefined)"] },
     },
-    // {
-    //   width: 260,
-    //   margin_tooltip: 270,
-    //   height: 200,
-    //   size: 0.5,
-    //   css: ".widget .rowsOnly {font-weight:bold}",
-    //   title: "Total",
-    //   srcJS: "https://canvasjs.com/assets/script/canvasjs.min.js",
-    //   srcCSS: "",
-    //   tooltip:
-    //     "The total number of interactions with every element of a subject has been interacted, including viewing the subject.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").classList.add("rowsOnly");document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-    //   kpi: "",
-    //   counter: true,
-    // },
-    // {
-    //   height: 200,
-    //   margin_tooltip: 210,
-    //   size: 0.5,
-    //   title: "Tasks",
-    //   tooltip:
-    //     "The total number of interactions with all deliveries of a subject.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-    //   field: "event",
-    //   filter: { description: ["CONTAINS (assignment)"] },
-    //   counter: true,
-    // },
-    // {
-    //   height: 200,
-    //   margin_tooltip: 210,
-    //   size: 0.5,
-    //   title: "Files",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   tooltip: "The total number of interactions with all files of a subject.",
-    //   snippet:
-    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-    //   field: "event",
-    //   filter: {
-    //     component: ["IN (Fitxer)"],
-    //     description: ["CONTAINS ('resource' activity)"],
-    //   },
-    //   counter: true,
-    // },
-    // {
-    //   height: 200,
-    //   margin_tooltip: 210,
-    //   size: 0.5,
-    //   title: "Pages",
-    //   tooltip: "The total number of interactions with the pages of a subject.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-    //   field: "component",
-    //   filter: { component: ["BEGIN (Pà)"] },
-    //   counter: true,
-    // },
-    // {
-    //   height: 200,
-    //   margin_tooltip: 210,
-    //   size: 0.5,
-    //   title: "URL",
-    //   tooltip:
-    //     "The total number of interactions with the URL resource of a subject.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-    //   field: "component",
-    //   filter: { component: ["IN (URL)"] },
-    //   counter: true,
-    // },
-    // {
-    //   height: 200,
-    //   margin_tooltip: 210,
-    //   size: 0.5,
-    //   title: "LTI",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   tooltip:
-    //     "The total number of interactions with the Learning Tools Interoperability resources of a subject.",
-    //   snippet:
-    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-    //   field: "component",
-    //   filter: { component: ["CONTAINS (lti)"] },
-    //   counter: true,
-    // },
-    // {
-    //   height: 200,
-    //   margin_tooltip: 210,
-    //   size: 0.5,
-    //   title: "Wiki",
-    //   tooltip: "The total number of interactions with the wikis of a subject.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{let number = "%COUNT%"-0;document.getElementById("rows_%ID%").innerHTML = number.toLocaleString();}',
-    //   field: "component",
-    //   filter: { component: ["CONTAINS (Wiki)"] },
-    //   counter: true,
-    // },
-    // {
-    //   html: '<div style="flex-basis: 100%;"></div>',
-    //   mode: WIDGET_TEXT,
-    // },
-    // {
-    //   visible: false,
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet: "[%LABELS%,%VALUES%]",
-    //   field: "yearMonthDay",
-    //   sortBy: "key",
-    //   filter: { component: ["BEGIN (Pà)"] },
-    // },
-    // {
-    //   visible: false,
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet: "[%LABELS%,%VALUES%]",
-    //   field: "yearMonthDay",
-    //   sortBy: "key",
-    //   filter: { component: ["IN (URL)"] },
-    // },
-    // {
-    //   width: "1012",
-    //   margin_tooltip: 900,
-    //   height: "300",
-    //   title: "Interactions Across Course",
-    //   tooltip:
-    //     "Plot which shows the number of interactions performed across the time defined at the filter section. Each line represents a different kind of resource.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '\
-    //   let labels = %LABELS%;\
-    //   let values = %VALUES%;\
-    //   let dataPoints = new Array();\
-    //   for (let i = 0; i < labels[0].length; i++){\
-    //     dataPoints.push({x:new Date(labels[0][i].substr(0,4), labels[0][i].substr(4,2)-1, labels[0][i].substr(6,2)),y:values[0][i]});\
-    //   };\
-    //   let dataPoints2 = new Array();\
-    //   for (let i = 0; i < labels[1].length; i++){\
-    //     dataPoints2.push({x:new Date(labels[1][i].substr(0,4), labels[1][i].substr(4,2)-1, labels[1][i].substr(6,2)),y:values[1][i]});\
-    //   };\
-    //   let dataPoints3 = new Array();\
-    //   for (let i = 0; i < labels[2].length; i++){\
-    //     dataPoints3.push({x:new Date(labels[2][i].substr(0,4), labels[2][i].substr(4,2)-1, labels[2][i].substr(6,2)),y:values[2][i]});\
-    //   };\
-    //   let dataPoints4 = new Array();\
-    //   for (let i = 0; i < labels[3].length; i++){\
-    //     dataPoints4.push({x:new Date(labels[3][i].substr(0,4), labels[3][i].substr(4,2)-1, labels[3][i].substr(6,2)),y:values[3][i]});\
-    //   };\
-    //   let dataPoints5 = new Array();\
-    //   for (let i = 0; i < labels[4].length; i++){\
-    //     dataPoints5.push({x:new Date(labels[4][i].substr(0,4), labels[4][i].substr(4,2)-1, labels[4][i].substr(6,2)),y:values[4][i]});\
-    //   };\
-    //   document.getElementById("content_%ID%").style.height = (%HEIGHT%-70)+"px";\
-    //   var chart = new CanvasJS.Chart("content_%ID%", {\
-    //     height:%HEIGHT%-70\
-    //     ,animationEnabled: true,\
-    //     title:{\
-    //       text: ""\
-    //     },\
-    //     toolTip: {\
-    //       shared: true\
-    //     },\
-    //     legend: {\
-    //       cursor: "pointer",\
-    //       verticalAlign: "top",\
-    //       itemWidth:150\
-    //     },\
-    //     data: [\
-    //       {\
-    //         type: "line",\
-    //         name: "Total",\
-    //         showInLegend: true,\
-    //         dataPoints: dataPoints\
-    //       },\
-    //       {\
-    //         type: "line",\
-    //         name: "Task",\
-    //         showInLegend: true,\
-    //         dataPoints: dataPoints2\
-    //       },\
-    //       {\
-    //         type: "line",\
-    //         name: "File",\
-    //         showInLegend: true,\
-    //         dataPoints: dataPoints3\
-    //       },\
-    //       {\
-    //         type: "line",\
-    //         name: "Page",\
-    //         showInLegend: true,\
-    //         dataPoints: dataPoints4\
-    //       },\
-    //       {\
-    //         type: "line",\
-    //         name: "URL",\
-    //         showInLegend: true,\
-    //         dataPoints: dataPoints5\
-    //       }\
-    //     ]\
-    //   });\
-    //   chart.render();',
-    //   field: "yearMonthDay",
-    //   sortBy: "key",
-    //   filter: [
-    //     {},
-    //     { description: ["CONTAINS (assignment)"] },
-    //     {
-    //       component: ["IN (Fitxer)"],
-    //       description: ["CONTAINS ('resource' activity)"],
-    //     },
-    //     { component: ["BEGIN (Pà)"] },
-    //     { component: ["IN (URL)"] },
-    //   ],
-    // },
-    // {
-    //   width: "1012",
-    //   margin_tooltip: 500,
-    //   height: "700",
-    //   title: "Interactions Across Week",
-    //   tooltip:
-    //     "A table which represents the number of interactions in a week performed by hour.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{\
-    //         let widget = document.getElementById("content_%ID%");\
-    //         let labels = %LABELS%;\
-    //         let values = %VALUES%;\
-    //         let height = %HEIGHT% - 100;\
-    //         let diesHores = {};\
-    //         let maxVal = 0;\
-    //         for (let i = 0; i < labels.length; i++){\
-    //           let wDate = new Date(labels[i]*1000);\
-    //           if (undefined === diesHores[wDate.getDay()])\
-    //             diesHores[wDate.getDay()] = {};\
-    //           if (undefined === diesHores[wDate.getDay()][wDate.getHours()])\
-    //             diesHores[wDate.getDay()][wDate.getHours()] = 0;\
-    //           diesHores[wDate.getDay()][wDate.getHours()] += values[i];\
-    //           if (diesHores[wDate.getDay()][wDate.getHours()] > maxVal)\
-    //             maxVal = diesHores[wDate.getDay()][wDate.getHours()];\
-    //         }\
-    //         diesHores[7] = diesHores[0];\
-    //         let str = "<table>\
-    //             <thead>\
-    //                 <tr>\
-    //                     <th class=\\"tdLeft weekInteractions\\">Time Slot</th>\
-    //                     <th class=\\"tdCenter weekInteractions\\">Monday</th>\
-    //                     <th class=\\"tdCenter weekInteractions\\">Tuesday</th>\
-    //                     <th class=\\"tdCenter weekInteractions\\">Wednesday</th>\
-    //                     <th class=\\"tdCenter weekInteractions\\">Thursday</th>\
-    //                     <th class=\\"tdCenter weekInteractions\\">Friday</th>\
-    //                     <th class=\\"tdCenter weekInteractions\\">Saturday</th>\
-    //                     <th class=\\"tdCenter weekInteractions\\">Sunday</th>\
-    //                 </tr>\
-    //             </thead>\
-    //             <tbody style=\'max-height:"+height+"px\'>";\
-    //             for (let i = 0; i <24; i++) {\
-    //               str += "<tr>";\
-    //               str += "<td class=\\"tdLeft weekInteractions\\">" + i + ":00-"+i+":59</td>";\
-    //               for (let j = 1; j <= 7; j++) {\
-    //                 diesHores[j] = diesHores[j] || {};\
-    //                 let val = ((undefined !== diesHores[j][i])?diesHores[j][i]:0);\
-    //                 str += "<td class=\\"tdCenter weekInteractions\\" style=\\"background:"+gradient(maxVal,val)+"\\">" + val.toLocaleString() + "</td>";\
-    //               }\
-    //               str += "</tr>";\
-    //             }\
-    //             str += "</tbody>\
-    //             </table>";\
-    //           widget.insertAdjacentHTML("afterbegin", str);\
-    //       }',
-    //   field: "timestamp",
-    // },
     {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\
@@ -691,12 +419,12 @@ function renderDefaultDashboard() {
       height: "300",
       title: "Distribución de tipo de alumnos",
       tooltip:
-          "Gráfico circular que describe la distribución por tipo de estudiante",
+        "Gráfico circular que describe la distribución por tipo de estudiante",
       srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,
       snippet:
-          "var labels = %LABELS%;\
+        "var labels = %LABELS%;\
           var values = %VALUES%;\
           var canvas = document.createElement('canvas');\
               canvas.id = 'canvas_%ID%';\
@@ -916,321 +644,552 @@ function renderDefaultDashboard() {
       </div>',
       mode: WIDGET_TEXT,
     },
-    // {
-    //   width: "500",
-    //   height: "500",
-    //   title: "Last interaction with a Resource",
-    //   tooltip:
-    //     "List of each resource for the course and tand the last time any member has interacted with it.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{\
-    //     let interactions = dashb.widgets[2].data.values[0];\
-    //     let widget = document.getElementById("content_%ID%");\
-    //     let labels = %LABELS%;\
-    //     let values = %VALUES%;\
-    //     let height = %HEIGHT% - 100;\
-    //     let str = "<table>\
-    //         <thead>\
-    //             <tr>\
-    //                 <th class=\\"tdLeft lastInteractionResource\\">Resource</th>\
-    //                 <th class=\\"tdCenter lastInteractionResource\\">Last Access</th>\
-    //             </tr>\
-    //         </thead>\
-    //         <tbody style=\'max-height:"+height+"px\'>";\
-    //     for (let i = 0; i < labels.length; i++) {\
-    //       if (labels[0].length){\
-    //         let wDate = new Date(values[i]*1000).toLocaleString();\
-    //         let percent = (values[i]*100)/interactions;\
-    //         let wDateDiff = new Date().diffTimestamp(values[i]);\
-    //         let wDateStr = wDateDiff.days+" dies "+wDateDiff.hours+" hores <br />"+wDateDiff.minutes+" minuts, "+Math.floor(wDateDiff.seconds)+" segons";\
-    //         str += "<tr>";\
-    //         str += "<td class=\\"tdLeft lastInteractionResource\\">" + labels[i] + "</td>";\
-    //         str += "<td class=\\"tdCenter " + ((1>wDateDiff.days)?"tdGreenLight":((3>wDateDiff.days)?"tdOrangeLight":"tdRedLight")) + " lastInteractionResource\\">" + wDate + "<br/><b>" + wDateStr + "</b></td>";\
-    //         str += "</tr>"; };\
-    //       }\
-    //       str += "</tbody>\
-    //         </table>";\
-    //       widget.insertAdjacentHTML("afterbegin", str);\
-    //     }',
-    //   field: "context",
-    //   calcFn: { fn: "lastconnection", field: "timestamp" },
-    // },
-    // {
-    //   width: "500",
-    //   height: "500",
-    //   title: "Interactions with Resources",
-    //   tooltip:
-    //     "List of each resource in a course and the number of interactions, including viewing the course",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{\
-    //     let interactions = dashb.widgets[2].data.values[0];\
-    //     let widget = document.getElementById("content_%ID%");\
-    //     let labels = %LABELS%;\
-    //     let values = %VALUES%;\
-    //     let height = %HEIGHT% - 100;\
-    //     let str = "<table>\
-    //         <thead>\
-    //             <tr>\
-    //                 <th class=\\"tdLeft\\">Resource</th>\
-    //                 <th class=\\"tdCenter interactionResource\\">%</th>\
-    //                 <th class=\\"tdCenter interactionResource\\">#</th>\
-    //             </tr>\
-    //         </thead>\
-    //         <tbody style=\'max-height:"+height+"px\'>";\
-    //     for (let i = 0; i < labels.length; i++) {\
-    //         let percent = (values[i]*100)/interactions;\
-    //         str += "<tr>";\
-    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionResource\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-    //         str += "<td class=\\"tdRight interactionResource\\">" + values[i] + "</td>";\
-    //         str += "</tr>"; };\
-    //     str += "</tbody>\
-    //         </table>";\
-    //     widget.insertAdjacentHTML("afterbegin", str);\
-    //   }',
-    //   sortBy: "key",
-    //   order: "ASC",
-    //   field: "context",
-    // },
-    // {
-    //   width: "500",
-    //   height: "500",
-    //   title: "Interactions with Components",
-    //   tooltip:
-    //     "List of different resources used in the course (such as wikis or URL) and the total number of interactions.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{\
-    //     let interactions = dashb.widgets[2].data.values[0];\
-    //     let widget = document.getElementById("content_%ID%");\
-    //     let labels = %LABELS%;\
-    //     let values = %VALUES%;\
-    //     let height = %HEIGHT% - 100;\
-    //     let str = "<table>\
-    //         <thead>\
-    //             <tr>\
-    //                 <th class=\\"tdLeft\\">Component</th>\
-    //                 <th class=\\"tdCenter interactionComponents\\">%</th>\
-    //                 <th class=\\"tdCenter interactionComponents\\">#</th>\
-    //             </tr>\
-    //         </thead>\
-    //         <tbody style=\'max-height:"+height+"px\'>";\
-    //     for (let i = 0; i < labels.length; i++) {\
-    //         let percent = (values[i]*100)/interactions;\
-    //         str += "<tr>";\
-    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionComponents\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-    //         str += "<td class=\\"tdRight interactionComponents\\">" + values[i] + "</td>";\
-    //         str += "</tr>"; };\
-    //     str += "</tbody>\
-    //         </table>";\
-    //     widget.insertAdjacentHTML("afterbegin", str);\
-    //   }',
-    //   sortBy: "key",
-    //   order: "ASC",
-    //   field: "component",
-    // },
-    // {
-    //   width: "500",
-    //   height: "500",
-    //   title: "Interactions with Events",
-    //   tooltip:
-    //     "List of different interactions performed on the course by its users and the count for each.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{\
-    //     let interactions = dashb.widgets[2].data.values[0];\
-    //     let widget = document.getElementById("content_%ID%");\
-    //     let labels = %LABELS%;\
-    //     let values = %VALUES%;\
-    //     let height = %HEIGHT% - 100;\
-    //     let str = "<table>\
-    //         <thead>\
-    //             <tr>\
-    //                 <th class=\\"tdLeft\\">Event</th>\
-    //                 <th class=\\"tdCenter interactionEvents\\">%</th>\
-    //                 <th class=\\"tdCenter interactionEvents\\">#</th>\
-    //             </tr>\
-    //         </thead>\
-    //         <tbody style=\'max-height:"+height+"px\'>";\
-    //     for (let i = 0; i < labels.length; i++) {\
-    //         let percent = (values[i]*100)/interactions;\
-    //         str += "<tr>";\
-    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionEvents\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-    //         str += "<td class=\\"tdRight interactionEvents\\">" + values[i] + "</td>";\
-    //         str += "</tr>"; };\
-    //     str += "</tbody>\
-    //         </table>";\
-    //     widget.insertAdjacentHTML("afterbegin", str);\
-    //   }',
-    //   sortBy: "key",
-    //   order: "ASC",
-    //   field: "event",
-    // },
-    // {
-    //   width: "500",
-    //   height: "500",
-    //   title: "Interactions with context",
-    //   tooltip:
-    //     "For each element in the course that can be interacted with, it shows the total number of interactions generated from the users.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{\
-    //     let interactions = dashb.widgets[2].data.values[0];\
-    //     let widget = document.getElementById("content_%ID%");\
-    //     let labels = %LABELS%;\
-    //     let values = %VALUES%;\
-    //     let height = %HEIGHT% - 100;\
-    //     let str = "<table>\
-    //         <thead>\
-    //             <tr>\
-    //                 <th class=\\"tdLeft\\">Context</th>\
-    //                 <th class=\\"tdCenter interactionContext\\">%</th>\
-    //                 <th class=\\"tdCenter interactionContext\\">#</th>\
-    //             </tr>\
-    //         </thead>\
-    //         <tbody style=\'max-height:"+height+"px\'>";\
-    //     for (let i = 0; i < labels.length; i++) {\
-    //         let percent = (values[i]*100)/interactions;\
-    //         str += "<tr>";\
-    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionContext\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-    //         str += "<td class=\\"tdRight interactionContext\\">" + values[i] + "</td>";\
-    //         str += "</tr>"; };\
-    //     str += "</tbody>\
-    //         </table>";\
-    //     widget.insertAdjacentHTML("afterbegin", str);\
-    //   }',
-    //   sortBy: "key",
-    //   order: "ASC",
-    //   field: "context",
-    //   filter: { context: ["NOT BEGIN (Curs:)"] },
-    // },
-    // {
-    //   width: "500",
-    //   height: "500",
-    //   title: "Interactions with URL",
-    //   tooltip:
-    //     "For each URL in the course that can be interacted, it shows the number of interactions generated from the users.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{\
-    //     let interactions = dashb.widgets[2].data.values[0];\
-    //     let widget = document.getElementById("content_%ID%");\
-    //     let labels = %LABELS%;\
-    //     let values = %VALUES%;\
-    //     let height = %HEIGHT% - 100;\
-    //     let str = "<table>\
-    //         <thead>\
-    //             <tr>\
-    //                 <th class=\\"tdLeft\\">URL</th>\
-    //                 <th class=\\"tdCenter interactionURL\\">%</th>\
-    //                 <th class=\\"tdCenter interactionURL\\">#</th>\
-    //             </tr>\
-    //         </thead>\
-    //         <tbody style=\'max-height:"+height+"px\'>";\
-    //     for (let i = 0; i < labels.length; i++) {\
-    //         let percent = (values[i]*100)/interactions;\
-    //         str += "<tr>";\
-    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionURL\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-    //         str += "<td class=\\"tdRight interactionURL\\">" + values[i] + "</td>";\
-    //         str += "</tr>"; };\
-    //     str += "</tbody>\
-    //         </table>";\
-    //     widget.insertAdjacentHTML("afterbegin", str);\
-    //   }',
-    //   sortBy: "key",
-    //   order: "ASC",
-    //   field: "context",
-    //   filter: { component: ["IN (URL)"] },
-    // },
-    // {
-    //   width: "475",
-    //   height: "500",
-    //   title: "Interactions with Pages",
-    //   tooltip:
-    //     "For each Page resource in the course, it shows the number of interactions generated from the users.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{\
-    //     let interactions = dashb.widgets[2].data.values[0];\
-    //     let widget = document.getElementById("content_%ID%");\
-    //     let labels = %LABELS%;\
-    //     let values = %VALUES%;\
-    //     let height = %HEIGHT% - 100;\
-    //     let str = "<table>\
-    //         <thead>\
-    //             <tr>\
-    //                 <th class=\\"tdLeft\\">Page</th>\
-    //                 <th class=\\"tdCenter interactionPages\\">%</th>\
-    //                 <th class=\\"tdCenter interactionPages\\">#</th>\
-    //             </tr>\
-    //         </thead>\
-    //         <tbody style=\'max-height:"+height+"px\'>";\
-    //     for (let i = 0; i < labels.length; i++) {\
-    //         let percent = (values[i]*100)/interactions;\
-    //         str += "<tr>";\
-    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionPages\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-    //         str += "<td class=\\"tdRight interactionPages\\">" + values[i] + "</td>";\
-    //         str += "</tr>"; };\
-    //     str += "</tbody>\
-    //         </table>";\
-    //     widget.insertAdjacentHTML("afterbegin", str);\
-    //   }',
-    //   sortBy: "key",
-    //   order: "ASC",
-    //   field: "context",
-    //   filter: { component: ["IN (Pàgina)"] },
-    // },
-    // {
-    //   width: "475",
-    //   height: "500",
-    //   title: "Interactions with LTI Tool",
-    //   tooltip:
-    //     "For each Learning Tool Interoperability resource in the course, it shows the amount of interactions have generated from the users.",
-    //   mode: WIDGET_CODE_SNIPPET,
-    //   snippet:
-    //     '{\
-    //     let interactions = dashb.widgets[2].data.values[0];\
-    //     let widget = document.getElementById("content_%ID%");\
-    //     let labels = %LABELS%;\
-    //     let values = %VALUES%;\
-    //     let height = %HEIGHT% - 100;\
-    //     let str = "<table>\
-    //         <thead>\
-    //             <tr>\
-    //                 <th class=\\"tdLeft\\">LTI Tool</th>\
-    //                 <th class=\\"tdCenter interactionLTI\\">%</th>\
-    //                 <th class=\\"tdCenter interactionLTI\\">#</th>\
-    //             </tr>\
-    //         </thead>\
-    //         <tbody style=\'max-height:"+height+"px\'>";\
-    //     for (let i = 0; i < labels.length; i++) {\
-    //         let percent = (values[i]*100)/interactions;\
-    //         str += "<tr>";\
-    //         str += "<td class=\\"tdLeft\\">" + labels[i] + "</td>";\
-    //         str += "<td class=\\"tdCenter " + ((10<percent)?"tdGreenLight":((5<percent)?"tdOrangeLight":"tdRedLight")) + " interactionLTI\\">" + (Math.round(percent*100)/100).toLocaleString() + "%</td>";\
-    //         str += "<td class=\\"tdRight interactionLTI\\">" + values[i] + "</td>";\
-    //         str += "</tr>"; };\
-    //     str += "</tbody>\
-    //         </table>";\
-    //     widget.insertAdjacentHTML("afterbegin", str);\
-    //   }',
-    //   sortBy: "key",
-    //   order: "ASC",
-    //   field: "context",
-    //   filter: { component: ["IN (Eina ext LTI)"] },
-    // },
+    {
+      width: "1062",
+      height: "300",
+      title: "TW1 - Law",
+      tooltip:
+        "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Law',\
+                      borderColor: 'rgb(255, 99, 132)',\
+				              backgroundColor: 'rgb(255, 99, 132)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "indicador1a",
+      filter: {
+        indicador1a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Law)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "TW1 - Architecture",
+      tooltip:
+        "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Architecture',\
+                      borderColor: 'rgb(255, 205, 86)',\
+				              backgroundColor: 'rgb(255, 205, 86)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "indicador1a",
+      filter: {
+        indicador1a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Architecture)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "TW1 - Computer Tools",
+      tooltip:
+        "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Computer Tools',\
+                      borderColor: 'rgb(54, 162, 235)',\
+				              backgroundColor: 'rgb(54, 162, 235)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "indicador1a",
+      filter: {
+        indicador1a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Computer Tools)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "TW2 - Law",
+      tooltip:
+        "Participa de forma activa en los espacios de encuentro del equipo, compartiendo la información, los conocimientos y las experiencias.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Law',\
+                      borderColor: 'rgb(255, 99, 132)',\
+				              backgroundColor: 'rgb(255, 99, 132)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "indicador2a",
+      filter: {
+        indicador2a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Law)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "TW2 - Architecture",
+      tooltip:
+        "Participa de forma activa en los espacios de encuentro del equipo, compartiendo la información, los conocimientos y las experiencias.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Architecture',\
+                      borderColor: 'rgb(255, 205, 86)',\
+				              backgroundColor: 'rgb(255, 205, 86)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "indicador2a",
+      filter: {
+        indicador2a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Architecture)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "TW2 - Computer Tools",
+      tooltip:
+        "Participa de forma activa en los espacios de encuentro del equipo, compartiendo la información, los conocimientos y las experiencias.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Computer Tools',\
+                      borderColor: 'rgb(54, 162, 235)',\
+				              backgroundColor: 'rgb(54, 162, 235)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "indicador2a",
+      filter: {
+        indicador2a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Computer Tools)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "TW3 - Law",
+      tooltip:
+        "Colabora en la definición, la organización y distribución de las tareas de grupo.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Law',\
+                      borderColor: 'rgb(255, 99, 132)',\
+				              backgroundColor: 'rgb(255, 99, 132)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "indicador3a",
+      filter: {
+        indicador3a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Law)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "TW3 - Architecture",
+      tooltip:
+        "Colabora en la definición, la organización y distribución de las tareas de grupo.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Architecture',\
+                      borderColor: 'rgb(255, 205, 86)',\
+				              backgroundColor: 'rgb(255, 205, 86)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "indicador3a",
+      filter: {
+        indicador3a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Architecture)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "TW3 - Computer Tools",
+      tooltip:
+        "Colabora en la definición, la organización y distribución de las tareas de grupo.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Computer Tools',\
+                      borderColor: 'rgb(54, 162, 235)',\
+				              backgroundColor: 'rgb(54, 162, 235)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "indicador3a",
+      filter: {
+        indicador3a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Computer Tools)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "Distribución mejora indicador - Law",
+      tooltip:
+        "El indicador sobre el que percibes mayor posibilidad de mejora.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Law',\
+                      borderColor: 'rgb(255, 99, 132)',\
+				              backgroundColor: 'rgb(255, 99, 132)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "mayorPosMejoraIndicadorA",
+      filter: {
+        mayorPosMejoraIndicadorA: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Law)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "Distribución mejora indicador - Architecture",
+      tooltip:
+        "El indicador sobre el que percibes mayor posibilidad de mejora.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Architecture',\
+                      borderColor: 'rgb(255, 205, 86)',\
+				              backgroundColor: 'rgb(255, 205, 86)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "mayorPosMejoraIndicadorA",
+      filter: {
+        mayorPosMejoraIndicadorA: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Architecture)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "Distribución mejora indicador - Computer Tools",
+      tooltip:
+        "El indicador sobre el que percibes mayor posibilidad de mejora.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        "var canvas = document.createElement('canvas');\
+            canvas.id = 'canvas_%ID%';\
+            canvas.width = '%WIDTH%';\
+            canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+            new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+              {\
+                type: 'line',\
+                options: {\
+                  legend: {\
+                    position:'left'\
+                  },\
+                },\
+                data: {\
+                  labels: %LABELS%,\
+                  datasets: [\
+                    {\
+                      label: 'Computer Tools',\
+                      borderColor: 'rgb(54, 162, 235)',\
+				              backgroundColor: 'rgb(54, 162, 235)',\
+                      fill: false,\
+                      lineTension: 0,\
+                      data: %VALUES%,\
+                    }\
+                  ]\
+                }\
+              });",
+      field: "mayorPosMejoraIndicadorA",
+      filter: {
+        mayorPosMejoraIndicadorA: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Computer Tools)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
     // {
     //   width: "1062",
     //   height: "300",
-    //   title: "Components",
-    //   tooltip: "Pie plot describing the amount of elements the course has.",
+    //   title: "Indicador a mejorar",
+    //   tooltip:
+    //     "Gráfico circular que describe la distribución de las respuestas por indicador",
     //   srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
     //   srcCSS: "",
     //   mode: WIDGET_CODE_SNIPPET,
@@ -1238,8 +1197,34 @@ function renderDefaultDashboard() {
     //     "var canvas = document.createElement('canvas');\
     //         canvas.id = 'canvas_%ID%';\
     //         canvas.width = '%WIDTH%';\
-    //         canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);new Chart(document.getElementById('canvas_%ID%').getContext('2d'), {type: 'pie',options:{tooltips: {bodyFontColor:'#FFFFFF',bodyFontSize:14,bodyFontStyle:'bold',caretSize:0,xPadding:0,yPadding:0},responsive: false,maintainAspectRatio:false,legend:{position:'left'}},data: {labels: %LABELS%,datasets: [{data: %VALUES%,backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']}]}});",
-    //   field: "component",
+    //         canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+    //         new Chart(document.getElementById('canvas_%ID%').getContext('2d'), \
+    //         {type: 'pie',\
+    //         options: {\
+    //           tooltips: {bodyFontColor:'#FFFFFF',\
+    //           bodyFontSize:14,\
+    //           bodyFontStyle:'bold',\
+    //           caretSize:0,\
+    //           xPadding:0,\
+    //           yPadding:0\
+    //         },\
+    //         responsive: false,\
+    //         maintainAspectRatio:false,\
+    //         legend: {\
+    //           position:'left'\
+    //         }\
+    //       },\
+    //       data: {\
+    //         labels: %LABELS%,\
+    //         datasets: [\
+    //           {\
+    //             data: %VALUES%,\
+    //             backgroundColor:['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']\
+    //           }\
+    //         ]\
+    //       }});",
+    //   field: "indicador1a",
+    //   filter: { indicador1a: ["NOT BEGIN (undefined)"] },
     // },
     {
       html:
@@ -1745,7 +1730,7 @@ function schema(item) {
         center: item[COTRAMOKEYS.CENTER],
         indicador1a: item[COTRAMOKEYS.INDICADOR_1A],
         indicador2a: item[COTRAMOKEYS.INDICADOR_2A],
-        indicador3a: item[COTRAMOKEYS.INDICADOR_3B],
+        indicador3a: item[COTRAMOKEYS.INDICADOR_3A],
         mayorPosMejoraIndicadorA:
           item[COTRAMOKEYS.MAYOR_POS_MEJORA_INDICADOR_A],
         planMejoraIndicadorA: item[COTRAMOKEYS.PLAN_MEJOR_INDICADOR_A],
