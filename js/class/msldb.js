@@ -483,6 +483,51 @@ class MoodleStandardLogsDataBase {
     return labels;
   }
 
+  labelsAVG(
+      field,
+      sortBy = "key",
+      order = "DESC",
+      limit = undefined
+  ) {
+    let labels = {};
+    let newLabels = new Array();
+
+    // count duplicates
+    let suma = 0;
+    this._logs.forEach(function (obj) {
+      //labels[obj[field]] = (labels[obj[field]] || 0) + 1;
+      console.log("labels obj field " + labels[obj[field]]);
+      suma = suma + labels[obj[field]];
+      labels[obj[field]] = (labels[obj[field]] || 0) + 1;
+    });
+    console.log("suma " + suma);
+
+    // count total
+    let total = 0;
+    for (var prop in labels) {
+      total = total + labels[prop];
+    }
+    console.log("total" + total);
+
+
+    // new dataset is {key:'', value: 0}
+    for (var prop in labels) {
+      console.log("labels prop" + labels[prop]);
+      let newVal = (labels[prop] / total);
+      console.log("newVal" + newVal);
+      newLabels.push({ key: prop, value: [newVal] });
+    }
+
+    // sort
+    labels = this.sort(newLabels, sortBy, order);
+
+    // limit results
+    if (undefined !== limit) {
+      labels.length = limit;
+    }
+    return labels;
+  }
+
   /**
    * Get the countified labels of the dataset value.
    * @param {string} field - The field value.
@@ -633,6 +678,10 @@ class MoodleStandardLogsDataBase {
           break;
         case "countpercentage":
           labels = this.labelsCountPercentage(field, sortBy, order, limit);
+          break;
+
+        case "avg":
+          labels = this.labelsAVG(field, sortBy, order, limit);
           break;
       }
 
