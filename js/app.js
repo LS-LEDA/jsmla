@@ -293,7 +293,7 @@ function rlffOnLoad(e, error) {
   dropArea.style.display = "none";
   dash.style.marginLeft = "0";
   logLabel.innerHTML = "Log: <b>" + e.fileName + "</b>";
-  document.title = subjectName + " | Moodle Log Analytics";
+  document.title = subjectName + " | COTRAMO Log Analytics";
 
   renderDefaultDashboard();
   // }
