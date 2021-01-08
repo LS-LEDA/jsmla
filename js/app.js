@@ -832,7 +832,7 @@ function renderDefaultDashboard() {
     {
       width: "1062",
       height: "300",
-      title: "TW1 - Law",
+      title: "C A Mejorar - I2 - Law",
       tooltip:
           "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
       srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
@@ -845,7 +845,7 @@ function renderDefaultDashboard() {
               canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
               new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
                 {\
-                  type: 'line',\
+                  type: 'bar',\
                   options: {\
                     legend: {\
                       position:'left'\
@@ -877,9 +877,9 @@ function renderDefaultDashboard() {
     {
       width: "1062",
       height: "300",
-      title: "Distribución de tipo de alumnos",
+      title: "C A Mejorar - I2- Architecture",
       tooltip:
-          "Gráfico circular que describe la distribución por tipo de estudiante",
+          "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
       srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,
@@ -887,95 +887,83 @@ function renderDefaultDashboard() {
           "var canvas = document.createElement('canvas');\
               canvas.id = 'canvas_%ID%';\
               canvas.width = '%WIDTH%';\
-              canvas.style.width = '%WIDTH%';\
-              canvas.height = '%HEIGHT%'-70;\
-              canvas.style.height = '%HEIGHT%'-70;\
-              document.getElementById('content_%ID%').appendChild(canvas);\
-              \
-              new Chart(document.getElementById('canvas_%ID%').getContext('2d'), {\
-                type: 'line',\
-                options:{\
-                    tooltips: {\
-                        bodyFontColor:'#FFFFFF',\
-                        bodyFontSize:14,\
-                        bodyFontStyle:'bold',\
-                        caretSize:0,\
-                        xPadding:0,\
-                        yPadding:0},\
-                        responsive: false,\
-                        maintainAspectRatio:false,\
-                        legend:{\
-                            position:'left'\
-                        }\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'bar',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
                     },\
-                    data: {\
-                        labels: %LABELS%,\
-                        datasets: [{\
-                            data: %VALUES%,\
-                            backgroundColor:\
-                                ['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']\
-                            }]\
-                        }\
-                    }\
-                );",
-        calcFn: { fn: "count", field: "tag" },
-      filter: { tag: ["NOT BEGIN (undefined)"] },
-    },
-
-      {
-          width: "1062",
-          height: "300",
-          title: "2 Prueba",
-          tooltip:
-              "Gráfico circular que describe la distribución por tipo de estudiante",
-          srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
-          srcCSS: "",
-          mode: WIDGET_CODE_SNIPPET,
-          snippet:
-              "var canvas = document.createElement('canvas');\
-                  canvas.id = 'canvas_%ID%';\
-                  canvas.width = '%WIDTH%';\
-                  canvas.style.width = '%WIDTH%';\
-                  canvas.height = '%HEIGHT%'-70;\
-                  canvas.style.height = '%HEIGHT%'-70;\
-                  document.getElementById('content_%ID%').appendChild(canvas);\
-                  let valuesTotales = %VALUES%;\
-                  let total = 0;\
-                  for (var i = 0; i<valuesTotales.length; i++) {\
-                    total = total + valuesTotales[i];\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Law',\
+                        borderColor: 'rgb(255, 99, 132)',\
+                                backgroundColor: 'rgb(255, 99, 132)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
                   }\
-                  for (var i = 0; i<valuesTotales.length; i++) {\
-                    valuesTotales[i] = (valuesTotales[i] / total) * 100;\
-                  }\
-                  new Chart(document.getElementById('canvas_%ID%').getContext('2d'), {\
-                    type: 'bar',\
-                    options:{\
-                        tooltips: {\
-                            bodyFontColor:'#FFFFFF',\
-                            bodyFontSize:14,\
-                            bodyFontStyle:'bold',\
-                            caretSize:0,\
-                            xPadding:0,\
-                            yPadding:0},\
-                            responsive: false,\
-                            maintainAspectRatio:false,\
-                            legend:{\
-                                position:'left'\
-                            }\
-                        },\
-                        data: {\
-                            labels: %LABELS%,\
-                            datasets: [{\
-                                data: valuesTotales,\
-                                backgroundColor:\
-                                    ['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(255, 0, 0)','rgb(0, 255, 0)','rgb(0, 0, 255)']\
-                                }]\
-                            }\
-                        }\
-                    );",
-          field: "indicador1b",
-          filter: { tag: ["NOT BEGIN (undefined)"] },
+                });",
+      field: "indicador2b",
+      filter: {
+        indicador2b: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Architecture)"],
       },
+      calcFn: { fn: "avg" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C A Mejorar - I2- Computer Tools",
+      tooltip:
+          "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'bar',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Law',\
+                        borderColor: 'rgb(255, 99, 132)',\
+                                backgroundColor: 'rgb(255, 99, 132)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador2b",
+      filter: {
+        indicador2b: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Computer Tools)"],
+      },
+      calcFn: { fn: "avg" },
+      order: "ASC",
+      sortBy: "key",
+    },
     {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\

@@ -495,29 +495,19 @@ class MoodleStandardLogsDataBase {
     // count duplicates
     let suma = 0;
     this._logs.forEach(function (obj) {
-      //labels[obj[field]] = (labels[obj[field]] || 0) + 1;
-      console.log("labels obj field " + labels[obj[field]]);
-      suma = suma + labels[obj[field]];
       labels[obj[field]] = (labels[obj[field]] || 0) + 1;
-    });
-    console.log("suma " + suma);
 
+      suma +=  parseInt(obj[field]);
+
+    });
     // count total
     let total = 0;
     for (var prop in labels) {
       total = total + labels[prop];
     }
-    console.log("total" + total);
 
-
-    // new dataset is {key:'', value: 0}
-    for (var prop in labels) {
-      console.log("labels prop" + labels[prop]);
-      let newVal = (labels[prop] / total);
-      console.log("newVal" + newVal);
-      newLabels.push({ key: prop, value: [newVal] });
-    }
-
+    let newVal = (suma / total);
+    newLabels.push({key: field, value: [newVal]});
     // sort
     labels = this.sort(newLabels, sortBy, order);
 
