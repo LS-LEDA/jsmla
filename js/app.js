@@ -784,7 +784,7 @@ function renderDefaultDashboard() {
       height: "300",
       title: "TW2 - Law",
       tooltip:
-        "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+        "Participa de forma activa en los espacios de encuentro del equipo, compartiendo la información, los conocimientos y las experiencias.",
       srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,
@@ -829,7 +829,7 @@ function renderDefaultDashboard() {
       height: "300",
       title: "TW2 - Architecture",
       tooltip:
-        "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+        "Participa de forma activa en los espacios de encuentro del equipo, compartiendo la información, los conocimientos y las experiencias.",
       srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,
@@ -874,7 +874,7 @@ function renderDefaultDashboard() {
       height: "300",
       title: "TW2 - Computer Tools",
       tooltip:
-        "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+        "Participa de forma activa en los espacios de encuentro del equipo, compartiendo la información, los conocimientos y las experiencias.",
       srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
       srcCSS: "",
       mode: WIDGET_CODE_SNIPPET,
