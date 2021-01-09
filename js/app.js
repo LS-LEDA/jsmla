@@ -832,7 +832,142 @@ function renderDefaultDashboard() {
     {
       width: "1062",
       height: "300",
-      title: "C A Mejorar - I2 - Law",
+      title: "C AVG - I1 - Law",
+      tooltip:
+          "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'bar',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Law',\
+                        borderColor: 'rgb(255, 99, 132)',\
+                                backgroundColor: 'rgb(255, 99, 132)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "mayorPosMejoraIndicadorB",
+      filter: {
+        indicador2b: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Law)"],
+      },
+      calcFn: { fn: "avg" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C AVG - I1 - Architecture",
+      tooltip:
+          "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'bar',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Law',\
+                        borderColor: 'rgb(255, 99, 132)',\
+                                backgroundColor: 'rgb(255, 99, 132)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "mayorPosMejoraIndicadorB",
+      filter: {
+        indicador2b: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Architecture)"],
+      },
+      calcFn: { fn: "avg" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C AVG - I1 - Computer Tools",
+      tooltip:
+          "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'bar',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Law',\
+                        borderColor: 'rgb(255, 99, 132)',\
+                                backgroundColor: 'rgb(255, 99, 132)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "mayorPosMejoraIndicadorB",
+      filter: {
+        indicador2b: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Computer Tools)"],
+      },
+      calcFn: { fn: "avg" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C AVG - I2 - Law",
       tooltip:
           "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
       srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
@@ -877,7 +1012,7 @@ function renderDefaultDashboard() {
     {
       width: "1062",
       height: "300",
-      title: "C A Mejorar - I2- Architecture",
+      title: "C AVG - I2- Architecture",
       tooltip:
           "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
       srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
@@ -922,7 +1057,7 @@ function renderDefaultDashboard() {
     {
       width: "1062",
       height: "300",
-      title: "C A Mejorar - I2- Computer Tools",
+      title: "C AVG - I2- Computer Tools",
       tooltip:
           "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
       srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
@@ -956,6 +1091,141 @@ function renderDefaultDashboard() {
                   }\
                 });",
       field: "indicador2b",
+      filter: {
+        indicador2b: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Computer Tools)"],
+      },
+      calcFn: { fn: "avg" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C AVG - I3 - Law",
+      tooltip:
+          "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'bar',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Law',\
+                        borderColor: 'rgb(255, 99, 132)',\
+                                backgroundColor: 'rgb(255, 99, 132)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador3b",
+      filter: {
+        indicador2b: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Law)"],
+      },
+      calcFn: { fn: "avg" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C AVG - I3- Architecture",
+      tooltip:
+          "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'bar',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Law',\
+                        borderColor: 'rgb(255, 99, 132)',\
+                                backgroundColor: 'rgb(255, 99, 132)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador3b",
+      filter: {
+        indicador2b: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Architecture)"],
+      },
+      calcFn: { fn: "avg" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C AVG - I3- Computer Tools",
+      tooltip:
+          "Realiza las tareas que le son asignadas dentro del grupo en los plazos requeridos.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'bar',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Law',\
+                        borderColor: 'rgb(255, 99, 132)',\
+                                backgroundColor: 'rgb(255, 99, 132)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador3b",
       filter: {
         indicador2b: ["NOT BEGIN (undefined)"],
         tag: ["CONTAINS (Computer Tools)"],
