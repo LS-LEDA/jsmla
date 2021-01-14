@@ -1234,6 +1234,547 @@ function renderDefaultDashboard() {
       </div>',
       mode: WIDGET_TEXT,
     },
+
+    {
+      width: "1062",
+      height: "300",
+      title: "C1 - Law",
+      tooltip:
+          "Transmito información relevante..",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'line',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Law',\
+                        borderColor: 'rgb(255, 99, 132)',\
+                                backgroundColor: 'rgb(255, 99, 132)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador1b",
+      filter: {
+        indicador1a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Law)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C1 - Architecture",
+      tooltip:
+          "Transmito información relevante..",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'line',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Architecture',\
+                        borderColor: 'rgb(255, 205, 86)',\
+                                backgroundColor: 'rgb(255, 205, 86)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador1b",
+      filter: {
+        indicador1a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Architecture)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C1 - Computer Tools",
+      tooltip:
+          "Transmito información relevante..",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'line',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Computer Tools',\
+                        borderColor: 'rgb(54, 162, 235)',\
+                                backgroundColor: 'rgb(54, 162, 235)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador1b",
+      filter: {
+        indicador1a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Computer Tools)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C2 - Law",
+      tooltip:
+          "Las presentaciones están estructuradas, cumpliendo con los requisitos exigidos, si los hubiera.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'line',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Law',\
+                        borderColor: 'rgb(255, 99, 132)',\
+                                backgroundColor: 'rgb(255, 99, 132)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador2b",
+      filter: {
+        indicador2a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Law)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C2 - Architecture",
+      tooltip:
+          "Las presentaciones están estructuradas, cumpliendo con los requisitos exigidos, si los hubiera.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'line',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Architecture',\
+                        borderColor: 'rgb(255, 205, 86)',\
+                                backgroundColor: 'rgb(255, 205, 86)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador2b",
+      filter: {
+        indicador2a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Architecture)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C2 - Computer Tools",
+      tooltip:
+          "Las presentaciones están estructuradas, cumpliendo con los requisitos exigidos, si los hubiera.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'line',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Computer Tools',\
+                        borderColor: 'rgb(54, 162, 235)',\
+                                backgroundColor: 'rgb(54, 162, 235)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador2b",
+      filter: {
+        indicador2a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Computer Tools)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C3 - Law",
+      tooltip:
+          "En mis presentaciones utilizo medios de apoyo.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'line',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Law',\
+                        borderColor: 'rgb(255, 99, 132)',\
+                                backgroundColor: 'rgb(255, 99, 132)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador3b",
+      filter: {
+        indicador3a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Law)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "C3 - Architecture",
+      tooltip:
+          "En mis presentaciones utilizo medios de apoyo.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'line',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Architecture',\
+                        borderColor: 'rgb(255, 205, 86)',\
+                                backgroundColor: 'rgb(255, 205, 86)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador3b",
+      filter: {
+        indicador3a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Architecture)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "c3 - Computer Tools",
+      tooltip:
+          "En mis presentaciones utilizo medios de apoyo.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'line',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Computer Tools',\
+                        borderColor: 'rgb(54, 162, 235)',\
+                                backgroundColor: 'rgb(54, 162, 235)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "indicador3b",
+      filter: {
+        indicador3a: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Computer Tools)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "Distribución mejora indicador - Law",
+      tooltip:
+          "El indicador sobre el que percibes mayor posibilidad de mejora.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'line',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Law',\
+                        borderColor: 'rgb(255, 99, 132)',\
+                                backgroundColor: 'rgb(255, 99, 132)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "mayorPosMejoraIndicadorB",
+      filter: {
+        mayorPosMejoraIndicadorA: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Law)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "Distribución mejora indicador - Architecture",
+      tooltip:
+          "El indicador sobre el que percibes mayor posibilidad de mejora.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'line',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Architecture',\
+                        borderColor: 'rgb(255, 205, 86)',\
+                                backgroundColor: 'rgb(255, 205, 86)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "mayorPosMejoraIndicadorB",
+      filter: {
+        mayorPosMejoraIndicadorA: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Architecture)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
+    {
+      width: "1062",
+      height: "300",
+      title: "Distribución mejora indicador - Computer Tools",
+      tooltip:
+          "El indicador sobre el que percibes mayor posibilidad de mejora.",
+      srcJS: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+      srcCSS: "",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+          "var canvas = document.createElement('canvas');\
+              canvas.id = 'canvas_%ID%';\
+              canvas.width = '%WIDTH%';\
+              canvas.style.width = '%WIDTH%';canvas.height = '%HEIGHT%'-70;canvas.style.height = '%HEIGHT%'-70;document.getElementById('content_%ID%').appendChild(canvas);\
+              new Chart(document.getElementById('canvas_%ID%').getContext('2d'),\
+                {\
+                  type: 'line',\
+                  options: {\
+                    legend: {\
+                      position:'left'\
+                    },\
+                  },\
+                  data: {\
+                    labels: %LABELS%,\
+                    datasets: [\
+                      {\
+                        label: 'Computer Tools',\
+                        borderColor: 'rgb(54, 162, 235)',\
+                                backgroundColor: 'rgb(54, 162, 235)',\
+                        fill: false,\
+                        lineTension: 0,\
+                        data: %VALUES%,\
+                      }\
+                    ]\
+                  }\
+                });",
+      field: "mayorPosMejoraIndicadorB",
+      filter: {
+        mayorPosMejoraIndicadorA: ["NOT BEGIN (undefined)"],
+        tag: ["CONTAINS (Computer Tools)"],
+      },
+      calcFn: { fn: "countpercentage" },
+      order: "ASC",
+      sortBy: "key",
+    },
     {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\
