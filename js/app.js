@@ -901,7 +901,7 @@ function renderDefaultDashboard() {
                     labels: %LABELS%,\
                     datasets: [\
                       {\
-                        label: 'Law',\
+                        label: 'Architecture',\
                         borderColor: 'rgb(255, 99, 132)',\
                                 backgroundColor: 'rgb(255, 99, 132)',\
                         fill: false,\
@@ -947,7 +947,7 @@ function renderDefaultDashboard() {
                     labels: %LABELS%,\
                     datasets: [\
                       {\
-                        label: 'Law',\
+                        label: 'Computer Tools',\
                         borderColor: 'rgb(255, 99, 132)',\
                                 backgroundColor: 'rgb(255, 99, 132)',\
                         fill: false,\
