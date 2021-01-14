@@ -902,8 +902,8 @@ function renderDefaultDashboard() {
                     datasets: [\
                       {\
                         label: 'Architecture',\
-                        borderColor: 'rgb(255, 99, 132)',\
-                                backgroundColor: 'rgb(255, 99, 132)',\
+                        borderColor: 'rgb(255, 205, 86)',\
+                                backgroundColor: 'rgb(255, 205, 86)',\
                         fill: false,\
                         lineTension: 0,\
                         data: %VALUES%,\
@@ -948,8 +948,8 @@ function renderDefaultDashboard() {
                     datasets: [\
                       {\
                         label: 'Computer Tools',\
-                        borderColor: 'rgb(255, 99, 132)',\
-                                backgroundColor: 'rgb(255, 99, 132)',\
+                        borderColor: 'rgb(54, 162, 235)',\
+                                backgroundColor: 'rgb(54, 162, 235)',\
                         fill: false,\
                         lineTension: 0,\
                         data: %VALUES%,\
