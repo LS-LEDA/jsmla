@@ -489,32 +489,29 @@ class MoodleStandardLogsDataBase {
       order = "DESC",
       limit = undefined
   ) {
+
     let labels = {};
     let newLabels = new Array();
-    let indicadores = ["indicador1b","indicador2b", "indicador3b"];
+
 
     // count duplicates
     let suma = {};
     let total = {};
-    for (var i = 0; i < indicadores.length; i++) {
-      suma[indicadores[i]] = 0;
-      total[indicadores[i]] = 0;
+    for (var i = 0; i < field.length; i++) {
+      suma[field[i]] = 0;
+      total[field[i]] = 0;
     }
 
     this._logs.forEach(function (obj) {
-      suma[indicadores[0]] +=  parseInt(obj[indicadores[0]]);
-      suma[indicadores[1]] +=  parseInt(obj[indicadores[1]]);
-      suma[indicadores[2]] +=  parseInt(obj[indicadores[2]]);
-
-      total[indicadores[0]] += (labels[obj[indicadores[0]]] || 0) + 1;
-      total[indicadores[1]] += (labels[obj[indicadores[1]]] || 0) + 1;
-      total[indicadores[2]] += (labels[obj[indicadores[2]]] || 0) + 1;
-
+      for (var i = 0; i < field.length; i++) {
+        suma[field[i]] +=  parseInt(obj[field[i]]);
+        total[field[i]] += (labels[obj[field[i]]] || 0) + 1;
+      }
     });
 
-    for (var i = 0; i < indicadores.length; i++) {
-      let newVal = (suma[indicadores[i]] / total[indicadores[i]]);
-      newLabels.push({ key: indicadores[i], value: [newVal] });
+    for (var i = 0; i < field.length; i++) {
+      let newVal = (suma[field[i]] / total[field[i]]);
+      newLabels.push({ key: field[i], value: [newVal] });
     }
 
     // sort
@@ -680,7 +677,7 @@ class MoodleStandardLogsDataBase {
           break;
 
         case "avg":
-          labels = this.labelsAVG(field, sortBy, order, limit);
+          labels = this.labelsAVG(calcFn.field, sortBy, order, limit);
           break;
       }
 
