@@ -5,6 +5,7 @@
 * @copyright 2020 La Salle Campus Barcelona, Universitat Ramon Llull https://www.salleurl.edu 
 * @author Daniel Amo 
 * @author Pablo Gómez
+* @author Nicole Marie Jimenez
 * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later 
 */
 
