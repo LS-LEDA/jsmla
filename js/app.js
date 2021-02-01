@@ -6,6 +6,7 @@
 * @author Daniel Amo 
 * @author Pablo Gómez
 * @author Nicole Marie Jimenez
+* @author Sandra Cea
 * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later 
 */
 
