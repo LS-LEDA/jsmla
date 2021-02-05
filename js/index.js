@@ -33,6 +33,13 @@ function closeMenuOptions(e)
         return false;
     }
 }
+function toggleVideoHelp() {
+    let vid = document.getElementById('reportFileVideoHelp');
+
+    if (vid.style.display === 'none') vid.style.display = 'block';
+    else vid.style.display = 'none';
+
+}
 
 window[ addEventListener ? 'addEventListener' : 'attachEvent' ]( addEventListener ? 'load' : 'onload', initIndex );
 //function initIndex(){let a=document.getElementById("menu-options-toggle");["click"].forEach(b=>{a.addEventListener(b,toggleMenuOptions,!1)})}function toggleMenuOptions(){let a=document.getElementById("menu-options");a.style.display=["","none",void 0].includes(a.style.display)?"block":"none",["click"].forEach(a=>{window.addEventListener(a,closeMenuOptions,!1)})}function closeMenuOptions(a){let b=document.getElementById("menu-options-toggle");if(a.target!=b){let b=document.getElementById("menu-options");return b.style.display="none",["click"].forEach(a=>{window.removeEventListener(a,closeMenuOptions,!1)}),a.preventDefault(),!1}}window[addEventListener?"addEventListener":"attachEvent"](addEventListener?"load":"onload",initIndex);
