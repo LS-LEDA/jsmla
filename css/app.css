@@ -101,6 +101,31 @@ h1 {
   background-color: var(--button-hover);
 }
 
+
+.btn_secondary {
+  background: transparent;
+  border: var(--button);
+  border-radius: 200px;
+  color: var(--button);
+  cursor: pointer;
+  display: inline-block;
+  font-size: inherit;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  outline: none;
+  padding: 10px;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  vertical-align: middle;
+  height: min-content;
+}
+
+.btn_secondary:hover {
+  background-color: var(--button-hover);
+  color: #fff;
+}
+
 .btn.small {
   color: var(--button-hover);
   background: white;

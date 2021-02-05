@@ -75,11 +75,18 @@
             Upload the Moodle log file by clicking the orange button or by
             dragging and dropping it here
           </p>
-          <input type="file" id="file-input" />
-          <label for="file-input" class="btn"
-            >upload Moodle course log file</label
-          >
-        </form>
+          <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
+              <input type="file" id="file-input" />
+              <label for="file-input" class="btn"
+                >upload Moodle course log file</label
+              >
+            <button class='btn_secondary' type="button" onclick="toggleVideoHelp()">?</button>
+          </div>
+          <div style="display: none;" id="reportFileVideoHelp">
+            <div style="position: relative; padding-bottom: 65.21739130434783%; height: 0;"><iframe src="https://www.loom.com/embed/ed2bc470d04c4d02b9825e9954069b41" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+          </div>
+
+          </form>
         <div id="file-content">
           <p id="loading-content">Loading content...</p>
           <div class="loader">
