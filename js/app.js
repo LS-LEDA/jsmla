@@ -141,9 +141,7 @@ var dashb = new Dashboard({
     filters: filters,
     widgetFilter: {
       yearMonthDay: ["BETWEENEQ (" + dateToYMD(365) + "," + dateToYMD(0) + ")"],
-    },
-    //globalFilter:{user: ['NOT BEGIN (Marc Segarra)','NOT BEGIN (Admin)','NOT BEGIN (Daniel Amo)','NOT BEGIN (Maria Alsina)','NOT BEGIN (Roger Olivella)','NOT BEGIN (Silvia Carretero)','NOT BEGIN (Eduard de Torres)','NOT BEGIN (Alba LLau)']}
-    //widgetFilter: { yearMonthDay: ['BETWEENEQ (20000212,20200727)'] }
+    }
   },
 });
 
@@ -159,10 +157,6 @@ function changeInputFile(e) {
   displayFileContents();
   dashb.msldb.readLogFromFile(e, rlffOnLoad, rlffOnProgress);
 }
-
-// function createLoadingContent() {
-//   return '<p id="loading-content">Loading content...</p>';
-// }
 
 function showFileReaderError() {
   return '<div class="timeout-error">There was an error reading the file. Please refresh the page and try again.</div>';
@@ -1142,58 +1136,6 @@ function renderDefaultDashboard() {
 
   widgets = widgets.concat(widgetsTemplate);
 
-  /* SEMANA VISTA */
-  /*
-    for (let i = 0; i < 7; i++)
-    {
-      var dateOffset = (24*60*60*1000) * i; // i days
-      var d = new Date();
-      d.setTime(d.getTime() - dateOffset);
-
-      let title = [{
-        html:'<div style="flex-basis: 100%;">\
-        <h1>Dashboard ' + d.toLocaleString() + '</h1>\
-        </div>'
-        ,mode:DASHBOARD_WIDGET_TEXT
-      }];
-      widgets = widgets.concat(title);
-
-      // source: https://github.com/jashkenas/underscore/blob/master/underscore.js#L1320
-      function isObject(obj) {
-        var type = typeof obj;
-        return type === 'function' || type === 'object' && !!obj;
-      };
-      function iterationCopy(src) {
-        let target = {};
-        for (let prop in src) {
-          if (src.hasOwnProperty(prop)) {
-            // if the value is a nested object, recursively copy all it's properties
-            if (isObject(src[prop])) {
-              target[prop] = iterationCopy(src[prop]);
-            } else {
-              target[prop] = src[prop];
-            }
-          }
-        }
-        return target;
-      }
-
-
-      let wtDates = [];
-      for (let j = 1; j < widgetsTemplate.length; j++)
-      {
-        wtDates[j-1] = iterationCopy(widgetsTemplate[j]);
-      }
-
-      let filterDateFromTo = d.getFullYear()+''+((d.getMonth()+1<10)?('0'+(d.getMonth()+1)):(d.getMonth()+1))+''+((d.getDate()<10)?'0'+d.getDate():d.getDate());
-      for (let k = 0; k < wtDates.length; k++)
-      {
-        wtDates[k].filter = {yearMonthDay:['>= ('+filterDateFromTo+') && <= ('+filterDateFromTo+')']};
-      }
-      
-      widgets = widgets.concat(wtDates);
-    }*/
-
   createWidgets(widgets);
 
   renderDashboard(widgets);
@@ -1313,8 +1255,6 @@ function navigatorInit(text, field) {
     stStr +=
       '</select><button class="btn small" onclick="let sel = this.form.elements[1]; if (sel.selectedIndex<sel.options.length-1) {sel.selectedIndex+=1;sel.onchange();}"><i class="fas fa-chevron-right"></i></button>\
     </form>';
-    //if (null != document.getElementById("nav_" + field))
-    //  document.getElementById("nav_" + field).remove();
     navigator.insertAdjacentHTML("beforeend", stStr);
   }
 }
@@ -1331,10 +1271,6 @@ function renderJSWidget(widget) {
 function editJSWidget(widget) {
   if (widget.visible) {
     document.getElementById(widget.id).outerHTML = widget.evaluatedCSSHTML;
-    //var replacement = document.createElement('lmn');
-    //replacement.innerHTML = widget.evaluatedCSSHTML;
-    //document.getElementById(widget.id).parentNode.replaceChild(replacement, document.getElementById(widget.id));
-    //document.getElementById(widget.id).insertAdjacentHTML('beforeend', widget.evaluatedCSSHTML);
     widget.evalAndExecuteSnippet();
   }
 }
@@ -1541,10 +1477,6 @@ function editWidget(id) {
       mode: "htmlmixed",
     }
   );
-
-  // Try to format
-  //var totalLines = editor.lineCount();
-  //editor.autoFormatRange({line:0, ch:0}, {line:totalLines});
 }
 
 function deleteWidget(id) {
