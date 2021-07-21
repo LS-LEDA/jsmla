@@ -442,6 +442,72 @@ class MoodleStandardLogsDataBase {
   }
 
   /**
+   * Get the time dedication for each field.
+   * @param {string} field - The field value.
+   * @param {string} sortBy - The field to sortBy value.
+   * @param {string} order - The order value.
+   * @param {string} timeField - The timestamp field value.
+   * @param {number} timeSession - The time of the session in minutes value.
+   * @param {string} limit - The limit value.
+   * @return {array} The countified labels value.
+   */
+   timededication(
+    field,
+    sortBy = "value",
+    order = "DESC",
+    timeField = "timestamp",
+    timeSession = 15,
+    limit = undefined
+  ) {
+    let labels = new Array();
+    let newLabels = new Array();
+
+    // copy & sort
+    this.logsCopy(labels, this._logs);
+    labels = this.sort(labels, timeField, "ASC");
+    
+    // detect time dedication
+    let count = 0;
+    labels.forEach(function (obj) {
+      if (
+        undefined === newLabels[obj[field]]
+      ) {
+        // add first interaction
+        newLabels[obj[field]] = {
+          total: 1,
+          timeField: obj[timeField]
+        };
+      }
+      else {
+        // compare last available interaction if in time session
+        let minutes = ( obj[timeField] - newLabels[obj[field]].timeField ) / 1000 / 60;
+        if (
+          minutes <= timeSession
+        ) {
+          // add minutes difference
+          newLabels[obj[field]].total += minutes;
+        }
+        else {
+          // add 1 minute for each hit below timeSession
+          newLabels[obj[field]].total++;
+        }
+        newLabels[obj[field]].timeField = obj[timeField];
+      }
+    });
+
+    // new dataset is {key:'', value:0}
+    labels = new Array();
+    for (var prop in newLabels) {
+      labels.push({ key: prop, value: newLabels[prop].total });
+    }
+
+    // sort
+    labels = this.sort(labels, sortBy, order);
+
+    return labels;
+  }
+
+  /**
    * Get rows by keys of the dataset value.
    * @param {string} dataset - The array value.
    * @param {string} key - The field to order by value.
@@ -476,6 +542,17 @@ class MoodleStandardLogsDataBase {
     if (undefined !== field) {
       let labels;
       switch (calcFn.fn) {
+        // group by field and set values to: time dedication 
+        case "timededication":
+          labels = this.timededication(
+            field,
+            sortBy,
+            order,
+            calcFn.field,
+            calcFn.session,
+            limit
+          );
+          break;
         // group by field and set values to: count occurrences
         case "count":
           labels = this.labelsCount(field, sortBy, order, limit);
