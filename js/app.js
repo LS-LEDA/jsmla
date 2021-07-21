@@ -808,6 +808,49 @@ function renderDefaultDashboard() {
       calcFn: { fn: "lastconnection", field: "timestamp" },
     },
     {
+      width: "475",
+      height: "500",
+      title: "Student Dedication",
+      tooltip:"Total time dedicated by each member of the course.",
+      mode: WIDGET_CODE_SNIPPET,
+      snippet:
+        '{\
+        let widget = document.getElementById("content_%ID%");\
+        let labels = %LABELS%;\
+        let values = %VALUES%;\
+        let height = %HEIGHT% - 100;\
+        let str = "<table>\
+            <thead>\
+                <tr>\
+                    <th class=\\"tdLeft timeDedication\\">Student</th>\
+                    <th class=\\"tdCenter timeDedication minutes\\">Minutes</th>\
+                    <th class=\\"tdCenter timeDedication\\">Dedication</th>\
+                </tr>\
+            </thead>\
+            <tbody style=\'max-height:"+height+"px\'>";\
+        for (let i = 0; i < labels.length; i++) {\
+            let days = Math.round(values[i]/24/60);\
+            let hours = Math.round(values[i]/60);\
+            let minutes = Math.round(values[i]%60);\
+            str += "<tr>";\
+            str += "<td class=\\"tdLeft timeDedication\\">" + labels[i] + "</td>";\
+            str += "<td class=\\"tdCenter timeDedication minutes\\">" + Math.round(values[i]) + "</td>";\
+            str += "<td class=\\"tdLeft timeDedication\\">" + days + " days " + hours + " hours " + minutes + " minutes</td>";\
+            str += "</tr>"; };\
+        str += "</tbody>\
+            </table>";\
+        widget.insertAdjacentHTML("afterbegin", str);\
+      }',
+      sortBy: "value",
+      order: "DESC",
+      field: "fullName",
+      calcFn: {
+        fn: "timededication",
+        field: "timestamp",
+        session: 30
+      }
+    },
+    {
       html:
         '<div class="widget section" style="flex-basis: 100%;">\
       <h2>3. Resources:</h2>\
