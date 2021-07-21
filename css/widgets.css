@@ -105,6 +105,22 @@
   max-width: 160px;
 }
 
+.timeDedication {
+  min-width: 160px;
+  max-width: 160px;
+  width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timeDedication.minutes {
+  min-width: 70px;
+  max-width: 70px;
+  width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .interactionResource,
 .interactionComponents,
 .interactionEvents,
