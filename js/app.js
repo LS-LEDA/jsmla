@@ -830,7 +830,7 @@ function renderDefaultDashboard() {
             <tbody style=\'max-height:"+height+"px\'>";\
         for (let i = 0; i < labels.length; i++) {\
             let days = Math.round(values[i]/24/60);\
-            let hours = Math.round(values[i]/60);\
+            let hours = Math.floor(values[i]/60);\
             let minutes = Math.round(values[i]%60);\
             str += "<tr>";\
             str += "<td class=\\"tdLeft timeDedication\\">" + labels[i] + "</td>";\
